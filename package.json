@@ -1,0 +1,30 @@
+{
+	"name": "tu-tam-mastermind-2025",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"description": "",
+	"main": "index.js",
+	"keywords": [],
+	"scripts": {
+		"dev": "pnpm --filter fe dev && pnpm --filter be dev",
+		"prod": "pnpm --filter fe build && pnpm --filter be start",
+		"dev:fe": "pnpm --filter fe dev",
+		"dev:be": "pnpm --filter be dev",
+		"prod:fe": "pnpm --filter fe build",
+		"prod:be": "pnpm --filter be start",
+		"build:models": "pnpm --filter @packages/models build",
+		"clean:models": "pnpm --filter @packages/models clean",
+<<<<<<< HEAD
+		"bootstrap": "pnpm install && pnpm build:models"
+=======
+		"bootstrap": "pnpm install -r && pnpm build:models"
+>>>>>>> 866b92e (feat(packages): Add models package)
+	},
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.11.0",
+	"devDependencies": {
+		"typescript": "^5.9.2"
+	}
+}
