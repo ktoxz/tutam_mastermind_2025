@@ -1,37 +1,50 @@
-# mastermind_backend_2025
+# tu-tam
 
-## Development
+## Thiết lập dự án
 
-To start both frontend and backend in development mode:
+1. Cài đặt [pnpm](https://pnpm.io/):
+
+    ```bash
+    npm install -g pnpm
+    ```
+
+2. Cài đặt các package và build models:
+    ```bash
+    pnpm bootstrap
+    ```
+
+## Phát triển
+
+Chạy cả frontend và backend ở chế độ phát triển:
 
 ```bash
 pnpm dev
 ```
 
--   Frontend runs with `pnpm --filter fe dev`
--   Backend runs with `pnpm --filter be dev`
+-   Frontend: `pnpm --filter fe dev`
+-   Backend: `pnpm --filter be dev`
 
-To start only frontend or backend in development:
+Chạy riêng frontend hoặc backend:
 
 ```bash
-pnpm dev:fe   # Frontend only
-pnpm dev:be   # Backend only
+pnpm dev:fe   # Chỉ frontend
+pnpm dev:be   # Chỉ backend
 ```
 
 ## Production
 
-To build frontend and start backend in production mode:
+Build frontend và khởi động backend:
 
 ```bash
 pnpm prod
 ```
 
--   Builds frontend with `pnpm --filter fe build`
--   Starts backend with `pnpm --filter be start`
+-   Build frontend: `pnpm --filter fe build`
+-   Start backend: `pnpm --filter be start`
 
-To run only frontend or backend in production:
+Chạy riêng từng phần:
 
 ```bash
-pnpm prod:fe  # Build frontend only
-pnpm prod:be  # Start backend only
+pnpm prod:fe  # Build frontend
+pnpm prod:be  # Start backend
 ```

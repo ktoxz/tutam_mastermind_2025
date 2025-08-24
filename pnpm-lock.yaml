@@ -6,7 +6,11 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
 
   apps/be:
     dependencies:
@@ -99,6 +103,8 @@ importers:
       typescript:
         specifier: ^5
         version: 5.9.2
+
+  packages/models: {}
 
 packages:
 

@@ -12,11 +12,15 @@
 		"dev:fe": "pnpm --filter fe dev",
 		"dev:be": "pnpm --filter be dev",
 		"prod:fe": "pnpm --filter fe build",
-		"prod:be": "pnpm --filter be start"
+		"prod:be": "pnpm --filter be start",
+		"build:models": "pnpm --filter @packages/models build",
+		"clean:models": "pnpm --filter @packages/models clean",
+		"bootstrap": "pnpm install -r && pnpm build:models"
 	},
 	"author": "",
 	"license": "ISC",
 	"packageManager": "pnpm@10.11.0",
-	"dependencies": {},
-	"devDependencies": {}
+	"devDependencies": {
+		"typescript": "^5.9.2"
+	}
 }
