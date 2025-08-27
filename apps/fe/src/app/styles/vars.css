@@ -1,0 +1,20 @@
+:root {
+	/* Base / Background */
+	--color-background: #fcf9da;
+
+	/* Primary */
+	--color-primary: #046234;
+	--color-primary-light: #4ca582;
+	--color-primary-dark: #024223;
+
+	/* Text */
+	--color-text-body: #212121;
+	--color-text-secondary: #4d4d4d;
+	--color-text-inverse: #ffffff;
+
+	/* Surface */
+	--color-surface: #dfead3;
+
+	/* App Max Width */
+	--app-max-width: 1240px;
+}

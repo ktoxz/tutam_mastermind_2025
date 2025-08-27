@@ -15,11 +15,7 @@
 		"prod:be": "pnpm --filter be start",
 		"build:models": "pnpm --filter @packages/models build",
 		"clean:models": "pnpm --filter @packages/models clean",
-<<<<<<< HEAD
-		"bootstrap": "pnpm install && pnpm build:models"
-=======
 		"bootstrap": "pnpm install -r && pnpm build:models"
->>>>>>> 866b92e (feat(packages): Add models package)
 	},
 	"author": "",
 	"license": "ISC",
