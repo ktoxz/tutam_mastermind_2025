@@ -1,19 +1,61 @@
 :root {
 	/* Base / Background */
-	--color-background: #fcf9da;
+	--color-background: #f3f9f4;
+	--color-background-hover: #e6f3e8;
+	--color-background-active: #d2e7d7;
 
 	/* Primary */
 	--color-primary: #046234;
+	--color-primary-hover: #058f4a;
+	--color-primary-active: #035027;
 	--color-primary-light: #4ca582;
+	--color-primary-light-hover: #6fc7a2;
+	--color-primary-light-active: #39936a;
 	--color-primary-dark: #024223;
+	--color-primary-dark-hover: #03502a;
+	--color-primary-dark-active: #022e18;
 
 	/* Text */
 	--color-text-body: #212121;
+	--color-text-body-hover: #333333;
+	--color-text-body-active: #111111;
 	--color-text-secondary: #4d4d4d;
+	--color-text-secondary-hover: #666666;
+	--color-text-secondary-active: #333333;
+	--color-text-tertiary: #757575;
+	--color-text-tertiary-hover: #8a8a8a;
+	--color-text-tertiary-active: #5c5c5c;
 	--color-text-inverse: #ffffff;
+	--color-text-inverse-hover: #f5f5f5;
+	--color-text-inverse-active: #e0e0e0;
+	--color-text-disabled: #b0b0b0;
+	--color-text-disabled-hover: #c0c0c0;
+	--color-text-disabled-active: #a0a0a0;
+	--color-text-link: #4267e0;
+	--color-text-link-hover: #5880e8;
+	--color-text-link-active: #3359d9;
 
 	/* Surface */
 	--color-surface: #dfead3;
+	--color-surface-hover: #cfe0bc;
+	--color-surface-active: #b5cfa1;
+
+	/* Status */
+	--color-success: #2ecc40;
+	--color-success-hover: #27ae38;
+	--color-success-active: #219031;
+
+	--color-info: #3498db;
+	--color-info-hover: #2980b9;
+	--color-info-active: #2471a3;
+
+	--color-error: #e74c3c;
+	--color-error-hover: #c0392b;
+	--color-error-active: #a93226;
+
+	--color-warning: #f1c40f;
+	--color-warning-hover: #d4ac0d;
+	--color-warning-active: #b7950b;
 
 	/* App Max Width */
 	--app-max-width: 1240px;

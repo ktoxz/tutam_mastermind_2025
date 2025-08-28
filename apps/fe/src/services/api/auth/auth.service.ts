@@ -1,6 +1,5 @@
 import { postJson } from '@utils';
 import { TErrorFirst } from '@types';
-import { ApiService } from '../api.service';
 import {
 	ForgotPasswordDTO,
 	RegisterDTO,
@@ -15,15 +14,14 @@ import {
 	ForgotPasswordSchema,
 	ResetPasswordSchema,
 } from './schemas';
-import { ZodUtil } from '@utils';
+import { ZodValidator } from '@utils';
+import { BACKEND_API_URL } from '../consts';
 
-class AuthService extends ApiService {
+class AuthService {
 	private static instance: AuthService = AuthService.getInstance();
-	private baseUrl: string = this.backendApiUrl + '/auth';
+	private baseUrl: string = BACKEND_API_URL + '/auth';
 
-	private constructor() {
-		super();
-	}
+	private constructor() {}
 
 	public static getInstance(): AuthService {
 		if (!AuthService.instance) {
@@ -33,26 +31,26 @@ class AuthService extends ApiService {
 	}
 
 	public async register(data: RegisterDTO): Promise<TErrorFirst<Error, any>> {
-		const [error] = await ZodUtil.parseAsync(RegisterSchema, data);
-		if (error) return Promise.reject(ZodUtil.extractIssues(error));
+		const [error] = await ZodValidator.parseAsync(RegisterSchema, data);
+		if (error) return Promise.reject(ZodValidator.getErrorMessages(error));
 		return postJson(`${this.baseUrl}/register`, data);
 	}
 
 	public async verifyOtp(data: VerifyOtpDTO): Promise<TErrorFirst<Error, any>> {
-		const [error] = await ZodUtil.parseAsync(VerifyOtpSchema, data);
-		if (error) return Promise.reject(ZodUtil.extractIssues(error));
+		const [error] = await ZodValidator.parseAsync(VerifyOtpSchema, data);
+		if (error) return Promise.reject(ZodValidator.getErrorMessages(error));
 		return postJson(`${this.baseUrl}/verify-otp`, data);
 	}
 
 	public async resendOtp(data: ResendOtpDTO): Promise<TErrorFirst<Error, any>> {
-		const [error] = await ZodUtil.parseAsync(ResendOtpSchema, data);
-		if (error) return Promise.reject(ZodUtil.extractIssues(error));
+		const [error] = await ZodValidator.parseAsync(ResendOtpSchema, data);
+		if (error) return Promise.reject(ZodValidator.getErrorMessages(error));
 		return postJson(`${this.baseUrl}/resend-otp`, data);
 	}
 
 	public async login(data: LoginDTO): Promise<TErrorFirst<Error, any>> {
-		const [error] = await ZodUtil.parseAsync(LoginSchema, data);
-		if (error) return Promise.reject(ZodUtil.extractIssues(error));
+		const [error] = await ZodValidator.parseAsync(LoginSchema, data);
+		if (error) return Promise.reject(ZodValidator.getErrorMessages(error));
 		return postJson(`${this.baseUrl}/login`, data);
 	}
 
@@ -65,14 +63,14 @@ class AuthService extends ApiService {
 	}
 
 	public async forgotPassword(data: ForgotPasswordDTO): Promise<TErrorFirst<Error, any>> {
-		const [error] = await ZodUtil.parseAsync(ForgotPasswordSchema, data);
-		if (error) return Promise.reject(ZodUtil.extractIssues(error));
+		const [error] = await ZodValidator.parseAsync(ForgotPasswordSchema, data);
+		if (error) return Promise.reject(ZodValidator.getErrorMessages(error));
 		return postJson(`${this.baseUrl}/forgot-password`, data);
 	}
 
 	public async resetPassword(token: string, data: ResetPasswordDTO): Promise<TErrorFirst<Error, any>> {
-		const [error] = await ZodUtil.parseAsync(ResetPasswordSchema, data);
-		if (error) return Promise.reject(ZodUtil.extractIssues(error));
+		const [error] = await ZodValidator.parseAsync(ResetPasswordSchema, data);
+		if (error) return Promise.reject(ZodValidator.getErrorMessages(error));
 		return postJson(`${this.baseUrl}/reset-password/${token}`, data);
 	}
 }

@@ -13,7 +13,7 @@ function AppSection({ children, fullWidth = false, className = '' }: AppSectionP
 				className={
 					fullWidth
 						? `w-full ${className}`
-						: `w-full mx-auto px-8 md:px-4 sm:px-2 py-6 md:py-4 sm:py-2 max-w-[var(--app-max-width)] ${className}`
+						: `w-full mx-auto px-2 md:px-4 lg:px-8 py-2 md:py-4 lg:py-6 max-w-[var(--app-max-width)] ${className}`
 				}
 			>
 				{children}
