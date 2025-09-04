@@ -20,7 +20,7 @@ const BookGalery: React.FC<BookGaleryProps> = ({ books, loading = false, title =
 		<div>
 			<Carousel
 				itemWidth={itemWidth}
-				autoScrollInterval={1000}
+				autoScrollInterval={3000}
 				title={title}
 				showTitle={true}
 				gap='gap-2 md:gap-4'

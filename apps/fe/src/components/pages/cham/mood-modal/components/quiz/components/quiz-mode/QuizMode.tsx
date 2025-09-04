@@ -127,7 +127,7 @@ export default function QuizMode({ questions, answers, onFinish }: Props) {
 	};
 
 	return (
-		<div className='max-w-xl w-[480px] bg-white'>
+		<div className='max-w-xl w-full bg-white'>
 			<QuestionView question={questions[current]} current={current} total={questions.length} />
 			<AnswerOptions answers={answers} selected={responses[current]} onSelect={handleSelect} />
 			<NavigationButtons

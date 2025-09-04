@@ -15,7 +15,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, ref }) => {
 			href={`${BASIC_ROUTES.dieu_ky.children?.blog.full(blog.slug) || ''}`}
 			className='bg-white
 				rounded-md overflow-hidden shadow-md transition-all duration-300
-				min-w-[180px] md:min-w-[260px] max-w-[260px] flex flex-col cursor-pointer border border-transparent'
+				min-w-[180px] max-w-[180px] md:min-w-[260px] md:max-w-[260px] flex flex-col cursor-pointer border border-transparent'
 			ref={ref}
 		>
 			<div className='relative aspect-square w-full group overflow-hidden bg-gray-400 flex'>

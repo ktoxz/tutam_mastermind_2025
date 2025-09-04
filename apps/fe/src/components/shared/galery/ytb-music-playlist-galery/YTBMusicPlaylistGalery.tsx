@@ -22,7 +22,7 @@ const YTBMusicPlaylistGalery: React.FC<YTBMusicPlaylistGaleryProps> = ({
 	return (
 		<Carousel
 			itemWidth={itemWidth}
-			autoScrollInterval={1000}
+			autoScrollInterval={3000}
 			title={title}
 			showTitle={true}
 			gap='gap-2 md:gap-4'

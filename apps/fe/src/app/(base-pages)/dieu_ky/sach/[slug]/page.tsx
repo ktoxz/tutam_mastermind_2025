@@ -42,20 +42,20 @@ function Page() {
 
 	return (
 		<AppSection className='mt-10'>
-			<div className='mx-auto flex flex-row gap-8'>
-				<div className='flex-7 bg-white rounded-lg p-6'>
-					<h1 className='text-3xl font-bold mb-2 text-gray-900'>{book.title}</h1>
-					<p className='text-xl text-gray-600 mb-6'>By {book.author}</p>
-					<div className='prose prose-lg max-w-none'>
+			<div className='mx-auto flex flex-col-reverse md:flex-row gap-2 md:gap-6'>
+				<div className='w-full md:flex-7 bg-white rounded-lg p-6'>
+					<h1 className='text-2xl md:text-3xl font-bold mb-2'>{book.title}</h1>
+					<p className='text-md md:text-xl mb-6'>By {book.author}</p>
+					<div className=''>
 						<ReactMarkdown>{book.content}</ReactMarkdown>
 					</div>
 				</div>
-				<div className='flex-3 bg-white rounded-lg p-6'>
-					<div className='relative aspect-[2/3] overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300'>
+				<div className='w-full md:flex-3 bg-white rounded-lg p-6'>
+					<div className='relative aspect-[2/3] max-h-[420px] m-auto overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300'>
 						<img src={book.image} alt={book.title} className='w-full h-full object-cover' />
 					</div>
-					<div className='mt-4 p-4 bg-blue-50 border-l-4 border-blue-400 rounded text-justify text-md'>
-						<p className='text-sm text-gray-700'>{book.summary}</p>
+					<div className='mt-4 p-4 bg-blue-50 border-l-4 border-blue-400 rounded text-justify'>
+						<p className='text-sm'>{book.summary}</p>
 					</div>
 				</div>
 			</div>

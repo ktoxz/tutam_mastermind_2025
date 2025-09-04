@@ -47,6 +47,15 @@ export const BASIC_ROUTES: Record<string, Route> = {
 	tam_buoc: {
 		label: 'tâm bước',
 		href: '/tam_buoc',
+		children: {
+			su_kien: {
+				label: 'sự kiện',
+				href: '/su_kien',
+				full: (slug: string) => {
+					return `${BASIC_ROUTES.tam_buoc.href}/su_kien${slug ? `/${slug}` : ''}`;
+				},
+			},
+		},
 	},
 	profile: {
 		label: 'profile',

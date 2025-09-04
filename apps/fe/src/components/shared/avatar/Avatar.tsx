@@ -16,7 +16,7 @@ function Avatar({ size = 32 }: Props) {
 
 	return (
 		<div
-			className='flex flex-row items-center justify-center rounded-full overflow-hidden aspect-square p-1 bg-white border'
+			className='flex flex-row items-center justify-center rounded-full overflow-hidden aspect-square p-1 bg-white border border-gray-200'
 			style={{ width: size, height: size }}
 		>
 			{avatarSrc ? (

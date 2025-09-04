@@ -16,7 +16,7 @@ const BookCard: React.FC<BookCardProps> = ({ book, ref }) => {
 			className='bg-(--color-surface) hover:bg-(--color-surface-hover) active:bg-(--color-surface-active) 
 			rounded-sm overflow-hidden shadow-lg 
 			hover:shadow-xl transition-all duration-300 
-			min-w-[140px] md:min-w-[200px] max-w-[200px]
+			min-w-[140px] max-w-[140px] md:min-w-[200px] md:max-w-[200px]
 			hover:border-(--color-primary-light-hover)
 			cursor-pointer'
 			ref={ref}
@@ -28,7 +28,7 @@ const BookCard: React.FC<BookCardProps> = ({ book, ref }) => {
 					className='relative w-full h-full object-cover hover:scale-105 transition-transform duration-300'
 				/>
 				<div className='absolute inset-0 bg-black/50 text-white p-1 md:p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end'>
-					<p className='text-xs md:text-sm font-semibold'>{book.title}</p>
+					<p className='text-xs md:text-sm font-semibold line-clamp-2'>{book.title}</p>
 					<p className='text-[10px] md:text-xs'>{book.author}</p>
 				</div>
 			</div>

@@ -10,6 +10,7 @@ import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
 import BookGalery from '@/components/shared/galery/book-galery/BookGalery';
 import BlogGalery from '@/components/shared/galery/blog-galery/BlogGalery';
 import YTBMusicPlaylistGalery from '@/components/shared/galery/ytb-music-playlist-galery/YTBMusicPlaylistGalery';
+import PageHeader from '@/components/shared/page-header/PageHeader';
 
 interface MoodButtonProps {
 	mood?: Mood | null;
@@ -98,20 +99,14 @@ function DieuKyPage() {
 	};
 
 	return (
-		<div className='py-10 bg-[--color-background]'>
-			<AppSection>
-				<div className='text-center mb-12'>
-					<h1 className='text-4xl md:text-5xl font-bold text-[--color-primary-dark] mb-4'>
-						Không Gian Diệu Kỳ
-					</h1>
-					<p className='text-lg text-[--color-text-secondary] max-w-3xl mx-auto'>
-						Nơi bạn có thể tìm thấy sự bình yên và nguồn cảm hứng qua những trang sách, câu chuyện và giai
-						điệu chữa lành.
-					</p>
-				</div>
-			</AppSection>
+		<>
+			<PageHeader
+				title='Không Gian Diệu Kỳ'
+				description='Nơi bạn có thể tìm thấy sự bình yên và nguồn cảm hứng qua những trang sách, câu chuyện và giai điệu chữa lành.'
+				disableAppearAnimation
+			/>
 
-			<AppSection>
+			<AppSection disableAppearAnimation>
 				<div className='flex flex-wrap justify-center gap-3 md:gap-4 mb-12'>
 					<MoodButton mood={null} isSelected={!selectedMood} onClick={handleMoodSelect}>
 						Tất cả
@@ -137,15 +132,21 @@ function DieuKyPage() {
 					{blogs.length > 0 && <BlogGalery blogs={blogs} loading={loading} />}
 					{playlists.length > 0 && <YTBMusicPlaylistGalery playlists={playlists} loading={loading} />}
 					{!loading && books.length === 0 && blogs.length === 0 && playlists.length === 0 && (
-						<AppSection>
-							<p className='text-center text-[--color-text-secondary]'>
-								Không tìm thấy nội dung phù hợp với tâm trạng này.
-							</p>
+						<AppSection disableAppearAnimation>
+							<div className='text-center py-12'>
+								<div className='text-6xl mb-4'>🌸</div>
+								<p className='text-[--color-text-secondary] text-lg mb-2'>
+									Hiện tại chưa có sự kiện nào phù hợp với tâm trạng này.
+								</p>
+								<p className='text-[--color-text-tertiary] text-sm'>
+									Hãy quay lại sau để khám phá những trải nghiệm mới nhé!
+								</p>
+							</div>
 						</AppSection>
 					)}
 				</>
 			)}
-		</div>
+		</>
 	);
 }
 

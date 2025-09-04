@@ -2,12 +2,7 @@ import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
 import { MoodService } from '@/services/api/mood/mood.service';
 import { Mood } from '@packages/models';
 import React, { useState } from 'react';
-import ButtonCTA from '@/components/shared/cta/ButtonCTA';
-import MoodIcon from '@/components/pages/cham/mood-modal/shared/mood-icon/MoodIcon';
-import SelectMode from './components/select-mode/SelectMode';
-import SelectMood from './components/select-mood/SelectMood';
 import QuizMode from './components/quiz-mode/QuizMode';
-import { useMoodData } from '@/hooks/data/useMoodData';
 
 const questions = [
 	{ id: 4, text: 'Bạn thấy khó thở (kiểu như thở gấp, hụt hơi dù chẳng vận động gì nhiều).' },
@@ -31,21 +26,12 @@ const answers = [
 
 type Answer = 0 | 1 | 2 | 3;
 
-type Mode = 'select' | 'select-mood' | 'quiz';
-
 type Props = {
 	onFinish: (mood: Mood) => void;
 };
 
 export default function Quiz({ onFinish }: Props) {
-	const [mode, setMode] = useState<Mode>('select');
 	const [submitted, setSubmitted] = useState(false);
-
-	const { moods, loading } = useMoodData();
-
-	const handleSelectMood = (mood: Mood) => {
-		onFinish(mood);
-	};
 
 	const handleQuizFinish = async (responses: Answer[]) => {
 		setSubmitted(true);
@@ -54,18 +40,6 @@ export default function Quiz({ onFinish }: Props) {
 		const [err, moodList] = await MoodService.getInstance().getList();
 		if (moodList) onFinish(moodList[Math.floor(Math.random() * moodList.length)]);
 	};
-
-	if (loading) {
-		return <InlineLoading title='Đang tải...' className='mt-8' />;
-	}
-
-	if (mode === 'select') {
-		return <SelectMode onModeChange={setMode} />;
-	}
-
-	if (mode === 'select-mood') {
-		return <SelectMood moods={moods} onFinish={handleSelectMood} onBack={() => setMode('select')} />;
-	}
 
 	if (submitted) {
 		return <InlineLoading title='Đang gửi câu trả lời...' className='mt-8' />;

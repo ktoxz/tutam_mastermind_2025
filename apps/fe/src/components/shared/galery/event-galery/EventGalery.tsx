@@ -1,19 +1,18 @@
 'use client';
 import React from 'react';
-import { BASIC_ROUTES } from '@/consts/routes';
 import Carousel from '@/components/shared/casourel/Casourel';
 import { useRefSize } from '@/hooks/ui/useRefSize';
-import { Blog } from '@packages/models';
-import BlogCard from '@/components/shared/card/blog-card/BlogCard';
+import { Event } from '@packages/models';
+import EventCard from '@/components/shared/card/event-card/EventCard';
 
-interface BlogGaleryProps {
-	blogs: Blog[];
+interface EventGaleryProps {
+	events: Event[];
 	loading?: boolean;
 	title?: string;
 }
 
-const BlogGalery: React.FC<BlogGaleryProps> = ({ blogs, loading = false, title = 'Câu Chuyện Đời Sống' }) => {
-	const [blogRef, size] = useRefSize();
+const EventGalery: React.FC<EventGaleryProps> = ({ events, loading = false, title = 'Sự kiện tạo ra giá trị' }) => {
+	const [eventRef, size] = useRefSize();
 	const itemWidth = size?.width && size.width > 0 ? size.width / 3.5 : 260;
 
 	return (
@@ -27,11 +26,11 @@ const BlogGalery: React.FC<BlogGaleryProps> = ({ blogs, loading = false, title =
 			enableManualScroll={true}
 			isLoading={loading}
 		>
-			{blogs.map((blog, index) => (
-				<BlogCard key={blog._id} blog={blog} ref={index === 0 ? blogRef : undefined} />
+			{events.map((event, index) => (
+				<EventCard key={event._id} event={event} ref={index === 0 ? eventRef : undefined} />
 			))}
 		</Carousel>
 	);
 };
 
-export default BlogGalery;
+export default EventGalery;

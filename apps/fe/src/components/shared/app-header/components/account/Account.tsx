@@ -33,7 +33,7 @@ function Account() {
 		<div className="relative group z-1000 after:content-[''] after:absolute after:top-[100%] after:left-0 after:w-full after:h-[30%] after:transition-all after:duration-150 group-hover:after:h-[200px] group-hover:after:bg-white">
 			<Link
 				href={BASIC_ROUTES.profile.href}
-				className='flex items-center gap-3 px-1 py-1 rounded-lg bg-white transition-colors duration-150'
+				className='flex items-center gap-3 px-1 py-1 rounded-lg transition-colors duration-150'
 			>
 				<Avatar size={36} />
 				<div className='hidden sm:flex flex-col'>
