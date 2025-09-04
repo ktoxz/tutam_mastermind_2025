@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/local-storage.service';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { AUTH_ROUTES } from '@/consts/routes';
 
 function EmailValidatePage() {
 	const router = useRouter();
@@ -60,7 +61,7 @@ function EmailValidatePage() {
 				timer: 2000,
 				didClose: () => {
 					LocalStorageService.removeItem(LOCAL_STORAGE_KEYS.EMAIL_TO_VALIDATE);
-					router.push('/login');
+					router.push(AUTH_ROUTES.login.href);
 				},
 			});
 		} catch (err: any) {
@@ -86,11 +87,11 @@ function EmailValidatePage() {
 			}}
 			footerText='Không nhận được mã?'
 			footerLinkText='Gửi lại OTP'
-			footerLinkHref='/resend-otp'
+			footerLinkHref={AUTH_ROUTES.resend_otp.href}
 			additionalContent={
 				<div className='flex flex-row justify-end'>
 					<Link
-						href='/login'
+						href={AUTH_ROUTES.login.href}
 						className='text-sm text-[var(--color-text-link)] hover:text-[var(--color-text-link-hover)] hover:underline transition-colors'
 					>
 						Quay về đăng nhập

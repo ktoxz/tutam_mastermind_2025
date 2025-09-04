@@ -1,11 +1,11 @@
 'use client';
 import React from 'react';
 import InputField from '@/components/shared/input-field/InputField';
-import CTA from '@/components/shared/cta/CTA';
 import { LucideIcon } from 'lucide-react';
 import { ZodType } from 'zod';
 import { useAuthState } from '@/hooks/auth-form/useAuthState';
 import Link from 'next/link';
+import ButtonCTA from '../cta/ButtonCTA';
 export interface AuthFormField {
 	label?: string;
 	id: string;
@@ -87,14 +87,14 @@ function AuthForm({
 
 				{additionalContent}
 
-				<CTA
+				<ButtonCTA
 					variant='primary'
 					type='submit'
 					status={submitting ? 'loading' : submitable ? 'normal' : 'disabled'}
-					className='mt-8'
+					className='mt-8 w-full'
 				>
 					{ctaText}
-				</CTA>
+				</ButtonCTA>
 			</div>
 
 			{/* Divider */}

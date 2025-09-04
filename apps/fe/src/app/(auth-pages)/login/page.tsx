@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
 import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/local-storage.service';
+import { AUTH_ROUTES, BASIC_ROUTES } from '@/consts/routes';
 
 function LoginPage() {
 	const router = useRouter();
@@ -49,16 +50,19 @@ function LoginPage() {
 				});
 				return;
 			}
+
+			LocalStorageService.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, data?.accessToken || '');
+
 			Swal.fire({
 				icon: 'success',
 				title: 'Đăng nhập thành công',
 				text: 'Chào mừng bạn trở lại!',
 				timer: 1500,
 				didClose: () => {
-					router.push('/');
+					router.push(BASIC_ROUTES.home.href);
 				},
 			});
-			// Optionally store email for later use (like resend OTP)
+
 			LocalStorageService.setItem(LOCAL_STORAGE_KEYS.EMAIL_TO_VALIDATE, values.email);
 		} catch (err: any) {
 			Swal.fire({
@@ -75,12 +79,12 @@ function LoginPage() {
 			subtitle='Chào mừng bạn trở lại!'
 			fields={fields}
 			ctaText='Đăng nhập'
-			ctaHref='/login'
+			ctaHref={AUTH_ROUTES.login.href}
 			showDivider
 			dividerText='hoặc'
 			footerText='Bạn chưa có tài khoản?'
 			footerLinkText='Đăng ký ngay'
-			footerLinkHref='/register'
+			footerLinkHref={AUTH_ROUTES.register.href}
 			onSubmit={async (values) => {
 				await handleSubmit({
 					email: values.email,
@@ -88,12 +92,18 @@ function LoginPage() {
 				});
 			}}
 			additionalContent={
-				<div className='flex flex-row justify-end'>
+				<div className='flex flex-col items-end'>
 					<Link
-						href='/login'
+						href={AUTH_ROUTES.login.href}
 						className='text-sm text-[var(--color-text-link)] hover:text-[var(--color-text-link-hover)] hover:underline transition-colors'
 					>
 						Quên mật khẩu?
+					</Link>
+					<Link
+						href={AUTH_ROUTES.email_validate.href}
+						className='text-sm text-[var(--color-text-link)] hover:text-[var(--color-text-link-hover)] hover:underline transition-colors'
+					>
+						Xác thực tài khoản
 					</Link>
 				</div>
 			}

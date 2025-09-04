@@ -9,6 +9,7 @@ import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/loca
 import Swal from 'sweetalert2';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { AUTH_ROUTES } from '@/consts/routes';
 
 function ResendOtpPage() {
 	const router = useRouter();
@@ -49,7 +50,7 @@ function ResendOtpPage() {
 				text: 'Mã OTP mới đã được gửi tới email của bạn!',
 				timer: 2000,
 				didClose: () => {
-					router.push('/email-validate');
+					router.push(AUTH_ROUTES.email_validate.href);
 				},
 			});
 		} catch (err: any) {
@@ -74,11 +75,11 @@ function ResendOtpPage() {
 			}}
 			footerText='Đã có mã OTP?'
 			footerLinkText='Xác thực Email'
-			footerLinkHref='/email-validate'
+			footerLinkHref={AUTH_ROUTES.email_validate.href}
 			additionalContent={
 				<div className='flex flex-row justify-end'>
 					<Link
-						href='/login'
+						href={AUTH_ROUTES.login.href}
 						className='text-sm text-[var(--color-text-link)] hover:text-[var(--color-text-link-hover)] hover:underline transition-colors'
 					>
 						Quay về đăng nhập

@@ -9,6 +9,7 @@ import CheckBox from '@/components/shared/check-box/CheckBox';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
 import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/local-storage.service';
+import { AUTH_ROUTES } from '@/consts/routes';
 
 function RegisterPage() {
 	const router = useRouter();
@@ -76,8 +77,7 @@ function RegisterPage() {
 			text: 'Tài khoản của bạn đã được tạo thành công!',
 			timer: 2000,
 			didClose: () => {
-				// redirect('/email-validate');
-				router.push('/email-validate');
+				router.push(AUTH_ROUTES.email_validate.href);
 			},
 		});
 		LocalStorageService.setItem(LOCAL_STORAGE_KEYS.EMAIL_TO_VALIDATE, values.email);
@@ -92,12 +92,12 @@ function RegisterPage() {
 			subtitle='Tạo tài khoản mới để bắt đầu trải nghiệm!'
 			fields={fields}
 			ctaText='Đăng ký'
-			ctaHref='/register'
+			ctaHref={AUTH_ROUTES.register.href}
 			showDivider
 			dividerText='hoặc'
 			footerText='Bạn đã có tài khoản?'
 			footerLinkText='Đăng nhập'
-			footerLinkHref='/login'
+			footerLinkHref={AUTH_ROUTES.login.href}
 			onSubmit={async (values) => {
 				if (!acceptTerms) {
 					setAcceptTermsError('Bạn phải đồng ý với điều khoản và điều kiện');

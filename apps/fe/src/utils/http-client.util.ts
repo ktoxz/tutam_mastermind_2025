@@ -1,19 +1,54 @@
-import { TErrorFirst } from '../types/error-first.type';
+import axios, { AxiosError } from 'axios';
+import { LocalStorageService, LOCAL_STORAGE_KEYS } from '../services/storage/local-storage.service';
+import { AuthService } from '@/services/api/auth/auth.service';
+import { lockProcess } from './process-lock.util';
 
-export async function postJson<T>(url: string, body?: any): Promise<TErrorFirst<Error, T>> {
-	try {
-		const response = await fetch(url, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: body ? JSON.stringify(body) : undefined,
-		});
-		if (!response.ok) {
-			const errorData = await response.json();
-			return [new Error(errorData.message || 'Lỗi không xác định'), null];
-		}
-		const data = await response.json();
-		return [null, data];
-	} catch (error) {
-		return [error as Error, null];
+export const BACKEND_API_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL || 'http://localhost:3000/api';
+
+const httpClient = axios.create({
+	withCredentials: true,
+	baseURL: BACKEND_API_URL,
+	timeout: 10000,
+	headers: {
+		'Content-Type': 'application/json',
+	},
+});
+
+httpClient.interceptors.request.use((config) => {
+	const token = LocalStorageService.getItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN);
+	if (token && config.headers) {
+		config.headers['Authorization'] = `Bearer ${token}`;
 	}
-}
+	return config;
+});
+
+httpClient.interceptors.response.use(undefined, async (error: AxiosError) => {
+	if (error.response && error.response.status === 403) {
+		const originalRequest = error.config;
+
+		if (originalRequest && !(originalRequest as any)._retry) {
+			(originalRequest as any)._retry = true;
+
+			const [lockError, refreshResult] = await lockProcess('REFRESH_TOKEN_LOCK', async () => {
+				return await AuthService.getInstance().refreshToken();
+			});
+
+			const [refreshError, refreshData] = refreshResult || [null, null];
+
+			if (!lockError && !refreshError && refreshData?.accessToken) {
+				LocalStorageService.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, refreshData.accessToken);
+				if (originalRequest.headers) {
+					originalRequest.headers['Authorization'] = `Bearer ${refreshData.accessToken}`;
+				}
+				return httpClient(originalRequest);
+			} else {
+				LocalStorageService.removeItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN);
+			}
+		}
+	}
+
+	error.message = (error.response?.data as any)?.message || '';
+	return Promise.reject(error);
+});
+
+export default httpClient;

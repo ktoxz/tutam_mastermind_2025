@@ -1,6 +1,5 @@
 import AppHeader from '@/components/shared/app-header/AppHeader';
-import './styles/globals.css';
-import AppFooter from '@/components/shared/app-footer/AppFooter';
+import { AuthContextProvider } from '@/contexts/user/AuthContextProvider';
 
 export default function RootLayout({
 	children,
@@ -11,7 +10,6 @@ export default function RootLayout({
 		<>
 			<AppHeader />
 			{children}
-			<AppFooter />
 		</>
 	);
 }

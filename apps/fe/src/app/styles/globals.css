@@ -6,10 +6,41 @@
 	box-sizing: border-box;
 }
 
+html,
+body {
+	overflow-x: hidden;
+	&::-webkit-scrollbar {
+		width: 0px;
+		height: 3px;
+	}
+}
+
 body {
 	color: var(--color-text-body);
 	/* font-family: 'PlaywriteHU', Arial, Helvetica, sans-serif; */
 	font-family: var(--font-roboto);
+}
+
+::-webkit-scrollbar {
+	width: 3px;
+	height: 3px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-primary);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-primary-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+	background: var(--color-primary-active);
 }
 
 /* Fade in from bottom to top */
@@ -87,6 +118,21 @@ body {
 	animation: fade-in-scale 0.6s ease-out forwards;
 }
 
+/* New staggered fade-in for sequential elements */
+@keyframes fade-in-stagger {
+	from {
+		opacity: 0;
+		transform: translateY(10px) scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+.animate-fade-in-stagger {
+	animation: fade-in-stagger 0.5s ease-out forwards;
+}
+
 /* Existing animations */
 @keyframes fade-in {
 	from {
@@ -101,6 +147,74 @@ body {
 
 .animate-fade-in {
 	animation: fade-in 0.6s ease-out forwards;
+}
+
+/* Shake animation */
+@keyframes shake {
+	0%,
+	100% {
+		transform: translateX(0) rotate(0deg);
+	}
+	20%,
+	60% {
+		transform: translateX(-5px) rotate(-1deg);
+	}
+	40%,
+	80% {
+		transform: translateX(5px) rotate(1deg);
+	}
+}
+/* Continuous shake animation */
+.animate-shake-continuous {
+	animation: shake 0.5s ease-in-out infinite;
+}
+
+/* Segmented shake animation (shakes in bursts with 1s pause before each shake) */
+@keyframes shake-segmented {
+	0%,
+	40%,
+	100% {
+		transform: translateX(0) rotate(0deg);
+	}
+	45% {
+		transform: translateX(-5px) rotate(-1deg);
+	}
+	50% {
+		transform: translateX(5px) rotate(1deg);
+	}
+	55% {
+		transform: translateX(-5px) rotate(-1deg);
+	}
+	60% {
+		transform: translateX(0) rotate(0deg);
+	}
+}
+.animate-shake-segmented {
+	animation: shake-segmented 1.5s ease-in-out infinite;
+}
+
+/* Another variant: shake with larger movements */
+@keyframes shake-strong {
+	0%,
+	100% {
+		transform: translateX(0) rotate(0deg);
+	}
+	10%,
+	30%,
+	50%,
+	70%,
+	90% {
+		transform: translateX(-10px) rotate(-2deg);
+	}
+	20%,
+	40%,
+	60%,
+	80% {
+		transform: translateX(10px) rotate(2deg);
+	}
+}
+.animate-shake-strong {
+	animation: shake-strong 0.6s ease-in-out infinite;
 }
 
 /* SweetAlert2 custom colors using CSS variables */

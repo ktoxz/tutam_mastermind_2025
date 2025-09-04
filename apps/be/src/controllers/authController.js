@@ -43,7 +43,7 @@ const login = async (req, res, next) => {
     const result = await authService.login(req.body)
 
     if (result.requiresVerification) {
-      return res.status(StatusCodes.OK).json({
+      return res.status(StatusCodes.UNAUTHORIZED).json({
         ...result,
         message: 'User is not verified. Please verify your account using the OTP sent to your email.'
       })

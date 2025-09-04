@@ -8,9 +8,9 @@
 	--color-primary: #046234;
 	--color-primary-hover: #058f4a;
 	--color-primary-active: #035027;
-	--color-primary-light: #4ca582;
-	--color-primary-light-hover: #6fc7a2;
-	--color-primary-light-active: #39936a;
+	--color-primary-light: #3a9273;
+	--color-primary-light-hover: #58a88e;
+	--color-primary-light-active: #2d7a62;
 	--color-primary-dark: #024223;
 	--color-primary-dark-hover: #03502a;
 	--color-primary-dark-active: #022e18;
@@ -59,4 +59,7 @@
 
 	/* App Max Width */
 	--app-max-width: 1240px;
+
+	/* New variable for button shadows */
+	--shadow-button: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

@@ -17,14 +17,17 @@ function AppBackground() {
 					priority
 				/>
 			</div>
-			<div className='flex flex-col items-end h-full gap-2'>
+			<div className='flex flex-col items-end justify-between h-full gap-2'>
 				<Image
 					src={Planet}
 					alt='Planet'
 					width={350}
 					height={350}
-					className='animate-fade-in-top'
-					style={{ objectFit: 'contain', maxHeight: '60dvh', transform: 'rotate(-25deg)' }}
+					className='animate-fade-in-top -rotate-25'
+					style={{
+						objectFit: 'contain',
+						maxHeight: '60dvh',
+					}}
 					priority
 				/>
 				<Image
