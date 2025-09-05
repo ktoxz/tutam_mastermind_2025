@@ -1,35 +1,56 @@
 'use client';
 import MoodModal from '@/components/pages/cham/mood-modal/MoodModal';
 import MoodResult from '@/components/pages/cham/mood-result/MoodResult';
-import { MoodService } from '@/services/api/mood/mood.service';
+import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
 import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/local-storage.service';
 import { Mood } from '@packages/models';
-import { useState } from 'react';
-import Swal from 'sweetalert2';
+import { Timestamp } from 'next/dist/server/lib/cache-handlers/types';
+import { useLayoutEffect, useState } from 'react';
 
 type Props = {};
 
 function page({}: Props) {
 	const [mood, setMood] = useState<Mood | null>(null);
+	const [isLoading, setIsLoading] = useState(true);
 
-	const handleFinish = async () => {
-		const MoodId = LocalStorageService.getItem(LOCAL_STORAGE_KEYS.MOOD_ENTRY);
-		try {
-			if (MoodId) {
-				const [err, mood] = await MoodService.getInstance().getById(MoodId);
-				if (!err && mood) setMood(mood);
-			}
-		} catch (error) {
-			Swal.fire({
-				icon: 'error',
-				title: 'Lỗi',
-				text: 'Đã có lỗi xảy ra khi tải cảm xúc của bạn. Vui lòng thử lại.',
-			});
-			return;
-		}
+	const handleFinish = async (mood: Mood) => {
+		setMood(mood);
 	};
 
-	return <>{!mood ? <MoodModal onFinish={handleFinish} /> : <MoodResult mood={mood} />}</>;
+	useLayoutEffect(() => {
+		try {
+			const storedData = LocalStorageService.getItem(LOCAL_STORAGE_KEYS.MOOD_ENTRY);
+			if (!storedData) return;
+
+			const {
+				mood,
+				exp,
+			}: {
+				mood: Mood;
+				exp: Timestamp;
+			} = JSON.parse(storedData);
+
+			if (!mood) return;
+
+			if (exp > Date.now()) {
+				setMood(mood);
+			}
+		} finally {
+			setIsLoading(false);
+		}
+	}, []);
+
+	return (
+		<>
+			{isLoading ? (
+				<InlineLoading title='Đang tải...' />
+			) : mood ? (
+				<MoodResult mood={mood} />
+			) : (
+				<MoodModal onFinish={handleFinish} />
+			)}
+		</>
+	);
 }
 
 export default page;

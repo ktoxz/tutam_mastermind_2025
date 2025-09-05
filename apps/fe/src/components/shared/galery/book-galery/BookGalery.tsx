@@ -17,22 +17,20 @@ const BookGalery: React.FC<BookGaleryProps> = ({ books, loading = false, title =
 	const itemWidth = size?.width && size.width > 0 ? size.width / 4 : 200;
 
 	return (
-		<div>
-			<Carousel
-				itemWidth={itemWidth}
-				autoScrollInterval={3000}
-				title={title}
-				showTitle={true}
-				gap='gap-2 md:gap-4'
-				pauseOnHover={true}
-				enableManualScroll={true}
-				isLoading={loading}
-			>
-				{books.map((book, index) => (
-					<BookCard key={book._id} book={book} ref={index === 0 ? bookRef : undefined} />
-				))}
-			</Carousel>
-		</div>
+		<Carousel
+			itemWidth={itemWidth}
+			autoScrollInterval={3000}
+			title={title}
+			showTitle={true}
+			gap='gap-2 md:gap-4'
+			pauseOnHover={true}
+			enableManualScroll={true}
+			isLoading={loading}
+		>
+			{books.map((book, index) => (
+				<BookCard key={book._id} book={book} ref={index === 0 ? bookRef : undefined} />
+			))}
+		</Carousel>
 	);
 };
 

@@ -43,9 +43,9 @@ function Page() {
 	return (
 		<AppSection className='mt-10'>
 			<div className='mx-auto flex flex-col-reverse md:flex-row gap-2 md:gap-6'>
-				<div className='w-full md:flex-7 bg-white rounded-lg p-6 shadow-md'>
-					<h1 className='text-2xl md:text-3xl font-bold mb-2 text-[--color-text-body]'>{event.title}</h1>
-					<p className='text-md md:text-lg mb-4 text-[--color-text-secondary]'>
+				<div className='w-full md:flex-7 bg-white rounded-lg p-6'>
+					<h1 className='text-2xl md:text-3xl font-bold mb-2'>{event.title}</h1>
+					<p className='text-md md:text-lg mb-4'>
 						- {event.location} - {new Date(event.time).toLocaleDateString()}
 					</p>
 					<div className='prose prose-sm md:prose-lg max-w-none'>
@@ -53,31 +53,31 @@ function Page() {
 					</div>
 					{event.gallery && event.gallery.length > 0 && (
 						<div className='mt-6'>
-							<h2 className='text-xl font-semibold mb-4 text-[--color-text-body]'>Gallery</h2>
+							<h2 className='text-xl font-semibold mb-4'>Gallery</h2>
 							<div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
 								{event.gallery.map((img, index) => (
 									<img
 										key={index}
 										src={img}
 										alt={`Gallery ${index + 1}`}
-										className='w-full h-32 object-cover rounded-md shadow-sm hover:shadow-md transition-shadow duration-300'
+										className='w-full h-32 object-cover rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300'
 									/>
 								))}
 							</div>
 						</div>
 					)}
 				</div>
-				<div className='w-full md:flex-3 bg-white rounded-lg p-6 shadow-md'>
+				<div className='w-full md:flex-3 bg-white rounded-lg p-6'>
 					<div className='relative aspect-[3/2] max-h-[420px] m-auto overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300'>
 						<img src={event.mainImage} alt={event.title} className='w-full h-full object-cover' />
 					</div>
-					<div className='mt-4 p-4 bg-[--color-info] bg-opacity-10 border-l-4 border-[--color-info] rounded text-justify'>
-						<p className='text-sm text-[--color-text-body]'>{event.summary}</p>
+					<div className='mt-4 p-4 bg-blue-50 border-l-4 border-blue-400 rounded text-justify'>
+						<p className='text-sm'>{event.summary}</p>
 					</div>
 					{event.members && event.members.length > 0 && (
 						<div className='mt-4'>
-							<h3 className='text-lg font-semibold mb-2 text-[--color-text-body]'>Members</h3>
-							<ul className='list-disc list-inside text-sm text-[--color-text-secondary]'>
+							<h3 className='text-lg font-semibold mb-2'>Members</h3>
+							<ul className='list-disc list-inside text-sm'>
 								{event.members.map((member, index) => (
 									<li key={index}>{member}</li>
 								))}

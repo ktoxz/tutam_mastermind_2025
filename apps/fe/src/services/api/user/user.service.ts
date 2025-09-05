@@ -1,4 +1,4 @@
-import httpClient from '@/utils/http-client.util';
+import { httpClient } from '@/utils/http-client.util';
 import { ChangeNameDTO, ChangePasswordDTO } from './schemas';
 import { TErrorFirst } from '@/types';
 import { AxiosError } from 'axios';
@@ -47,7 +47,7 @@ class UserService {
 	public async changeAvatar(file: File): Promise<TErrorFirst<AxiosError, any>> {
 		try {
 			const formData = new FormData();
-			formData.append('avatar', file);
+			formData.append('image', file);
 
 			const response = await httpClient.patch(`${this.baseUrl}/me/avatar`, formData, {
 				headers: {

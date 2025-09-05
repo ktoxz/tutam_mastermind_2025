@@ -1,5 +1,6 @@
 export enum LOCAL_STORAGE_KEYS {
 	EMAIL_TO_VALIDATE = 'email-to-validate',
+	EMAIL_TO_RESET_PASSWORD = 'email-to-reset-password',
 	ACCESS_TOKEN = 'access-token',
 	MOOD_ENTRY = 'mood-entry',
 }
@@ -51,9 +52,20 @@ class LocalStorageService {
 		}
 	}
 
-	static clear(): void {
+	static clear(excludeKeys: LOCAL_STORAGE_KEYS[] = []): void {
 		if (this.isWindowAvailable()) {
-			window.localStorage.clear();
+			if (excludeKeys.length === 0) {
+				window.localStorage.clear();
+				return;
+			}
+
+			const encodedExcludeKeys = new Set(excludeKeys.map((key) => this.encodeKey(key)));
+			for (let i = window.localStorage.length - 1; i >= 0; i--) {
+				const key = window.localStorage.key(i);
+				if (key && !encodedExcludeKeys.has(key)) {
+					window.localStorage.removeItem(key);
+				}
+			}
 		}
 	}
 }

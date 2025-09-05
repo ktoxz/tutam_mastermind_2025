@@ -11,7 +11,10 @@ interface AuthContextProviderProps {
 	children: React.ReactNode;
 }
 
-export type AuthContextData = Pick<User, 'name' | 'email' | 'avatarUrl'>;
+export type AuthContextData = Omit<
+	User,
+	'password' | 'otp' | 'otpExpires' | 'resetPasswordToken' | 'resetPasswordExpires'
+>;
 
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
 	const [user, setUser] = useState<AuthContextData | null>(null);
@@ -47,8 +50,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 			const userService = UserService.getInstance();
 			const [err, data] = await userService.getMe();
 			if (!err && data) {
-				const { name, email, avatarUrl } = data;
-				setUser({ name, email, avatarUrl });
+				setUser(data);
 			}
 		} finally {
 			setLoading(false);

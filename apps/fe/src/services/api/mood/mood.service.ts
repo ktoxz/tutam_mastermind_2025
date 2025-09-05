@@ -1,13 +1,14 @@
-import { TErrorFirst } from '@/types';
+import { Answer, TErrorFirst } from '@/types';
+import { modelHttpClient } from '@/utils/http-client.util';
 import { Mood } from '@packages/models';
 
 const moods: Mood[] = [
 	{
 		_id: 'mood-1',
 		name: 'Hạnh phúc',
-		slug: 'hanh-phuc',
+		slug: 'hanh-phuc-vui-ve',
 		summary: 'Trạng thái cảm xúc tích cực, mang lại niềm vui và sự hài lòng.',
-		description: `**Hạnh phúc** hay vui vẻ là trạng thái cảm xúc **tích cực**, khi con người cảm nhận được sự mãn nguyện, bình yên và thoả mãn trong tâm hồn, thường đi kèm cảm giác nhẹ nhõm, hào hứng hoặc yêu đời. Trạng thái này có thể đến từ những trải nghiệm ý nghĩa, thành tựu đạt được, hoặc đơn giản là tận hưởng những khoảnh khắc nhỏ bé trong cuộc sống.`,
+		description: `**Hạnh phúc** là trạng thái cảm xúc **tích cực**, khi con người cảm nhận được sự mãn nguyện, bình yên và thoả mãn trong tâm hồn, thường đi kèm cảm giác nhẹ nhõm, hào hứng hoặc yêu đời. Trạng thái này có thể đến từ những trải nghiệm ý nghĩa, thành tựu đạt được, hoặc đơn giản là tận hưởng những khoảnh khắc nhỏ bé trong cuộc sống.`,
 		textColor: '#FFFFFF',
 		bgColor: '#2ecc40',
 		comfortMessage:
@@ -15,10 +16,10 @@ const moods: Mood[] = [
 	},
 	{
 		_id: 'mood-2',
-		name: 'Buồn',
-		slug: 'buon',
+		name: 'Buồn bã',
+		slug: 'buon-ba-tram-lang',
 		summary: 'Trạng thái cảm xúc tiêu cực, gây ra sự chán nản và cô lập.',
-		description: `**Buồn** là trạng thái cảm xúc tiêu cực, khi con người cảm thấy chán nản, cô đơn hoặc mất mát, thường đi kèm với cảm giác nặng nề trong lòng. Trạng thái này có thể xuất hiện sau những thất bại, mất mát, hoặc đơn giản là những ngày u ám, nhưng cũng là cơ hội để suy ngẫm và tìm kiếm sự an ủi từ những người thân yêu.`,
+		description: `**Buồn bã** là trạng thái cảm xúc tiêu cực, khi con người cảm thấy chán nản, cô đơn hoặc mất mát, thường đi kèm với cảm giác nặng nề trong lòng. Trạng thái này có thể xuất hiện sau những thất bại, mất mát, hoặc đơn giản là những ngày u ám, nhưng cũng là cơ hội để suy ngẫm và tìm kiếm sự an ủi từ những người thân yêu.`,
 		textColor: '#FFFFFF',
 		bgColor: '#3498db',
 		comfortMessage:
@@ -26,25 +27,25 @@ const moods: Mood[] = [
 	},
 	{
 		_id: 'mood-3',
-		name: 'Hào hứng',
-		slug: 'hao-hung',
-		summary: 'Trạng thái phấn khích, đầy năng lượng và sẵn sàng hành động.',
-		description: `**Hào hứng** là trạng thái phấn khích, đầy năng lượng, khi con người cảm thấy sẵn sàng đối mặt với mọi thử thách và khám phá điều mới mẻ. Trạng thái này thường đến từ những ý tưởng sáng tạo, kế hoạch thú vị, hoặc những khoảnh khắc bất ngờ, giúp bạn cảm thấy sống động và tràn đầy nhiệt huyết.`,
+		name: 'Lo lắng',
+		slug: 'lo-lang-cang-thang',
+		summary: 'Trạng thái lo âu, căng thẳng, dễ bị kích thích và khó thư giãn.',
+		description: `**Lo lắng** là trạng thái cảm xúc khi con người cảm thấy bất an, hồi hộp, khó tập trung hoặc dễ bị kích thích. Trạng thái này có thể xuất hiện khi đối mặt với áp lực, thử thách hoặc những điều chưa chắc chắn trong cuộc sống.`,
 		textColor: '#FFFFFF',
-		bgColor: '#f1c40f',
+		bgColor: '#e67e22',
 		comfortMessage:
-			'Năng lượng tích cực này thật tuyệt vời! Hãy tận dụng nó để thực hiện những điều bạn đang ấp ủ.',
+			'Bạn đang trải qua cảm giác lo lắng hoặc căng thẳng. Hãy thử hít thở sâu, nghỉ ngơi và chia sẻ với người thân để cảm thấy nhẹ nhõm hơn.',
 	},
 	{
 		_id: 'mood-4',
-		name: 'Mệt mỏi',
-		slug: 'met-moi',
-		summary: 'Trạng thái thiếu năng lượng, gây ra sự uể oải và kém tập trung.',
-		description: `**Mệt mỏi** là trạng thái thiếu năng lượng, khi con người cảm thấy uể oải, kém tập trung và muốn nghỉ ngơi. Trạng thái này có thể do làm việc quá sức, thiếu ngủ, hoặc áp lực cuộc sống, nhưng hãy nhớ rằng nghỉ ngơi là cách tốt nhất để tái tạo sức mạnh và quay trở lại với tinh thần sảng khoái.`,
+		name: 'Bình yên',
+		slug: 'binh-yen-thu-gian',
+		summary: 'Trạng thái thư thái, an yên, không bị chi phối bởi cảm xúc tiêu cực.',
+		description: `**Bình yên** là trạng thái cảm xúc khi con người cảm thấy an toàn, thư thái, không bị chi phối bởi lo lắng hay buồn bã. Đây là trạng thái lý tưởng để nghỉ ngơi, tái tạo năng lượng và tận hưởng cuộc sống.`,
 		textColor: '#FFFFFF',
-		bgColor: '#757575',
+		bgColor: '#16a085',
 		comfortMessage:
-			'Đừng tự tạo áp lực thêm cho bản thân. Hãy để cơ thể và tâm trí được nghỉ ngơi, bạn xứng đáng với điều đó.',
+			'Bạn đang ở trạng thái bình yên và thư giãn. Hãy tận hưởng khoảnh khắc này và tiếp tục duy trì sự cân bằng trong cuộc sống.',
 	},
 ];
 
@@ -88,6 +89,27 @@ class MoodService {
 			return [null, mood];
 		} catch (err: any) {
 			return [err, null];
+		}
+	}
+
+	public async postMoodEntry(answers: Answer[]): Promise<TErrorFirst<Error, Mood | undefined>> {
+		try {
+			const listQuestions = ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10'];
+			const features = answers.reduce<Record<string, Answer>>((acc, answer, idx) => {
+				acc[listQuestions[idx]] = answer;
+				return acc;
+			}, {});
+
+			const response = await modelHttpClient.post('/predict', { features });
+
+			if (!response.data.moodId) return [new Error('No moodId returned from model') as any, undefined];
+
+			const [error, mood] = await this.getById(response.data.moodId);
+			if (!mood && error) return [error, undefined];
+
+			return [null, mood];
+		} catch (error: any) {
+			return [error, undefined];
 		}
 	}
 }

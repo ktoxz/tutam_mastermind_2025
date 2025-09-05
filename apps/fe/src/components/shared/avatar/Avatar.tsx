@@ -2,17 +2,17 @@
 import React from 'react';
 import Image from 'next/image';
 import { User } from 'lucide-react';
-import { useAuthContext } from '@/contexts/user/useAuthProvider';
+import { useAuthContext } from '@/contexts/user/useAuthContext';
 
 type Props = {
-	avatar?: string;
+	avatarUrl?: string;
 	size?: number;
 	alt?: string;
 };
 
-function Avatar({ size = 32 }: Props) {
+function Avatar({ size = 32, alt = 'Avatar', avatarUrl }: Props) {
 	const { user } = useAuthContext();
-	const avatarSrc = user?.avatarUrl;
+	const avatarSrc = avatarUrl || user?.avatarUrl;
 
 	return (
 		<div

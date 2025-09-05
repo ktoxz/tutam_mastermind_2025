@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { useAuthContext } from '@/contexts/user/useAuthProvider';
+import { useAuthContext } from '@/contexts/user/useAuthContext';
 import Avatar from '@/components/shared/avatar/Avatar';
 import LinkCTA from '@/components/shared/cta/LinkCTA';
 import Link from 'next/link';

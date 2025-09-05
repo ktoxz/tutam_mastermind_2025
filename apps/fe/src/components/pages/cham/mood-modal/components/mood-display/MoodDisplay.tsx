@@ -5,11 +5,11 @@ import { Mood } from '@packages/models';
 import MoodIcon from '@/components/pages/cham/mood-modal/shared/mood-icon/MoodIcon';
 
 type Props = {
-	selectedMood: Mood;
-	onFinish: () => void;
+	mood: Mood;
+	onFinish: (mood: Mood) => void;
 };
 
-function MoodDisplay({ selectedMood, onFinish }: Props) {
+function MoodDisplay({ mood, onFinish }: Props) {
 	const getGreetingMessage = (moodName: string) => {
 		switch (moodName) {
 			case 'Hạnh phúc':
@@ -30,21 +30,23 @@ function MoodDisplay({ selectedMood, onFinish }: Props) {
 			<div className='flex flex-col items-center gap-4 text-center animate-fade-in-top'>
 				<div
 					className='flex items-center justify-center w-24 h-24 rounded-full mb-2'
-					style={{ backgroundColor: selectedMood.bgColor || '#f5f5f5' }}
+					style={{ backgroundColor: mood.bgColor || '#f5f5f5' }}
 				>
-					<MoodIcon mood={selectedMood} size={56} color={selectedMood.textColor || '#222'} />
+					<MoodIcon mood={mood} size={56} color={mood.textColor || '#222'} />
 				</div>
 				<h2 className='text-2xl sm:text-3xl font-bold text-[var(--color-primary)]'>
-					{getGreetingMessage(selectedMood.name)}
+					{getGreetingMessage(mood.name)}
 				</h2>
 				<p className='text-[var(--color-text-secondary)] text-base sm:text-lg max-w-lg'>
-					{selectedMood.comfortMessage}
+					{mood.comfortMessage}
 				</p>
 			</div>
 			<div className='flex flex-col items-center gap-4 animate-fade-in-bottom'>
 				<button
 					className='transition-transform duration-200 hover:scale-105 transform-gpu focus:outline-none cursor-pointer active:scale-95'
-					onClick={onFinish}
+					onClick={() => {
+						onFinish(mood);
+					}}
 					aria-label='Mở lá thư bất ngờ'
 				>
 					<Image

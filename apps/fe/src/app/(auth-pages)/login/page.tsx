@@ -94,7 +94,7 @@ function LoginPage() {
 			additionalContent={
 				<div className='flex flex-col items-end'>
 					<Link
-						href={AUTH_ROUTES.login.href}
+						href={AUTH_ROUTES.forgot_password.href}
 						className='text-sm text-[var(--color-text-link)] hover:text-[var(--color-text-link-hover)] hover:underline transition-colors'
 					>
 						Quên mật khẩu?

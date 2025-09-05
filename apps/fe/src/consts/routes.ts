@@ -1,3 +1,5 @@
+import { unauthorized } from 'next/navigation';
+
 interface Route {
 	label: string;
 	href: string;
@@ -65,6 +67,10 @@ export const BASIC_ROUTES: Record<string, Route> = {
 		label: 'về chúng tôi',
 		href: '/ve_chung_toi',
 	},
+	unauthorized: {
+		label: 'unauthorized',
+		href: '/unauthorized',
+	},
 };
 
 export const AUTH_ROUTES = {
@@ -83,6 +89,14 @@ export const AUTH_ROUTES = {
 	resend_otp: {
 		label: 'Gửi lại OTP',
 		href: '/resend-otp',
+	},
+	forgot_password: {
+		label: 'Quên mật khẩu',
+		href: '/forgot-password',
+	},
+	reset_password: {
+		label: 'Đặt lại mật khẩu',
+		href: '/reset-password',
 	},
 };
 

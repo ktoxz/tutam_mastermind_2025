@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { User, Settings, LogOut } from 'lucide-react';
 import { BASIC_ROUTES } from '@/consts/routes';
-import { useAuthContext } from '@/contexts/user/useAuthProvider';
+import { useAuthContext } from '@/contexts/user/useAuthContext';
 
 const AccountDropMenu = () => {
 	const { logout } = useAuthContext();

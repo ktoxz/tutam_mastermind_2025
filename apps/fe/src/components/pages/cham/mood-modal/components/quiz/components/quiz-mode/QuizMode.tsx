@@ -1,26 +1,20 @@
 'use client';
 import React, { useState } from 'react';
 import ButtonCTA from '@/components/shared/cta/ButtonCTA';
-
-type Answer = 0 | 1 | 2 | 3;
-
-type Question = {
-	id: number;
-	text: string;
-};
+import { Answer } from '@/types';
 
 type Props = {
-	questions: Question[];
+	questions: string[];
 	answers: string[];
 	onFinish: (responses: Answer[]) => void;
 };
 
-const QuestionView = React.memo(function QuestionView({
+const Question = React.memo(function Question({
 	question,
 	current,
 	total,
 }: {
-	question: Question;
+	question: string;
 	current: number;
 	total: number;
 }) {
@@ -29,7 +23,7 @@ const QuestionView = React.memo(function QuestionView({
 			<div className='font-semibold mb-2'>
 				Câu {current + 1}/{total}
 			</div>
-			<p className='text-lg min-h-[3.25em] text-gray-900'>{question.text}</p>
+			<p className='text-lg min-h-[3.25em] text-gray-900'>{question}</p>
 		</div>
 	);
 });
@@ -50,7 +44,7 @@ const AnswerOptions = React.memo(function AnswerOptions({
 					key={idx}
 					className={`py-2 px-4 rounded border text-left ${
 						selected === idx
-							? 'bg-green-800 text-white border-green-800 hover:bg-green-700'
+							? 'bg-(--color-primary) text-white border-(--color-primary-dark)'
 							: 'bg-white hover:bg-gray-50 border-gray-300 cursor-pointer'
 					}`}
 					onClick={() => onSelect(idx as Answer)}
@@ -127,8 +121,8 @@ export default function QuizMode({ questions, answers, onFinish }: Props) {
 	};
 
 	return (
-		<div className='max-w-xl w-full bg-white'>
-			<QuestionView question={questions[current]} current={current} total={questions.length} />
+		<div className='w-xs md:w-md bg-white'>
+			<Question question={questions[current]} current={current} total={questions.length} />
 			<AnswerOptions answers={answers} selected={responses[current]} onSelect={handleSelect} />
 			<NavigationButtons
 				current={current}

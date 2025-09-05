@@ -3,11 +3,20 @@ import { LocalStorageService, LOCAL_STORAGE_KEYS } from '../services/storage/loc
 import { AuthService } from '@/services/api/auth/auth.service';
 import { lockProcess } from './process-lock.util';
 
-export const BACKEND_API_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL || 'http://localhost:3000/api';
+export const BACKEND_API_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL || 'http://localhost:5000/api/v1';
+export const MODEL_API_URL = process.env.NEXT_PUBLIC_MODEL_API_URL || 'http://localhost:8000';
 
 const httpClient = axios.create({
 	withCredentials: true,
 	baseURL: BACKEND_API_URL,
+	timeout: 10000,
+	headers: {
+		'Content-Type': 'application/json',
+	},
+});
+
+const modelHttpClient = axios.create({
+	baseURL: MODEL_API_URL,
 	timeout: 10000,
 	headers: {
 		'Content-Type': 'application/json',
@@ -51,4 +60,4 @@ httpClient.interceptors.response.use(undefined, async (error: AxiosError) => {
 	return Promise.reject(error);
 });
 
-export default httpClient;
+export { httpClient, modelHttpClient };

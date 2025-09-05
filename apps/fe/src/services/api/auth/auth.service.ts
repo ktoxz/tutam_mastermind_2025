@@ -1,4 +1,4 @@
-import httpClient from '@/utils/http-client.util';
+import { httpClient } from '@/utils/http-client.util';
 import { ForgotPasswordDTO, RegisterDTO, VerifyOtpDTO, ResendOtpDTO, LoginDTO, ResetPasswordDTO } from './schemas';
 import { TErrorFirst } from '@/types';
 import { AxiosError } from 'axios';
@@ -79,9 +79,12 @@ class AuthService {
 		}
 	}
 
-	public async resetPassword(token: string, data: ResetPasswordDTO): Promise<TErrorFirst<AxiosError, any>> {
+	public async resetPassword(data: ResetPasswordDTO): Promise<TErrorFirst<AxiosError, any>> {
 		try {
-			const response = await httpClient.post(`${this.baseUrl}/reset-password/${token}`, data);
+			const response = await httpClient.post(`${this.baseUrl}/reset-password/${data.token}`, {
+				newPassword: data.newPassword,
+				confirmNewPassword: data.confirmNewPassword,
+			});
 			return [null, response.data];
 		} catch (err: any) {
 			return [err, null];

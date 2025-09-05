@@ -25,7 +25,7 @@ const heroContent = [
 		description:
 			'Trong thế giới đầy biến động, những trang sách chính là điểm tựa vững chãi. Hãy để sách làm người bạn đồng hành, giúp bạn vượt qua những khó khăn, tìm thấy sự an nhiên và xây dựng một nội tâm mạnh mẽ, tràn đầy năng lượng tích cực.',
 		ctaText: 'Khám phá ngay',
-		ctaHref: BASIC_ROUTES.dieu_ky.children?.sach.href ?? '/sach',
+		ctaHref: BASIC_ROUTES.cham.href,
 		image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
 	},
 	{
@@ -37,7 +37,7 @@ const heroContent = [
 		ctaText: 'Khám phá cảm xúc',
 		ctaHref: BASIC_ROUTES.cham.href,
 		secondaryText: 'Đọc sách & blog',
-		secondaryHref: BASIC_ROUTES.dieu_ky.children?.sach.href ?? '/sach',
+		secondaryHref: BASIC_ROUTES.dieu_ky.href,
 		image: 'https://cdn.pixabay.com/photo/2024/02/06/15/25/dark-green-8557261_960_720.jpg',
 	},
 ];
@@ -94,7 +94,7 @@ function HeroSection() {
 	const slide = heroContent[currentSlide];
 
 	return (
-		<AppSection>
+		<AppSection disableAppearAnimation>
 			<div
 				className='relative w-full max-w-7xl mx-auto h-96 md:h-[360px] rounded-xl overflow-hidden shadow-1xl group'
 				{...swipeHandlers}

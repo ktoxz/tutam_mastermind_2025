@@ -71,7 +71,7 @@ function MoodResult({ mood }: Props) {
 	}, [mood]);
 
 	if (loading) {
-		return <InlineLoading className='p-8' title={'Đang tải nội dung xoa dịu...'} />;
+		return <InlineLoading className='p-8' title={'Đang tải nội dung...'} />;
 	}
 
 	if (error) {
