@@ -8,7 +8,7 @@ import { uploadRoute } from './uploadRoute.js'
 const Router = express.Router()
 
 Router.get('/', (req, res) => {
-  res.status(StatusCodes.OK).json({ message: 'Welcome to Knotes API' })
+  res.status(StatusCodes.OK).json({ message: 'Chào mừng đến với API Tự Tâm' })
 })
 
 Router.use('/auth', authRoute)

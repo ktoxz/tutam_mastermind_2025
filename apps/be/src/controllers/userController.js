@@ -17,7 +17,7 @@ const changeName = async (req, res, next) => {
     await userService.changeName(req.user.userId, req.body.name)
 
     res.status(StatusCodes.OK).json({
-      message: 'Name changed successfully'
+      message: 'Tên đã được thay đổi thành công.'
     })
   } catch (error) {
     next(error)
@@ -29,7 +29,7 @@ const changePassword = async (req, res, next) => {
     await userService.changePassword(req.user.userId, req.body)
 
     res.status(StatusCodes.OK).json({
-      message: 'Password changed successfully'
+      message: 'Mật khẩu đã được thay đổi thành công.'
     })
   } catch (error) {
     next(error)
@@ -41,7 +41,7 @@ const changeAvatar = async (req, res, next) => {
     await userService.changeAvatar(req.user.userId, req.file)
 
     res.status(StatusCodes.OK).json({
-      message: 'Avatar changed successfully'
+      message: 'Avatar đã được thay đổi thành công.'
     })
   } catch (error) {
     next(error)
@@ -59,7 +59,7 @@ const deleteAccount = async (req, res, next) => {
     })
 
     res.status(StatusCodes.OK).json({
-      message: 'Account deleted successfully'
+      message: 'Tài khoản đã được xóa thành công.'
     })
   } catch (error) {
     next(error)

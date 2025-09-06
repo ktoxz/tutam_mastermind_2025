@@ -1,22 +1,27 @@
 import { z } from 'zod'
 
-export const nameSchema = z.string().trim().min(1, 'Name is required')
+export const nameSchema = z.string().trim().min(1, 'Tên là bắt buộc')
 
-export const emailSchema = z.string().trim().toLowerCase().min(1, 'Email is required').email('Invalid email address')
+export const emailSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .min(1, 'Email là bắt buộc')
+  .email('Địa chỉ email không hợp lệ')
 
 export const passwordSchema = z
   .string()
-  .min(8, 'Password must be at least 8 characters long')
-  .max(64, 'Password must not exceed 64 characters')
-  .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
-  .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
-  .regex(/[0-9]/, 'Password must contain at least one number')
-  .regex(/[^a-zA-Z0-9]/, 'Password must contain at least one special character')
+  .min(8, 'Mật khẩu phải có ít nhất 8 ký tự')
+  .max(64, 'Mật khẩu không được vượt quá 64 ký tự')
+  .regex(/[a-z]/, 'Mật khẩu phải chứa ít nhất một chữ cái thường')
+  .regex(/[A-Z]/, 'Mật khẩu phải chứa ít nhất một chữ cái hoa')
+  .regex(/[0-9]/, 'Mật khẩu phải chứa ít nhất một số')
+  .regex(/[^a-zA-Z0-9]/, 'Mật khẩu phải chứa ít nhất một ký tự đặc biệt')
 
-export const confirmPasswordSchema = z.string().min(1, 'Please confirm your password')
+export const confirmPasswordSchema = z.string().min(1, 'Vui lòng xác nhận mật khẩu của bạn')
 
 export const acceptTermsSchema = z.boolean().refine((val) => val === true, {
-  message: 'You must accept the terms and conditions'
+  message: 'Bạn phải chấp nhận các điều khoản và điều kiện'
 })
 
-export const otpSchema = z.string().trim().length(6, 'OTP must be exactly 6 characters long')
+export const otpSchema = z.string().trim().length(6, 'OTP phải có đúng 6 ký tự')
