@@ -8,6 +8,7 @@ import { corsOptions } from './config/cors.js'
 import { ENV } from './config/environment.js'
 
 const app = express()
+const HOST = ENV.HOST
 const PORT = ENV.PORT
 
 app.use(cors(corsOptions))
@@ -21,6 +22,10 @@ app.use(errorHandlingMiddleware)
 
 connectDB()
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`)
+app.get('/', (req, res) => {
+  res.send('API is running...')
+})
+
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running at http://${HOST === '0.0.0.0' ? 'localhost' : HOST}:${PORT}`)
 })
