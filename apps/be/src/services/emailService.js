@@ -6,13 +6,13 @@ import { emailTransporter } from '../config/nodemailer.js'
 
 const sendVerificationEmail = async (email, name, otp) => {
   if (!email || !name || !otp) {
-    throw new ApiError(StatusCodes.BAD_REQUEST, 'Missing required fields')
+    throw new ApiError(StatusCodes.BAD_REQUEST, 'Thiếu các trường bắt buộc')
   }
 
   const emailOptions = {
-    from: `KNotes <${ENV.EMAIL_USERNAME}>`,
+    from: `Tự Tâm <${ENV.EMAIL_USERNAME}>`,
     to: email,
-    subject: 'Verify Your Email Address',
+    subject: 'Xác thực địa chỉ email của bạn',
     html: verificationEmailTemplate(name, otp)
   }
 
@@ -21,13 +21,13 @@ const sendVerificationEmail = async (email, name, otp) => {
 
 const sendResetPasswordEmail = async (email, name, resetLink) => {
   if (!email || !name || !resetLink) {
-    throw new ApiError(StatusCodes.BAD_REQUEST, 'Missing required fields')
+    throw new ApiError(StatusCodes.BAD_REQUEST, 'Thiếu các trường bắt buộc')
   }
 
   const emailOptions = {
-    from: `KNotes <${ENV.EMAIL_USERNAME}>`,
+    from: `Tự Tâm <${ENV.EMAIL_USERNAME}>`,
     to: email,
-    subject: 'Reset Your Password',
+    subject: 'Đặt lại mật khẩu của bạn',
     html: resetPasswordEmailTemplate(name, resetLink)
   }
 

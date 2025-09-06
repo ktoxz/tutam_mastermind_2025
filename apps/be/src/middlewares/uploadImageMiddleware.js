@@ -10,6 +10,6 @@ export const uploadImageMiddleware = multer({
   fileFilter: (req, file, cb) => {
     const allowed = ['image/jpeg', 'image/png', 'image/webp']
     if (allowed.includes(file.mimetype)) cb(null, true)
-    else cb(new Error('Invalid file type'))
+    else cb(new Error('Loại tập tin không hợp lệ'))
   }
 }).single('image')

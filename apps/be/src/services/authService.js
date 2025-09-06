@@ -20,7 +20,7 @@ const register = async ({ name, email, password }) => {
   const existingUser = await User.findOne({ email })
 
   if (existingUser) {
-    throw new ApiError(StatusCodes.CONFLICT, 'Email is already registered')
+    throw new ApiError(StatusCodes.CONFLICT, 'Email đã được đăng ký. Vui lòng sử dụng email khác.')
   }
 
   const hashedPassword = await hashPassword(password)
@@ -42,16 +42,16 @@ const register = async ({ name, email, password }) => {
 const verifyOtp = async ({ email, otp }) => {
   const user = await User.findOne({ email })
 
-  if (!user) throw new ApiError(StatusCodes.NOT_FOUND, 'User not found')
+  if (!user) throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy người dùng')
 
-  if (user.isVerified) throw new ApiError(StatusCodes.BAD_REQUEST, 'User is already verified')
+  if (user.isVerified) throw new ApiError(StatusCodes.BAD_REQUEST, 'Người dùng đã được xác thực')
 
   if (!user.otp || !user.otpExpires || user.otpExpires < new Date()) {
-    throw new ApiError(StatusCodes.UNAUTHORIZED, 'Invalid or expired OTP')
+    throw new ApiError(StatusCodes.UNAUTHORIZED, 'OTP không hợp lệ hoặc đã hết hạn')
   }
 
   const isOtpValid = compareOtp(otp, user.otp)
-  if (!isOtpValid) throw new ApiError(StatusCodes.UNAUTHORIZED, 'Invalid OTP')
+  if (!isOtpValid) throw new ApiError(StatusCodes.UNAUTHORIZED, 'OTP không hợp lệ')
 
   user.isVerified = true
   user.otp = undefined
@@ -63,9 +63,9 @@ const verifyOtp = async ({ email, otp }) => {
 const resendOtp = async ({ email }) => {
   const user = await User.findOne({ email })
 
-  if (!user) throw new ApiError(StatusCodes.NOT_FOUND, 'User not found')
+  if (!user) throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy người dùng')
 
-  if (user.isVerified) throw new ApiError(StatusCodes.BAD_REQUEST, 'User is already verified')
+  if (user.isVerified) throw new ApiError(StatusCodes.BAD_REQUEST, 'Người dùng đã được xác thực')
 
   const { otp, hashedOtp } = generateAndHashOTP()
   const otpExpires = getExpireTime(5)
@@ -79,10 +79,10 @@ const resendOtp = async ({ email }) => {
 
 const login = async ({ email, password }) => {
   const user = await User.findOne({ email })
-  if (!user) throw new ApiError(StatusCodes.UNAUTHORIZED, 'Email or password is incorrect')
+  if (!user) throw new ApiError(StatusCodes.UNAUTHORIZED, 'Email hoặc mật khẩu không đúng')
 
   const isPasswordValid = await comparePassword(password, user.password)
-  if (!isPasswordValid) throw new ApiError(StatusCodes.UNAUTHORIZED, 'Email or password is incorrect')
+  if (!isPasswordValid) throw new ApiError(StatusCodes.UNAUTHORIZED, 'Email hoặc mật khẩu không đúng')
 
   if (!user.isVerified) {
     if (!user.otp || !user.otpExpires || user.otpExpires < new Date()) {
@@ -109,19 +109,19 @@ const login = async ({ email, password }) => {
 
 export const refreshAccessToken = async (refreshToken) => {
   if (!refreshToken) {
-    throw new ApiError(StatusCodes.UNAUTHORIZED, 'Refresh token is required')
+    throw new ApiError(StatusCodes.UNAUTHORIZED, 'Refresh token là bắt buộc')
   }
 
   const { userId } = jwt.verify(refreshToken, ENV.JWT_REFRESH_SECRET, (err, decoded) => {
     if (err) {
-      throw new ApiError(StatusCodes.UNAUTHORIZED, 'Invalid refresh token')
+      throw new ApiError(StatusCodes.UNAUTHORIZED, 'Refresh token không hợp lệ')
     }
     return decoded
   })
 
   const user = await User.findById(userId)
   if (!user) {
-    throw new ApiError(StatusCodes.UNAUTHORIZED, 'User not found')
+    throw new ApiError(StatusCodes.UNAUTHORIZED, 'Không tìm thấy người dùng')
   }
 
   const newAccessToken = generateAccessToken({ userId: user._id })
@@ -153,7 +153,7 @@ const resetPassword = async (rawToken, { newPassword }) => {
   })
 
   if (!user) {
-    throw new ApiError(StatusCodes.UNAUTHORIZED, 'Invalid or expired password reset token')
+    throw new ApiError(StatusCodes.UNAUTHORIZED, 'Token đặt lại mật khẩu không hợp lệ hoặc đã hết hạn')
   }
 
   user.password = await hashPassword(newPassword)

@@ -4,7 +4,7 @@ import cloudinary from '../config/cloudinary.js'
 
 const uploadImage = async (buffer) => {
   if (!buffer || !Buffer.isBuffer(buffer)) {
-    throw new ApiError(StatusCodes.BAD_REQUEST, 'No image provided')
+    throw new ApiError(StatusCodes.BAD_REQUEST, 'Không có hình ảnh được cung cấp')
   }
 
   const imageResult = await new Promise((resolve, reject) => {
@@ -15,7 +15,7 @@ const uploadImage = async (buffer) => {
       },
       (error, result) => {
         if (error) {
-          return reject(new ApiError(StatusCodes.INTERNAL_SERVER_ERROR, 'Image upload failed'))
+          return reject(new ApiError(StatusCodes.INTERNAL_SERVER_ERROR, 'Tải lên hình ảnh thất bại'))
         }
         resolve({
           url: result.secure_url,

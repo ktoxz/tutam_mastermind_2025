@@ -13,7 +13,7 @@ const changePasswordSchema = z
   })
   .refine((data) => data.newPassword === data.confirmNewPassword, {
     path: ['confirmNewPassword'],
-    message: 'New passwords do not match'
+    message: 'Mật khẩu mới không khớp'
   })
 
 export const userValidation = {

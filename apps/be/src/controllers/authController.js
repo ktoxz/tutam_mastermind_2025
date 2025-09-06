@@ -7,7 +7,7 @@ const register = async (req, res, next) => {
     await authService.register(req.body)
 
     res.status(StatusCodes.CREATED).json({
-      message: 'User registered successfully. Please check your email for the OTP to verify your account.'
+      message: 'Đăng ký người dùng thành công. Vui lòng kiểm tra email để lấy mã OTP xác thực tài khoản.'
     })
   } catch (error) {
     next(error)
@@ -19,7 +19,7 @@ const verifyOtp = async (req, res, next) => {
     await authService.verifyOtp(req.body)
 
     res.status(StatusCodes.OK).json({
-      message: 'OTP verified successfully'
+      message: 'Xác thực OTP thành công.'
     })
   } catch (error) {
     next(error)
@@ -31,7 +31,7 @@ const resendOtp = async (req, res, next) => {
     await authService.resendOtp(req.body)
 
     res.status(StatusCodes.OK).json({
-      message: 'OTP resent successfully. Please check your email.'
+      message: 'OTP đã được gửi lại. Vui lòng kiểm tra email của bạn.'
     })
   } catch (error) {
     next(error)
@@ -45,7 +45,7 @@ const login = async (req, res, next) => {
     if (result.requiresVerification) {
       return res.status(StatusCodes.UNAUTHORIZED).json({
         ...result,
-        message: 'User is not verified. Please verify your account using the OTP sent to your email.'
+        message: 'Người dùng chưa được xác thực. Vui lòng xác thực tài khoản của bạn bằng cách sử dụng mã OTP đã gửi đến email của bạn.'
       })
     }
 
@@ -59,7 +59,7 @@ const login = async (req, res, next) => {
     })
 
     res.status(StatusCodes.OK).json({
-      message: 'Login successful',
+      message: 'Đăng nhập thành công.',
       accessToken
     })
   } catch (error) {
@@ -76,7 +76,7 @@ const logout = async (req, res, next) => {
     })
 
     res.status(StatusCodes.OK).json({
-      message: 'Logged out successfully'
+      message: 'Đăng xuất thành công.'
     })
   } catch (error) {
     next(error)
@@ -88,7 +88,7 @@ const refreshAccessToken = async (req, res, next) => {
     const { accessToken } = await authService.refreshAccessToken(req.cookies?.refreshToken)
 
     res.status(StatusCodes.OK).json({
-      message: 'Token refreshed successfully',
+      message: 'Làm mới token thành công.',
       accessToken
     })
   } catch (error) {
@@ -101,7 +101,7 @@ const forgotPassword = async (req, res, next) => {
     await authService.forgotPassword(req.body.email)
 
     res.status(StatusCodes.OK).json({
-      message: 'If the email is registered, a password reset link has been sent to your email.'
+      message: 'Nếu email đã được đăng ký, liên kết đặt lại mật khẩu đã được gửi đến email của bạn.'
     })
   } catch (error) {
     next(error)
@@ -113,7 +113,7 @@ const resetPassword = async (req, res, next) => {
     await authService.resetPassword(req.params.token, req.body)
 
     res.status(StatusCodes.OK).json({
-      message: 'Password reset successfully'
+      message: 'Đặt lại mật khẩu thành công.'
     })
   } catch (error) {
     next(error)

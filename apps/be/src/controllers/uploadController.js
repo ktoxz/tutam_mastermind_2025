@@ -6,7 +6,7 @@ const uploadImage = async (req, res, next) => {
     const result = await uploadService.uploadImage(req.file?.buffer)
 
     res.status(StatusCodes.OK).json({
-      message: 'Image uploaded successfully',
+      message: 'Tải ảnh lên thành công.',
       ...result
     })
   } catch (error) {

@@ -18,7 +18,7 @@ const registerSchema = z
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ['confirmPassword'],
-    message: 'Passwords do not match'
+    message: 'Mật khẩu không khớp'
   })
 
 const verifyOtpSchema = z.object({
@@ -46,7 +46,7 @@ const resetPasswordSchema = z
   })
   .refine((data) => data.newPassword === data.confirmNewPassword, {
     path: ['confirmNewPassword'],
-    message: 'New passwords do not match'
+    message: 'Mật khẩu mới không khớp'
   })
 
 export const authValidation = {

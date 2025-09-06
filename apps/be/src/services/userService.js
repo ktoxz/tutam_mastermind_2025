@@ -8,7 +8,7 @@ const getMe = async (userId) => {
   const user = await User.findById(userId).select('-password')
 
   if (!user) {
-    throw new ApiError(StatusCodes.NOT_FOUND, 'User not found')
+    throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy người dùng')
   }
 
   return user
@@ -18,7 +18,7 @@ const changeName = async (userId, name) => {
   const user = await User.findById(userId)
 
   if (!user) {
-    throw new ApiError(StatusCodes.NOT_FOUND, 'User not found')
+    throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy người dùng')
   }
 
   user.name = name
@@ -29,17 +29,17 @@ const changePassword = async (userId, { currentPassword, newPassword }) => {
   const user = await User.findById(userId)
 
   if (!user) {
-    throw new ApiError(StatusCodes.NOT_FOUND, 'User not found')
+    throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy người dùng')
   }
 
   const isCurrentPasswordValid = await comparePassword(currentPassword, user.password)
   if (!isCurrentPasswordValid) {
-    throw new ApiError(StatusCodes.UNAUTHORIZED, 'Current password is incorrect')
+    throw new ApiError(StatusCodes.UNAUTHORIZED, 'Mật khẩu hiện tại không đúng')
   }
 
   const isPasswordEqual = await comparePassword(newPassword, user.password)
   if (isPasswordEqual) {
-    throw new ApiError(StatusCodes.BAD_REQUEST, 'New password cannot be the same as the current password')
+    throw new ApiError(StatusCodes.BAD_REQUEST, 'Mật khẩu mới không thể giống với mật khẩu hiện tại')
   }
 
   user.password = await hashPassword(newPassword)
@@ -52,7 +52,7 @@ const changeAvatar = async (userId, avatarFile) => {
   const user = await User.findById(userId)
 
   if (!user) {
-    throw new ApiError(StatusCodes.NOT_FOUND, 'User not found')
+    throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy người dùng')
   }
 
   user.avatarUrl = url
@@ -63,7 +63,7 @@ const deleteAccount = async (userId) => {
   const user = await User.findById(userId)
 
   if (!user) {
-    throw new ApiError(StatusCodes.NOT_FOUND, 'User not found')
+    throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy người dùng')
   }
 
   await User.deleteOne({ _id: userId })
