@@ -4,9 +4,9 @@ import { predictService } from '../services/predictService.js'
 const predictMood = async (req, res, next) => {
   try {
     const { features } = req.body
-    const moodId = await predictService.predictMood(features)
+    const moodResponse = await predictService.predictMood(features)
 
-    res.status(StatusCodes.OK).json({ moodId })
+    res.status(StatusCodes.OK).json(moodResponse)
   } catch (error) {
     next(error)
   }
