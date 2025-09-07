@@ -4,7 +4,7 @@ dotenv.config()
 
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production']).default('development'),
-  HOST: z.string().min(1).default('http://localhost'),
+  HOST: z.string().default('localhost'),
   PORT: z.coerce.number().default(5000),
   MONGO_URI: z.string(),
   CLIENT_URL: z.string(),
@@ -14,7 +14,8 @@ const envSchema = z.object({
   CLOUDINARY_API_KEY: z.string(),
   CLOUDINARY_API_SECRET: z.string(),
   EMAIL_USERNAME: z.string(),
-  EMAIL_PASSWORD: z.string()
+  EMAIL_PASSWORD: z.string(),
+  GENAI_API_KEY: z.string()
 })
 
 const env = envSchema.parse(process.env)
