@@ -4,33 +4,43 @@ import { Mood } from '@packages/models';
 import { LucideIcon, Smile, Frown, AlertTriangle, Leaf } from 'lucide-react';
 
 interface MoodMeta {
+	_id: string;
+	mood_label: string;
 	bgColor: string;
 	textColor: string;
 	icon: LucideIcon;
 }
 
-const MOOD_META: Record<string, MoodMeta> = {
-	'mood-1': {
-		bgColor: 'var(--color-background)',
+const MOOD_META: MoodMeta[] = [
+	{
+		_id: 'mood-1',
+		mood_label: 'Hạnh phúc',
+		bgColor: '#ecfdf5',
 		textColor: 'var(--color-success)',
 		icon: Smile,
 	},
-	'mood-2': {
-		bgColor: '#fef2f2',
-		textColor: 'var(--color-error)',
+	{
+		_id: 'mood-2',
+		mood_label: 'Buồn bã',
+		bgColor: '#f0f4ff', // màu nền xanh nhạt dịu hơn
+		textColor: '#5B7DB1', // màu chữ xanh lam trầm
 		icon: Frown,
 	},
-	'mood-3': {
+	{
+		_id: 'mood-3',
+		mood_label: 'Lo lắng',
 		bgColor: '#fffbeb',
 		textColor: 'var(--color-warning)',
 		icon: AlertTriangle,
 	},
-	'mood-4': {
+	{
+		_id: 'mood-4',
+		mood_label: 'Bình yên',
 		bgColor: 'var(--color-surface)',
 		textColor: 'var(--color-primary)',
 		icon: Leaf,
 	},
-};
+];
 
 class MoodService {
 	private static instance: MoodService = MoodService.getInstance();
@@ -44,9 +54,25 @@ class MoodService {
 		return MoodService.instance;
 	}
 
-	public getMoodMeta(mood: Mood): MoodMeta {
+	public getMoodMetaList(): Promise<TErrorFirst<Error, MoodMeta[]>> {
+		return Promise.resolve([null, MOOD_META]);
+	}
+
+	public getMoodMeta(mood: Mood | null | undefined): MoodMeta {
+		if (!mood || !mood._id) {
+			return {
+				_id: '',
+				mood_label: '',
+				bgColor: '#ffffff',
+				textColor: '#00C9A7',
+				icon: Smile,
+			};
+		}
+		const meta = MOOD_META.find((item) => item._id === mood._id);
 		return (
-			MOOD_META[mood._id] || {
+			meta || {
+				_id: mood._id,
+				mood_label: mood.mood_label || '',
 				bgColor: '#ffffff',
 				textColor: '#00C9A7',
 				icon: Smile,

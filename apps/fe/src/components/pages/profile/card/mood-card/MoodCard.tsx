@@ -1,25 +1,24 @@
 'use client';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Mood } from '@packages/models';
-import { Smile, PlusCircle, Trash2 } from 'lucide-react';
+import { PlusCircle, Smile, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { BASIC_ROUTES } from '@/consts/routes';
 import DataCard from '@/components/pages/profile/shared/data-card/DataCard';
+import { MoodService } from '@/services/api/mood/mood.service';
 
 export default function MoodCard({ mood, onDelete }: { mood: Mood | null; onDelete: () => void }) {
+	const moodMeta = useMemo(() => MoodService.getInstance().getMoodMeta(mood!), [mood?._id]);
 	return (
 		<DataCard
 			title='Tâm trạng hôm nay'
-			icon={Smile}
-			iconBg='bg-blue-500'
-			iconColor='text-white'
+			icon={moodMeta.icon}
+			iconBg={moodMeta.bgColor}
+			iconColor={moodMeta.textColor}
 			className='h-full'
 			headerRight={
 				mood ? (
-					<button
-						onClick={onDelete}
-						className='text-red-500 border border-red-500 hover:text-red-700 hover:border-red-700 p-2 rounded-full aspect-square cursor-pointer'
-					>
+					<button onClick={onDelete} className='text-red-500 border border-red-500 hover:text-red-700 hover:border-red-700 p-2 rounded-full aspect-square cursor-pointer'>
 						<Trash2 size={16} />
 					</button>
 				) : null
@@ -28,8 +27,8 @@ export default function MoodCard({ mood, onDelete }: { mood: Mood | null; onDele
 			{mood ? (
 				<div className='relative flex flex-col justify-center items-end gap-2'>
 					<div className='bg-blue-50 p-4 rounded-xl border border-blue-200'>
-						<h4 className='text-base font-bold text-blue-700 mb-2'>{mood.name}</h4>
-						<p className='text-sm text-gray-600 mb-2 leading-relaxed'>{mood.comfortMessage}</p>
+						<h4 className='text-base font-bold text-blue-700 mb-2 '>{mood.mood_label.charAt(0).toUpperCase() + mood.mood_label.slice(1)}</h4>
+						<p className='text-sm text-gray-600 mb-2 leading-relaxed'>{mood.encouragement}</p>
 					</div>
 				</div>
 			) : (

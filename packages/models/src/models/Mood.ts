@@ -7,7 +7,6 @@ type Mood = {
 	actions: string[];
 	quote: string;
 	moodId?: string;
-	moodLabel?: string;
 };
 
 const mapMood = (data: any): Mood => {
@@ -20,7 +19,6 @@ const mapMood = (data: any): Mood => {
 		actions: data.actions,
 		quote: data.quote,
 		moodId: data.moodId,
-		moodLabel: data.moodLabel,
 	};
 };
 

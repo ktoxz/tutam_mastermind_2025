@@ -39,19 +39,14 @@ const MoodButton: React.FC<MoodButtonProps> = ({ mood, isSelected, onClick, chil
 		  };
 
 	return (
-		<button
-			onClick={handleClick}
-			className={`${classes.base} ${classes.hover} ${classes.active}`}
-			style={dynamicStyles}
-			aria-pressed={isSelected}
-		>
+		<button onClick={handleClick} className={`${classes.base} ${classes.hover} ${classes.active}`} style={dynamicStyles} aria-pressed={isSelected}>
 			{children}
 		</button>
 	);
 };
 
 function DieuKyPage() {
-	const [moods, setMoods] = useState<Mood[]>([]);
+	const [moods, setMoods] = useState([]);
 	const [selectedMood, setSelectedMood] = useState<Mood | null>(null);
 	const [books, setBooks] = useState<Book[]>([]);
 	const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -61,7 +56,7 @@ function DieuKyPage() {
 	const fetchAllData = useCallback(async () => {
 		setLoading(true);
 		const [[, moodData], [, bookData], [, blogData], [, playlistData]] = await Promise.all([
-			MoodService.getInstance().getList(),
+			MoodService.getInstance().getMoodMetaList(),
 			BookService.getInstance().getList(),
 			BlogService.getInstance().getList(),
 			MusicPlaylistService.getInstance().getList(),
@@ -75,11 +70,7 @@ function DieuKyPage() {
 
 	const fetchDataByMood = useCallback(async (moodId: string) => {
 		setLoading(true);
-		const [[, bookData], [, blogData], [, playlistData]] = await Promise.all([
-			BookService.getInstance().getByMoodId(moodId),
-			BlogService.getInstance().getByMoodId(moodId),
-			MusicPlaylistService.getInstance().getByMoodId(moodId),
-		]);
+		const [[, bookData], [, blogData], [, playlistData]] = await Promise.all([BookService.getInstance().getByMoodId(moodId), BlogService.getInstance().getByMoodId(moodId), MusicPlaylistService.getInstance().getByMoodId(moodId)]);
 		setBooks(bookData || []);
 		setBlogs(blogData || []);
 		setPlaylists(playlistData || []);
@@ -100,11 +91,7 @@ function DieuKyPage() {
 
 	return (
 		<>
-			<PageHeader
-				title='Không Gian Diệu Kỳ'
-				description='Nơi bạn có thể tìm thấy sự bình yên và nguồn cảm hứng qua những trang sách, câu chuyện và giai điệu chữa lành.'
-				disableAppearAnimation
-			/>
+			<PageHeader title='Không Gian Diệu Kỳ' description='Nơi bạn có thể tìm thấy sự bình yên và nguồn cảm hứng qua những trang sách, câu chuyện và giai điệu chữa lành.' disableAppearAnimation />
 
 			<AppSection disableAppearAnimation>
 				<div className='flex flex-wrap justify-center gap-3 md:gap-4 mb-12'>
@@ -112,13 +99,8 @@ function DieuKyPage() {
 						Tất cả
 					</MoodButton>
 					{moods.map((mood) => (
-						<MoodButton
-							key={mood._id}
-							mood={mood}
-							isSelected={selectedMood?._id === mood._id}
-							onClick={handleMoodSelect}
-						>
-							{mood.name}
+						<MoodButton key={mood._id} mood={mood} isSelected={selectedMood?._id === mood._id} onClick={handleMoodSelect}>
+							{mood.mood_label}
 						</MoodButton>
 					))}
 				</div>
@@ -135,12 +117,8 @@ function DieuKyPage() {
 						<AppSection disableAppearAnimation>
 							<div className='text-center py-12'>
 								<div className='text-6xl mb-4'>🌸</div>
-								<p className='text-[--color-text-secondary] text-lg mb-2'>
-									Hiện tại chưa có sự kiện nào phù hợp với tâm trạng này.
-								</p>
-								<p className='text-[--color-text-tertiary] text-sm'>
-									Hãy quay lại sau để khám phá những trải nghiệm mới nhé!
-								</p>
+								<p className='text-[--color-text-secondary] text-lg mb-2'>Hiện tại chưa có sự kiện nào phù hợp với tâm trạng này.</p>
+								<p className='text-[--color-text-tertiary] text-sm'>Hãy quay lại sau để khám phá những trải nghiệm mới nhé!</p>
 							</div>
 						</AppSection>
 					)}
