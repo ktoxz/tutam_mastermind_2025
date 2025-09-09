@@ -18,19 +18,11 @@ function NavbarElementDesktop({ label, path }: Props) {
 	const isActive = pathname === path;
 
 	return (
-		<Link
-			href={path}
-			className={clsx(
-				BASE_CLASSES,
-				isActive
-					? 'bg-[var(--color-primary)] pointer-events-none'
-					: 'hover:after:scale-x-100 active:bg-[var(--color-primary-active)]/50'
-			)}
-		>
+		<Link href={path} className={clsx(BASE_CLASSES, isActive ? 'bg-[var(--color-primary)] pointer-events-none' : 'hover:after:scale-x-100 active:bg-[var(--color-primary-active)]/50')}>
 			<p
 				className={clsx(
 					TEXT_CLASSES,
-					'rounded-full',
+					'rounded-md',
 					isActive
 						? 'text-[color:var(--color-text-inverse)] bg-[var(--color-primary-dark)]'
 						: 'text-[color:var(--color-primary-dark)] hover:bg-[color:var(--color-primary-dark-hover)] hover:text-[color:var(--color-text-inverse)] active:bg-[var(--color-primary-dark-active)]'
@@ -52,9 +44,7 @@ function NavbarElementMobile({ label, path }: Props) {
 			className={clsx(
 				BASE_CLASSES,
 				'after:content-[""] after:block after:h-[2px] after:bg-[var(--color-primary)] after:scale-x-0 after:transition-transform after:duration-300 after:origin-left',
-				isActive
-					? 'bg-[var(--color-primary-dark-hover)] pointer-events-none'
-					: 'hover:after:scale-x-100 active:bg-[var(--color-primary-active)]/50'
+				isActive ? 'bg-[var(--color-primary-dark-hover)] pointer-events-none' : 'hover:after:scale-x-100 active:bg-[var(--color-primary-active)]/50'
 			)}
 		>
 			<p

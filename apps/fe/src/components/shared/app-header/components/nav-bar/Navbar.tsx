@@ -16,17 +16,13 @@ const NavbarItems = () => (
 );
 
 const NavbarDefault = ({ className }: NavbarProps) => (
-	<nav
-		className={`hidden lg:flex lg:flex-row lg:items-center justify-center gap-4 w-max px-4 py-2 bg-(--color-surface) rounded-full ${className}`}
-	>
+	<nav className={`hidden lg:flex lg:flex-row lg:items-center justify-center gap-4 w-max px-4 py-2 bg-(--color-primary)/15 rounded-lg ${className}`}>
 		<NavbarItems />
 	</nav>
 );
 
 const NavbarMobile = ({ className }: NavbarProps) => (
-	<nav
-		className={`flex flex-col lg:hidden w-max bg-(--color-surface)/50 border-t border-t-(--color-primary) ${className}`}
-	>
+	<nav className={`flex flex-col lg:hidden w-max bg-(--color-surface)/50 border-t border-t-(--color-primary) ${className}`}>
 		<NavbarItems />
 	</nav>
 );
