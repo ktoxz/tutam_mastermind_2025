@@ -1,14 +1,11 @@
-// filepath: d:\MyWorkSpace\Projects\Web\tu-tam\apps\fe\src\components\pages\cham\mood-result\MoodResult.tsx
 'use client';
 import React, { useState, useEffect } from 'react';
-import { AlertTriangle, BookOpen, Globe } from 'lucide-react';
-import Link from 'next/link';
-import ReactMarkdown from 'react-markdown';
+import { AlertTriangle, CheckCircle, Heart } from 'lucide-react';
 import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
 import AppSection from '@/components/shared/app-section/AppSection';
-import Carousel from '@/components/shared/casourel/Casourel';
-import BookCard from '@/components/shared/card/book-card/BookCard';
-import BlogCard from '@/components/shared/card/blog-card/BlogCard';
+import BookGalery from '@/components/shared/galery/book-galery/BookGalery';
+import BlogGalery from '@/components/shared/galery/blog-galery/BlogGalery';
+import YTBMusicPlaylistGalery from '@/components/shared/galery/ytb-music-playlist-galery/YTBMusicPlaylistGalery';
 import { Mood } from '@packages/models';
 import { Book } from '@packages/models';
 import { Blog } from '@packages/models';
@@ -16,9 +13,8 @@ import { MusicPlaylist } from '@packages/models';
 import { BookService } from '@/services/api/book/book.service';
 import { BlogService } from '@/services/api/blog/blog.service';
 import { MusicPlaylistService } from '@/services/api/music-playlist/music-playlist.service';
-import BookGalery from '@/components/shared/galery/book-galery/BookGalery';
-import BlogGalery from '@/components/shared/galery/blog-galery/BlogGalery';
-import YTBMusicPlaylistGalery from '@/components/shared/galery/ytb-music-playlist-galery/YTBMusicPlaylistGalery';
+import { MoodService } from '@/services/api/mood/mood.service';
+import MoodResultCard from './components/MoodResultCard';
 
 type Props = {
 	mood: Mood | null;
@@ -38,7 +34,6 @@ function MoodResult({ mood }: Props) {
 			setLoading(true);
 			setError(null);
 			try {
-				// Fetch books related to this mood
 				const bookService = BookService.getInstance();
 				const [bookErr, bookData] = await bookService.getList();
 				if (!bookErr && bookData) {
@@ -46,7 +41,6 @@ function MoodResult({ mood }: Props) {
 					setBooks(relatedBooks);
 				}
 
-				// Fetch blogs related to this mood
 				const blogService = BlogService.getInstance();
 				const [blogErr, blogData] = await blogService.getList();
 				if (!blogErr && blogData) {
@@ -54,7 +48,6 @@ function MoodResult({ mood }: Props) {
 					setBlogs(relatedBlogs);
 				}
 
-				// Fetch playlists related to this mood
 				const playlistService = MusicPlaylistService.getInstance();
 				const [playlistErr, playlistData] = await playlistService.getByMoodId(mood._id);
 				if (!playlistErr && playlistData) {
@@ -71,7 +64,7 @@ function MoodResult({ mood }: Props) {
 	}, [mood]);
 
 	if (loading) {
-		return <InlineLoading className='p-8' title={'Đang tải nội dung...'} />;
+		return <InlineLoading className='p-8' title='Đang tải nội dung...' />;
 	}
 
 	if (error) {
@@ -94,28 +87,80 @@ function MoodResult({ mood }: Props) {
 	return (
 		<>
 			<MoodHeader mood={mood} />
-			{books.length > 0 ? <BookGalery books={books} title='Sách gợi ý' /> : null}
-			{blogs.length > 0 ? <BlogGalery blogs={blogs} title='Blog gợi ý' /> : null}
-			{playlists.length > 0 ? <YTBMusicPlaylistGalery playlists={playlists} title='Playlist gợi ý' /> : null}
+			<MoodDetails mood={mood} />
+			{books.length > 0 && <BookGalery books={books} title='Sách gợi ý' />}
+			{blogs.length > 0 && <BlogGalery blogs={blogs} title='Blog gợi ý' />}
+			{playlists.length > 0 && <YTBMusicPlaylistGalery playlists={playlists} title='Playlist gợi ý' />}
 		</>
 	);
 }
 
 function MoodHeader({ mood }: { mood: Mood }) {
+	const moodService = MoodService.getInstance();
+	const moodMeta = moodService.getMoodMeta(mood);
+	const IconComponent = moodMeta.icon;
+
 	return (
-		<AppSection disableAppearAnimation>
-			<div className='p-6 md:p-8 bg-gradient-to-br from-white to-gray-50 shadow-lg rounded-2xl leading-relaxed border border-gray-100'>
-				<h1 className='text-2xl md:text-4xl font-extrabold mb-6 text-gray-900 tracking-tight'>{mood.name}</h1>
-				<p className='text-lg md:text-xl mb-6 text-gray-800 font-medium leading-snug'>{mood.summary}</p>
-				<div className='text-base md:text-lg mb-6 text-gray-700 leading-relaxed prose prose-gray max-w-none'>
-					<ReactMarkdown>{mood.description}</ReactMarkdown>
+		<MoodResultCard disableAppearAnimation>
+			<div>
+				<div className='flex items-center gap-4 mb-6'>
+					<div className='p-2 md:p-3 rounded-xl shadow-sm' style={{ backgroundColor: `${moodMeta.textColor}20` }}>
+						<IconComponent size={32} style={{ color: moodMeta.textColor }} />
+					</div>
+					<div>
+						<h1 className='text-xl md:text-3xl font-bold tracking-tight' style={{ color: moodMeta.textColor }}>
+							{mood.header}
+						</h1>
+						<p className='text-sm opacity-75' style={{ color: moodMeta.textColor }}>
+							{mood.mood_label}
+						</p>
+					</div>
 				</div>
-				<div className='flex items-start gap-3 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400'>
-					<BookOpen className='text-blue-500 mt-1 flex-shrink-0' size={20} />
-					<p className='text-sm md:text-base italic text-gray-600 font-light'>"{mood.comfortMessage}"</p>
+
+				<div className='mb-6'>
+					<div className='flex items-start gap-3 p-2 md:p-4 bg-white/50 rounded-lg border-l-4' style={{ borderLeftColor: moodMeta.textColor }}>
+						<Heart className='mt-1 flex-shrink-0' size={20} style={{ color: moodMeta.textColor }} />
+						<p className='text-gray-700 leading-relaxed text-sm md:text-base text-justify'>{mood.validation}</p>
+					</div>
+				</div>
+
+				<div className='p-4 bg-white/30 rounded-lg'>
+					<p className='text-gray-800 leading-relaxed text-sm md:text-base text-justify'>{mood.encouragement}</p>
+				</div>
+
+				<div className='p-4 bg-gray-50/60 rounded-lg'>
+					<p className='text-xs md:text-sm italic leading-relaxed font-medium text-black/30'>{mood.quote}</p>
 				</div>
 			</div>
-		</AppSection>
+		</MoodResultCard>
+	);
+}
+
+function MoodDetails({ mood }: { mood: Mood }) {
+	const moodService = MoodService.getInstance();
+	const moodMeta = moodService.getMoodMeta(mood);
+
+	return (
+		<MoodResultCard disableAppearAnimation>
+			<div>
+				<h3 className='text-lg font-semibold mb-4 flex items-center gap-2'>
+					<CheckCircle size={20} style={{ color: moodMeta.textColor }} />
+					Những việc bạn có thể làm
+				</h3>
+				<div className='grid gap-3 md:grid-cols-3'>
+					{mood.actions.map((action, index) => (
+						<div key={index} className='p-4 rounded-lg border border-black/10 transition-all hover:shadow-md cursor-pointer'>
+							<div className='flex items-center gap-2 mb-2'>
+								<div className='w-6 h-6 rounded-full flex items-center justify-center text-white text-sm font-medium' style={{ backgroundColor: moodMeta.textColor }}>
+									{index + 1}
+								</div>
+							</div>
+							<p className='text-gray-700 text-sm leading-relaxed'>{action}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</MoodResultCard>
 	);
 }
 

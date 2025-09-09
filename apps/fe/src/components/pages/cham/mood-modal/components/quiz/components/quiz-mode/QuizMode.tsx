@@ -9,15 +9,7 @@ type Props = {
 	onFinish: (responses: Answer[]) => void;
 };
 
-const Question = React.memo(function Question({
-	question,
-	current,
-	total,
-}: {
-	question: string;
-	current: number;
-	total: number;
-}) {
+const Question = React.memo(function Question({ question, current, total }: { question: string; current: number; total: number }) {
 	return (
 		<div className='mb-4'>
 			<div className='font-semibold mb-2'>
@@ -28,25 +20,13 @@ const Question = React.memo(function Question({
 	);
 });
 
-const AnswerOptions = React.memo(function AnswerOptions({
-	answers,
-	selected,
-	onSelect,
-}: {
-	answers: string[];
-	selected: Answer | null;
-	onSelect: (ans: Answer) => void;
-}) {
+const AnswerOptions = React.memo(function AnswerOptions({ answers, selected, onSelect }: { answers: string[]; selected: Answer | null; onSelect: (ans: Answer) => void }) {
 	return (
 		<div className='flex flex-col gap-2 mb-6'>
 			{answers.map((ans, idx) => (
 				<button
 					key={idx}
-					className={`py-2 px-4 rounded border text-left ${
-						selected === idx
-							? 'bg-(--color-primary) text-white border-(--color-primary-dark)'
-							: 'bg-white hover:bg-gray-50 border-gray-300 cursor-pointer'
-					}`}
+					className={`py-2 px-4 rounded border text-left ${selected === idx ? 'bg-(--color-primary) text-white border-(--color-primary-dark)' : 'bg-white hover:bg-gray-50 border-gray-300 cursor-pointer'}`}
 					onClick={() => onSelect(idx as Answer)}
 				>
 					{ans}
@@ -73,28 +53,15 @@ const NavigationButtons = React.memo(function NavigationButtons({
 }) {
 	return (
 		<div className='flex justify-between items-center'>
-			<ButtonCTA
-				variant='secondary'
-				status={current === 0 ? 'disabled' : 'normal'}
-				onClick={onPrev}
-				className='text-[var(--color-text-secondary)]'
-			>
+			<ButtonCTA variant='secondary' status={current === 0 ? 'disabled' : 'normal'} onClick={onPrev} className='text-[var(--color-text-secondary)]'>
 				Quay lại
 			</ButtonCTA>
 			{current < total - 1 ? (
-				<ButtonCTA
-					variant='primary'
-					status={responses[current] === null ? 'disabled' : 'normal'}
-					onClick={onNext}
-				>
+				<ButtonCTA variant='primary' status={responses[current] === null ? 'disabled' : 'normal'} onClick={onNext}>
 					Tiếp theo
 				</ButtonCTA>
 			) : (
-				<ButtonCTA
-					variant='primary'
-					status={responses.some((r) => r === null) ? 'disabled' : 'normal'}
-					onClick={onSubmit}
-				>
+				<ButtonCTA variant='primary' status={responses.some((r) => r === null) ? 'disabled' : 'normal'} onClick={onSubmit}>
 					Gửi câu trả lời
 				</ButtonCTA>
 			)}
@@ -121,17 +88,10 @@ export default function QuizMode({ questions, answers, onFinish }: Props) {
 	};
 
 	return (
-		<div className='w-xs md:w-md bg-white'>
+		<div className='w-full bg-white'>
 			<Question question={questions[current]} current={current} total={questions.length} />
 			<AnswerOptions answers={answers} selected={responses[current]} onSelect={handleSelect} />
-			<NavigationButtons
-				current={current}
-				total={questions.length}
-				responses={responses}
-				onPrev={handlePrev}
-				onNext={handleNext}
-				onSubmit={handleSubmit}
-			/>
+			<NavigationButtons current={current} total={questions.length} responses={responses} onPrev={handlePrev} onNext={handleNext} onSubmit={handleSubmit} />
 		</div>
 	);
 }

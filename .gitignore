@@ -56,3 +56,6 @@ next-env.d.ts
 *.njsproj
 *.sln
 *.sw?
+__pycache__/
+*.pyc
+*.pyo

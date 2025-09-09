@@ -1,28 +1,26 @@
 type Mood = {
 	_id: string;
-	name: string;
-	summary: string;
-	description: string;
-	slug: string;
-	textColor?: string;
-	bgColor?: string;
-	comfortMessage: string;
-	createdAt?: Date;
-	updatedAt?: Date;
+	mood_label: string;
+	header: string;
+	validation: string;
+	encouragement: string;
+	actions: string[];
+	quote: string;
+	moodId?: string;
+	moodLabel?: string;
 };
 
 const mapMood = (data: any): Mood => {
 	return {
 		_id: data._id,
-		name: data.name,
-		summary: data.summary,
-		description: data.description,
-		slug: data.slug,
-		textColor: data.textColor,
-		bgColor: data.bgColor,
-		comfortMessage: data.comfortMessage,
-		createdAt: data.createdAt,
-		updatedAt: data.updatedAt,
+		mood_label: data.mood_label,
+		header: data.header,
+		validation: data.validation,
+		encouragement: data.encouragement,
+		actions: data.actions,
+		quote: data.quote,
+		moodId: data.moodId,
+		moodLabel: data.moodLabel,
 	};
 };
 

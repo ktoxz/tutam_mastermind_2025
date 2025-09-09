@@ -15,8 +15,6 @@ const SYS =
 
 const TEMPLATE_DESC = `
   Trả về JSON với các khóa sau (tôn trọng giới hạn độ dài):
-  - moodId: số
-  - moodLabel: chuỗi
   - header: tiêu đề nhận định cảm xúc (<= 20 ký tự)
   - validation: 1 câu thấu cảm (<= 150 ký tự)
   - encouragement: 1–2 câu khích lệ (<= 250 ký tự)
@@ -40,6 +38,17 @@ const getMoodResponse = async (moodId) => {
       temperature: 0.6,
       maxOutputTokens: 320,
       responseMimeType: 'application/json',
+      responseJsonSchema: {
+        type: 'object',
+        properties: {
+          header: { type: 'string' },
+          validation: { type: 'string' },
+          encouragement: { type: 'string' },
+          actions: { type: 'array', items: { type: 'string' }, minItems: 3, maxItems: 3 },
+          quote: { type: 'string' }
+        },
+        required: ['header', 'validation', 'encouragement', 'actions', 'quote']
+      },
       thinkingConfig: {
         thinkingBudget: 0
       }
@@ -47,8 +56,8 @@ const getMoodResponse = async (moodId) => {
   })
 
   const data = JSON.parse(res.text)
-  data.moodId = moodId
-  data.moodLabel = mood
+  data._id = moodId
+  data.mood_label = mood
   return data
 }
 
