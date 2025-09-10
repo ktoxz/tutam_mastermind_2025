@@ -38,7 +38,7 @@ export const generateResetToken = (token) => {
 }
 
 export const getResetPasswordLink = (rawToken) => {
-  return `${ENV.CLIENT_URL}/auth/reset/${rawToken}`
+  return `${ENV.CLIENT_URL}/reset-password/${rawToken}`
 }
 
 export const getExpireTime = (minutes) => {

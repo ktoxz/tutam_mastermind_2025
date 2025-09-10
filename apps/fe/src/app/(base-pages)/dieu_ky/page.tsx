@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState, useCallback, CSSProperties } from 'react';
-import { Mood, Book, Blog, MusicPlaylist } from '@packages/models';
+import { Mood, Book, Blog, MusicPlaylist, MoodMeta } from '@packages/models';
 import { MoodService } from '@/services/api/mood/mood.service';
 import { BookService } from '@/services/api/book/book.service';
 import { BlogService } from '@/services/api/blog/blog.service';
@@ -13,81 +13,142 @@ import YTBMusicPlaylistGalery from '@/components/shared/galery/ytb-music-playlis
 import PageHeader from '@/components/shared/page-header/PageHeader';
 
 interface MoodButtonProps {
-	mood?: Mood | null;
+	moodId?: string | null;
 	isSelected: boolean;
-	onClick: (mood: Mood | null) => void;
+	onClick: (moodId: string | null) => void;
 	children: React.ReactNode;
 }
 
-const MoodButton: React.FC<MoodButtonProps> = ({ mood, isSelected, onClick, children }) => {
-	const handleClick = () => onClick(mood || null);
+const MoodButton: React.FC<MoodButtonProps> = ({ moodId, isSelected, onClick, children }) => {
+	const moodService = MoodService.getInstance();
 
-	const isMood = !!mood;
-	const classes = {
-		base: 'bg-white px-4 py-2 rounded-full font-medium transition duration-250',
-		hover: !isSelected ? 'cursor-pointer hover:bg-gray-700 hover:text-white' : '',
-		active: !isSelected ? 'active:bg-gray-800 active:scale-95' : '',
+	const handleClick = useCallback(() => {
+		onClick(moodId || null);
+	}, [moodId, onClick]);
+
+	const getButtonStyles = (): CSSProperties => {
+		if (!isSelected) return {};
+
+		if (!moodId) {
+			return {
+				backgroundColor: 'rgb(31, 41, 55)',
+				color: 'white',
+			};
+		}
+
+		// Find mood by moodId and get its meta
+		const mockMood = { _id: moodId } as Mood; // Temporary mock for getMoodMeta
+		const moodMeta = moodService.getMoodMeta(mockMood);
+
+		return {
+			backgroundColor: moodMeta.bgColor,
+			color: moodMeta.textColor,
+		};
 	};
-	const dynamicStyles: CSSProperties = isMood
-		? {
-				backgroundColor: isSelected ? mood!.bgColor : undefined,
-				color: isSelected ? mood!.textColor : undefined,
-		  }
-		: {
-				backgroundColor: isSelected ? 'rgb(31, 41, 55)' : undefined,
-				color: isSelected ? 'white' : undefined,
-		  };
+
+	const baseClasses = 'bg-white px-4 py-2 rounded-full font-medium transition duration-250';
+	const interactiveClasses = !isSelected ? 'cursor-pointer hover:bg-gray-700 hover:text-white active:bg-gray-800 active:scale-95' : '';
 
 	return (
-		<button onClick={handleClick} className={`${classes.base} ${classes.hover} ${classes.active}`} style={dynamicStyles} aria-pressed={isSelected}>
+		<button onClick={handleClick} className={`${baseClasses} ${interactiveClasses}`} style={getButtonStyles()} aria-pressed={isSelected}>
 			{children}
 		</button>
 	);
 };
 
+const EmptyState: React.FC = () => (
+	<AppSection disableAppearAnimation>
+		<div className='text-center py-12'>
+			<div className='text-6xl mb-4'>🌸</div>
+			<p className='text-[--color-text-secondary] text-lg mb-2'>Hiện tại chưa có sự kiện nào phù hợp với tâm trạng này.</p>
+			<p className='text-[--color-text-tertiary] text-sm'>Hãy quay lại sau để khám phá những trải nghiệm mới nhé!</p>
+		</div>
+	</AppSection>
+);
+
+const ContentGalleries: React.FC<{
+	books: Book[];
+	blogs: Blog[];
+	playlists: MusicPlaylist[];
+	loading: boolean;
+}> = ({ books, blogs, playlists, loading }) => {
+	const hasContent = books.length > 0 || blogs.length > 0 || playlists.length > 0;
+
+	if (loading) {
+		return <InlineLoading title='Đang tải nội dung...' />;
+	}
+
+	if (!hasContent) {
+		return <EmptyState />;
+	}
+
+	return (
+		<>
+			{books.length > 0 && <BookGalery books={books} loading={loading} />}
+			{blogs.length > 0 && <BlogGalery blogs={blogs} loading={loading} />}
+			{playlists.length > 0 && <YTBMusicPlaylistGalery playlists={playlists} loading={loading} />}
+		</>
+	);
+};
+
 function DieuKyPage() {
-	const [moods, setMoods] = useState([]);
-	const [selectedMood, setSelectedMood] = useState<Mood | null>(null);
+	const [moodMetaList, setMoodMetaList] = useState<MoodMeta[]>([]);
+	const [selectedMoodId, setSelectedMoodId] = useState<string | null>(null);
 	const [books, setBooks] = useState<Book[]>([]);
 	const [blogs, setBlogs] = useState<Blog[]>([]);
 	const [playlists, setPlaylists] = useState<MusicPlaylist[]>([]);
 	const [loading, setLoading] = useState(true);
 
-	const fetchAllData = useCallback(async () => {
-		setLoading(true);
-		const [[, moodData], [, bookData], [, blogData], [, playlistData]] = await Promise.all([
-			MoodService.getInstance().getMoodMetaList(),
-			BookService.getInstance().getList(),
-			BlogService.getInstance().getList(),
-			MusicPlaylistService.getInstance().getList(),
-		]);
-		setMoods(moodData || []);
-		setBooks(bookData || []);
-		setBlogs(blogData || []);
-		setPlaylists(playlistData || []);
-		setLoading(false);
-	}, []);
+	const moodService = MoodService.getInstance();
+	const bookService = BookService.getInstance();
+	const blogService = BlogService.getInstance();
+	const musicPlaylistService = MusicPlaylistService.getInstance();
 
-	const fetchDataByMood = useCallback(async (moodId: string) => {
+	const fetchAllContent = useCallback(async () => {
 		setLoading(true);
-		const [[, bookData], [, blogData], [, playlistData]] = await Promise.all([BookService.getInstance().getByMoodId(moodId), BlogService.getInstance().getByMoodId(moodId), MusicPlaylistService.getInstance().getByMoodId(moodId)]);
-		setBooks(bookData || []);
-		setBlogs(blogData || []);
-		setPlaylists(playlistData || []);
-		setLoading(false);
+		try {
+			const [[, moodMetaData], [, bookData], [, blogData], [, playlistData]] = await Promise.all([moodService.getMoodMetaList(), bookService.getList(), blogService.getList(), musicPlaylistService.getList()]);
+
+			setMoodMetaList(moodMetaData || []);
+			setBooks(bookData || []);
+			setBlogs(blogData || []);
+			setPlaylists(playlistData || []);
+		} catch (error) {
+			console.error('Error fetching all content:', error);
+		} finally {
+			setLoading(false);
+		}
+	}, [moodService, bookService, blogService, musicPlaylistService]);
+
+	const fetchContentByMoodId = useCallback(
+		async (moodId: string) => {
+			setLoading(true);
+			try {
+				const [[, bookData], [, blogData], [, playlistData]] = await Promise.all([bookService.getByMoodId(moodId), blogService.getByMoodId(moodId), musicPlaylistService.getByMoodId(moodId)]);
+
+				setBooks(bookData || []);
+				setBlogs(blogData || []);
+				setPlaylists(playlistData || []);
+			} catch (error) {
+				console.error('Error fetching content by mood:', error);
+			} finally {
+				setLoading(false);
+			}
+		},
+		[bookService, blogService, musicPlaylistService]
+	);
+
+	const handleMoodSelect = useCallback((moodId: string | null) => {
+		setSelectedMoodId(moodId);
 	}, []);
 
 	useEffect(() => {
-		if (selectedMood) {
-			fetchDataByMood(selectedMood._id);
+		if (selectedMoodId) {
+			fetchContentByMoodId(selectedMoodId);
 		} else {
-			fetchAllData();
+			fetchAllContent();
 		}
-	}, [selectedMood, fetchAllData, fetchDataByMood]);
-
-	const handleMoodSelect = (mood: Mood | null) => {
-		setSelectedMood(mood);
-	};
+	}, [selectedMoodId, fetchAllContent, fetchContentByMoodId]);
 
 	return (
 		<>
@@ -95,35 +156,18 @@ function DieuKyPage() {
 
 			<AppSection disableAppearAnimation>
 				<div className='flex flex-wrap justify-center gap-3 md:gap-4 mb-12'>
-					<MoodButton mood={null} isSelected={!selectedMood} onClick={handleMoodSelect}>
+					<MoodButton moodId={null} isSelected={!selectedMoodId} onClick={handleMoodSelect}>
 						Tất cả
 					</MoodButton>
-					{moods.map((mood) => (
-						<MoodButton key={mood._id} mood={mood} isSelected={selectedMood?._id === mood._id} onClick={handleMoodSelect}>
-							{mood.mood_label}
+					{moodMetaList.map((moodMeta) => (
+						<MoodButton key={moodMeta._id} moodId={moodMeta._id} isSelected={selectedMoodId === moodMeta._id} onClick={handleMoodSelect}>
+							{moodMeta.mood_label}
 						</MoodButton>
 					))}
 				</div>
 			</AppSection>
 
-			{loading ? (
-				<InlineLoading title='Đang tải nội dung...' />
-			) : (
-				<>
-					{books.length > 0 && <BookGalery books={books} loading={loading} />}
-					{blogs.length > 0 && <BlogGalery blogs={blogs} loading={loading} />}
-					{playlists.length > 0 && <YTBMusicPlaylistGalery playlists={playlists} loading={loading} />}
-					{!loading && books.length === 0 && blogs.length === 0 && playlists.length === 0 && (
-						<AppSection disableAppearAnimation>
-							<div className='text-center py-12'>
-								<div className='text-6xl mb-4'>🌸</div>
-								<p className='text-[--color-text-secondary] text-lg mb-2'>Hiện tại chưa có sự kiện nào phù hợp với tâm trạng này.</p>
-								<p className='text-[--color-text-tertiary] text-sm'>Hãy quay lại sau để khám phá những trải nghiệm mới nhé!</p>
-							</div>
-						</AppSection>
-					)}
-				</>
-			)}
+			<ContentGalleries books={books} blogs={blogs} playlists={playlists} loading={loading} />
 		</>
 	);
 }

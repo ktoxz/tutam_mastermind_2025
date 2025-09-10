@@ -47,7 +47,6 @@ function ForgotPasswordPage() {
 				timer: 3000,
 				didClose: () => {
 					LocalStorageService.setItem(LOCAL_STORAGE_KEYS.EMAIL_TO_RESET_PASSWORD, values.email);
-					router.push(AUTH_ROUTES.reset_password.href);
 				},
 			});
 		} catch (err: any) {
@@ -72,10 +71,7 @@ function ForgotPasswordPage() {
 			}}
 			additionalContent={
 				<div className='flex flex-row justify-end'>
-					<Link
-						href={AUTH_ROUTES.login.href}
-						className='text-sm text-[var(--color-text-link)] hover:text-[var(--color-text-link-hover)] hover:underline transition-colors'
-					>
+					<Link href={AUTH_ROUTES.login.href} className='text-sm text-[var(--color-text-link)] hover:text-[var(--color-text-link-hover)] hover:underline transition-colors'>
 						Quay về đăng nhập
 					</Link>
 				</div>

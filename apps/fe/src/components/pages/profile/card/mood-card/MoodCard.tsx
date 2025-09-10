@@ -6,13 +6,14 @@ import Link from 'next/link';
 import { BASIC_ROUTES } from '@/consts/routes';
 import DataCard from '@/components/pages/profile/shared/data-card/DataCard';
 import { MoodService } from '@/services/api/mood/mood.service';
+import { parseLucideIcon } from '@/utils';
 
 export default function MoodCard({ mood, onDelete }: { mood: Mood | null; onDelete: () => void }) {
 	const moodMeta = useMemo(() => MoodService.getInstance().getMoodMeta(mood!), [mood?._id]);
 	return (
 		<DataCard
 			title='Tâm trạng hôm nay'
-			icon={moodMeta.icon}
+			icon={parseLucideIcon(moodMeta.icon)}
 			bgColor={moodMeta.bgColor}
 			textColor={moodMeta.textColor}
 			className='h-full'

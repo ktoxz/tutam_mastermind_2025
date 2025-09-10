@@ -1,15 +1,8 @@
 import { Answer, TErrorFirst } from '@/types';
 import { httpClient } from '@/utils/http-client.util';
-import { Mood } from '@packages/models';
-import { LucideIcon, Smile, Frown, AlertTriangle, Leaf, CloudRain, CloudSun, Clover, Drama } from 'lucide-react';
-
-interface MoodMeta {
-	_id: string;
-	mood_label: string;
-	bgColor: string;
-	textColor: string;
-	icon: LucideIcon;
-}
+import { Mood, MoodMeta } from '@packages/models';
+import { LucideIcon } from 'lucide-react';
+import * as Icons from 'lucide-react';
 
 const MOOD_META: MoodMeta[] = [
 	{
@@ -17,28 +10,28 @@ const MOOD_META: MoodMeta[] = [
 		mood_label: 'Hạnh phúc',
 		bgColor: '#E6F7F1',
 		textColor: '#2E7D32',
-		icon: CloudSun,
+		icon: 'CloudSun',
 	},
 	{
 		_id: 'mood-2',
 		mood_label: 'Buồn bã',
 		bgColor: '#f0f4ff',
 		textColor: '#5B7DB1',
-		icon: CloudRain,
+		icon: 'CloudRain',
 	},
 	{
 		_id: 'mood-3',
 		mood_label: 'Lo lắng',
 		bgColor: '#E0E7FF',
 		textColor: '#4338CA',
-		icon: Clover,
+		icon: 'Clover',
 	},
 	{
 		_id: 'mood-4',
 		mood_label: 'Bình yên',
 		bgColor: '#F9F6F1',
 		textColor: '#6B4F3F',
-		icon: Leaf,
+		icon: 'Leaf',
 	},
 ];
 
@@ -47,7 +40,7 @@ const DEFAULT_MOOD_META: MoodMeta = {
 	mood_label: 'Tâm trạng khác',
 	bgColor: '#F3F4F6',
 	textColor: '#374151',
-	icon: Drama,
+	icon: 'Drama',
 };
 
 class MoodService {

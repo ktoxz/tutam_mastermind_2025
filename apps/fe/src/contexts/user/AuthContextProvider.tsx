@@ -11,10 +11,7 @@ interface AuthContextProviderProps {
 	children: React.ReactNode;
 }
 
-export type AuthContextData = Omit<
-	User,
-	'password' | 'otp' | 'otpExpires' | 'resetPasswordToken' | 'resetPasswordExpires'
->;
+export type AuthContextData = Omit<User, 'password' | 'otp' | 'otpExpires' | 'resetPasswordToken' | 'resetPasswordExpires'>;
 
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
 	const [user, setUser] = useState<AuthContextData | null>(null);

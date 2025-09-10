@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { AlertTriangle, CheckCircle, Heart } from 'lucide-react';
 import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
-import AppSection from '@/components/shared/app-section/AppSection';
 import BookGalery from '@/components/shared/galery/book-galery/BookGalery';
 import BlogGalery from '@/components/shared/galery/blog-galery/BlogGalery';
 import YTBMusicPlaylistGalery from '@/components/shared/galery/ytb-music-playlist-galery/YTBMusicPlaylistGalery';
@@ -15,6 +14,7 @@ import { BlogService } from '@/services/api/blog/blog.service';
 import { MusicPlaylistService } from '@/services/api/music-playlist/music-playlist.service';
 import { MoodService } from '@/services/api/mood/mood.service';
 import MoodResultCard from './components/MoodResultCard';
+import { parseLucideIcon } from '@/utils';
 
 type Props = {
 	mood: Mood | null;
@@ -98,14 +98,14 @@ function MoodResult({ mood }: Props) {
 function MoodHeader({ mood }: { mood: Mood }) {
 	const moodService = MoodService.getInstance();
 	const moodMeta = moodService.getMoodMeta(mood);
-	const IconComponent = moodMeta.icon;
+	const IconComponent = parseLucideIcon(moodMeta.icon);
 
 	return (
 		<MoodResultCard disableAppearAnimation>
 			<div>
 				<div className='flex items-center gap-4 mb-6'>
 					<div className='p-2 md:p-3 rounded-xl shadow-sm' style={{ backgroundColor: `${moodMeta.textColor}20` }}>
-						<IconComponent size={32} style={{ color: moodMeta.textColor }} />
+						{IconComponent && <IconComponent size={32} style={{ color: moodMeta.textColor }} />}
 					</div>
 					<div>
 						<h1 className='text-xl md:text-3xl font-bold tracking-tight' style={{ color: moodMeta.textColor }}>

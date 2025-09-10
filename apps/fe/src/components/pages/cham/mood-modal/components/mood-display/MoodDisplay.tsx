@@ -3,6 +3,7 @@ import Image from 'next/image';
 import EnvelopSrc from '@/assets/envelop.png';
 import { Mood } from '@packages/models';
 import { MoodService } from '@/services/api/mood/mood.service';
+import { parseLucideIcon } from '@/utils';
 
 type Props = {
 	mood: Mood;
@@ -12,6 +13,7 @@ type Props = {
 function MoodDisplay({ mood, onFinish }: Props) {
 	const moodService = MoodService.getInstance();
 	const moodMeta = moodService.getMoodMeta(mood);
+	const IconComponent = parseLucideIcon(moodMeta.icon);
 
 	const getGreetingMessage = (moodLabel: string) => {
 		switch (moodLabel) {
@@ -32,7 +34,7 @@ function MoodDisplay({ mood, onFinish }: Props) {
 		<div className='w-full min-w-0 sm:min-w-[320px] md:min-w-[600px] flex flex-col items-center gap-8 bg-white px-4 sm:px-8 py-6 sm:py-10 rounded-xl shadow-lg z-5 animate-fade-in-bottom'>
 			<div className='flex flex-col items-center gap-4 text-center animate-fade-in-top'>
 				<div className='flex items-center justify-center w-24 h-24 rounded-full mb-2' style={{ backgroundColor: moodMeta.bgColor || '#f5f5f5' }}>
-					<moodMeta.icon size={56} color={moodMeta.textColor || '#222'} />
+					{IconComponent && <IconComponent size={56} color={moodMeta.textColor || '#222'} />}
 				</div>
 				<h2 className='text-2xl sm:text-3xl font-bold text-[var(--color-primary)]'>{getGreetingMessage(mood.mood_label)}</h2>
 				<p className='text-[var(--color-text-secondary)] text-base sm:text-lg max-w-lg'>{mood.validation}</p>

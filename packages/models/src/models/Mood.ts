@@ -9,6 +9,14 @@ type Mood = {
 	moodId?: string;
 };
 
+type MoodMeta = {
+	_id: string;
+	mood_label: string;
+	bgColor: string;
+	textColor: string;
+	icon: string;
+};
+
 const mapMood = (data: any): Mood => {
 	return {
 		_id: data._id,
@@ -22,5 +30,15 @@ const mapMood = (data: any): Mood => {
 	};
 };
 
-export type { Mood };
-export { mapMood };
+const mapMoodMeta = (data: any): MoodMeta => {
+	return {
+		_id: data._id,
+		mood_label: data.mood_label,
+		bgColor: data.bgColor,
+		textColor: data.textColor,
+		icon: data.icon,
+	};
+};
+
+export type { Mood, MoodMeta };
+export { mapMood, mapMoodMeta };

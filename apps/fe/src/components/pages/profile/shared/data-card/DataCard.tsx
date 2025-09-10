@@ -1,12 +1,11 @@
 'use client';
+import { LucideIcon } from 'lucide-react';
 import React from 'react';
-
-type IconType = React.ElementType<any>;
 
 interface DataCardProps {
 	title?: React.ReactNode;
 	subtitle?: React.ReactNode;
-	icon?: IconType;
+	icon?: LucideIcon | null;
 	// Tailwind classes for icon background and icon color, e.g. 'bg-blue-500' and 'text-white'
 	bgColor?: string;
 	textColor?: string;
