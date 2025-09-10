@@ -13,8 +13,8 @@ export default function MoodCard({ mood, onDelete }: { mood: Mood | null; onDele
 		<DataCard
 			title='Tâm trạng hôm nay'
 			icon={moodMeta.icon}
-			iconBg={moodMeta.bgColor}
-			iconColor={moodMeta.textColor}
+			bgColor={moodMeta.bgColor}
+			textColor={moodMeta.textColor}
 			className='h-full'
 			headerRight={
 				mood ? (
@@ -26,8 +26,10 @@ export default function MoodCard({ mood, onDelete }: { mood: Mood | null; onDele
 		>
 			{mood ? (
 				<div className='relative flex flex-col justify-center items-end gap-2'>
-					<div className='bg-blue-50 p-4 rounded-xl border border-blue-200'>
-						<h4 className='text-base font-bold text-blue-700 mb-2 '>{mood.mood_label.charAt(0).toUpperCase() + mood.mood_label.slice(1)}</h4>
+					<div className='bg-blue-50 p-4 rounded-xl border border-blue-200' style={{ backgroundColor: moodMeta.bgColor, borderColor: moodMeta.textColor + '33' }}>
+						<h4 className='text-base font-bold text-blue-700 mb-2 ' style={{ color: moodMeta.textColor }}>
+							{mood.mood_label.charAt(0).toUpperCase() + mood.mood_label.slice(1)}
+						</h4>
 						<p className='text-sm text-gray-600 mb-2 leading-relaxed'>{mood.encouragement}</p>
 					</div>
 				</div>
