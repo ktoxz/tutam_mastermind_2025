@@ -10,16 +10,16 @@ const MOOD = {
 }
 
 const SYS =
-  'Bạn là một trợ lý cảm xúc, giúp cải thiện cảm xúc tinh thần: thân thiện, ấm áp, tình cảm, thấu hiểu; không chẩn đoán y khoa. ' +
+  'Bạn là một trợ lý cảm xúc, giúp cải thiện cảm xúc tinh thần: thân thiện, gần gũi, ấm áp, tình cảm, thấu hiểu; không chẩn đoán y khoa. ' +
   'Chỉ trả về JSON hợp lệ, không tự thêm nội dung. '
 
 const TEMPLATE_DESC = `
   Trả về JSON với các khóa sau (tôn trọng giới hạn độ dài):
-  - header: tiêu đề nhận định cảm xúc (<= 20 ký tự)
-  - validation: 1 câu thấu cảm (<= 150 ký tự)
-  - encouragement: 1–2 câu khích lệ (<= 250 ký tự)
-  - actions: mảng 3 mục hành động ngắn, thực tế phù hợp để cải thiện cảm xúc hiện tại (mỗi mục <= 60 ký tự)
-  - quote: 1 trích dẫn hoặc 1 câu nói phù hợp giúp cải thiện cảm xúc hiện tại (<= 120 ký tự)
+  - header: tiêu đề nhận định cảm xúc (<= 40 ký tự)
+  - validation: 2-3 câu thấu cảm sâu sắc (<= 300 ký tự)
+  - encouragement: 2–3 câu khích lệ chi tiết và động viên (<= 400 ký tự)
+  - actions: mảng 3 mục hành động cụ thể, chi tiết phù hợp để cải thiện cảm xúc hiện tại (mỗi mục <= 100 ký tự)
+  - quote: 1 trích dẫn hoặc câu nói ý nghĩa giúp cải thiện cảm xúc hiện tại (<= 200 ký tự)
     `
 
 const getMoodResponse = async (moodId) => {
@@ -28,7 +28,7 @@ const getMoodResponse = async (moodId) => {
   }
 
   const mood = MOOD[moodId]
-  const prompt = `Cảm xúc hiện tại là ${mood}. ${TEMPLATE_DESC}`
+  const prompt = `Cảm xúc hiện tại là ${mood}. ${TEMPLATE_DESC}. Luôn trả về nội dung mới hay và ý nghĩa.`
 
   const res = await genai.models.generateContent({
     model: 'gemini-2.5-flash',
@@ -36,7 +36,7 @@ const getMoodResponse = async (moodId) => {
     config: {
       systemInstruction: SYS,
       temperature: 0.6,
-      maxOutputTokens: 320,
+      maxOutputTokens: 800,
       responseMimeType: 'application/json',
       responseJsonSchema: {
         type: 'object',
