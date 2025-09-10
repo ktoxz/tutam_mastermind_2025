@@ -1,7 +1,7 @@
 import { Answer, TErrorFirst } from '@/types';
 import { httpClient } from '@/utils/http-client.util';
 import { Mood } from '@packages/models';
-import { LucideIcon, Smile, Frown, AlertTriangle, Leaf } from 'lucide-react';
+import { LucideIcon, Smile, Frown, AlertTriangle, Leaf, CloudRain, CloudSun, Clover, Drama } from 'lucide-react';
 
 interface MoodMeta {
 	_id: string;
@@ -15,32 +15,40 @@ const MOOD_META: MoodMeta[] = [
 	{
 		_id: 'mood-1',
 		mood_label: 'Hạnh phúc',
-		bgColor: '#ecfdf5',
-		textColor: 'var(--color-success)',
-		icon: Smile,
+		bgColor: '#E6F7F1',
+		textColor: '#2E7D32',
+		icon: CloudSun,
 	},
 	{
 		_id: 'mood-2',
 		mood_label: 'Buồn bã',
-		bgColor: '#f0f4ff', // màu nền xanh nhạt dịu hơn
-		textColor: '#5B7DB1', // màu chữ xanh lam trầm
-		icon: Frown,
+		bgColor: '#f0f4ff',
+		textColor: '#5B7DB1',
+		icon: CloudRain,
 	},
 	{
 		_id: 'mood-3',
 		mood_label: 'Lo lắng',
-		bgColor: '#fffbeb',
-		textColor: 'var(--color-warning)',
-		icon: AlertTriangle,
+		bgColor: '#E0E7FF',
+		textColor: '#4338CA',
+		icon: Clover,
 	},
 	{
 		_id: 'mood-4',
 		mood_label: 'Bình yên',
-		bgColor: 'var(--color-surface)',
-		textColor: 'var(--color-primary)',
+		bgColor: '#F9F6F1',
+		textColor: '#6B4F3F',
 		icon: Leaf,
 	},
 ];
+
+const DEFAULT_MOOD_META: MoodMeta = {
+	_id: 'mood-default',
+	mood_label: 'Tâm trạng khác',
+	bgColor: '#F3F4F6',
+	textColor: '#374151',
+	icon: Drama,
+};
 
 class MoodService {
 	private static instance: MoodService = MoodService.getInstance();
@@ -59,25 +67,9 @@ class MoodService {
 	}
 
 	public getMoodMeta(mood: Mood | null | undefined): MoodMeta {
-		if (!mood || !mood._id) {
-			return {
-				_id: '',
-				mood_label: '',
-				bgColor: '#ffffff',
-				textColor: '#00C9A7',
-				icon: Smile,
-			};
-		}
+		if (!mood || !mood._id) return DEFAULT_MOOD_META;
 		const meta = MOOD_META.find((item) => item._id === mood._id);
-		return (
-			meta || {
-				_id: mood._id,
-				mood_label: mood.mood_label || '',
-				bgColor: '#ffffff',
-				textColor: '#00C9A7',
-				icon: Smile,
-			}
-		);
+		return meta || DEFAULT_MOOD_META;
 	}
 
 	public async postMoodEntry(answers: Answer[]): Promise<TErrorFirst<Error, Mood | undefined>> {

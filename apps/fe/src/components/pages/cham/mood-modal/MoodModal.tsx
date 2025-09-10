@@ -32,7 +32,7 @@ function MoodModal({ onFinish }: Props) {
 		<AppSection className='flex flex-row items-center justify-center min-h-screen relative overflow-hidden' disableAppearAnimation>
 			<div className='relative w-full md:min-w-md max-w-md h-full flex flex-row items-center justify-center'>
 				{!mood ? (
-					<div className='w-max min-w-0 flex flex-col items-center gap-8 px-6 py-8 rounded-xl bg-white shadow-lg z-10 animate-fade-in-bottom'>
+					<div className='w-full min-w-0 flex flex-col items-center gap-8 px-6 py-8 rounded-xl bg-white shadow-lg z-10 animate-fade-in-bottom'>
 						<header className='flex flex-col items-center gap-4 text-center animate-fade-in-top'>
 							<Avatar size={80} />
 							<h1 className='text-xl font-bold text-[var(--color-primary)]'>Ngày hôm nay của bạn thế nào?</h1>
