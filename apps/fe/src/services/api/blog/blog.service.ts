@@ -1,5 +1,5 @@
 import { TErrorFirst } from '@/types';
-import { Blog } from '@packages/models';
+import { Blog } from '@models';
 import BLOGS from './data';
 
 class BlogService {
@@ -45,10 +45,7 @@ class BlogService {
 		}
 	}
 
-	public async getByMoodId(
-		mood_id: string,
-		params?: { page?: number; limit?: number }
-	): Promise<TErrorFirst<null, Blog[]>> {
+	public async getByMoodId(mood_id: string, params?: { page?: number; limit?: number }): Promise<TErrorFirst<null, Blog[]>> {
 		try {
 			const filtered = BLOGS.filter((p) => p.mood_id === mood_id);
 			const page = params?.page ?? 1;

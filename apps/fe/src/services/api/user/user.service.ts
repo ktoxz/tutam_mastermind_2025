@@ -2,7 +2,7 @@ import { httpClient } from '@/utils/http-client.util';
 import { ChangeNameDTO, ChangePasswordDTO } from './schemas';
 import { TErrorFirst } from '@/types';
 import { AxiosError } from 'axios';
-import { User } from '@packages/models';
+import { User } from '@models';
 
 class UserService {
 	private static instance: UserService = UserService.getInstance();
@@ -17,7 +17,7 @@ class UserService {
 		return UserService.instance;
 	}
 
-	public async getMe(): Promise<TErrorFirst<AxiosError, Omit<User, 'password'>>> {
+	public async getMe(): Promise<TErrorFirst<AxiosError, User>> {
 		try {
 			const response = await httpClient.get(`${this.baseUrl}/me`);
 			return [null, response.data];

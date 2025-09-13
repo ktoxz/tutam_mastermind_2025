@@ -1,8 +1,6 @@
 import { Answer, TErrorFirst } from '@/types';
 import { httpClient } from '@/utils/http-client.util';
-import { Mood, MoodMeta } from '@packages/models';
-import { LucideIcon } from 'lucide-react';
-import * as Icons from 'lucide-react';
+import { Mood, MoodMeta } from '@models';
 
 const MOOD_META: MoodMeta[] = [
 	{
