@@ -1,7 +1,7 @@
 'use client';
 import { useMemo, useState, useEffect, useCallback } from 'react';
 import AuthContext from './AuthContext';
-import { User } from '@packages/models';
+import { User } from '@models';
 import { UserService } from '@/services/api/user/user.service';
 import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/local-storage.service';
 import { AuthService } from '@/services/api/auth/auth.service';
@@ -11,10 +11,8 @@ interface AuthContextProviderProps {
 	children: React.ReactNode;
 }
 
-export type AuthContextData = Omit<User, 'password' | 'otp' | 'otpExpires' | 'resetPasswordToken' | 'resetPasswordExpires'>;
-
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
-	const [user, setUser] = useState<AuthContextData | null>(null);
+	const [user, setUser] = useState<User | null>(null);
 	const [loading, setLoading] = useState(true);
 
 	const logout = useCallback(async () => {

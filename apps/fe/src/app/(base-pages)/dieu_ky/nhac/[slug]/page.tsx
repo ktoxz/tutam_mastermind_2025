@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { MusicPlaylistService } from '@/services/api/music-playlist/music-playlist.service';
-import { MusicPlaylist } from '@packages/models';
+import { MusicPlaylist } from '@models';
 import AppSection from '@/components/shared/app-section/AppSection';
 import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
 import YTBPlaylistEmbedded from '@/components/shared/ytb-playlist-embedded/YTBPlaylistEmbedded';

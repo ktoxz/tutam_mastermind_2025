@@ -1,6 +1,6 @@
 import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
 import { MoodService } from '@/services/api/mood/mood.service';
-import { Mood } from '@packages/models';
+import { Mood } from '@models';
 import React, { useState } from 'react';
 import QuizMode from './components/quiz-mode/QuizMode';
 import Swal from 'sweetalert2';
@@ -45,10 +45,7 @@ export default function Quiz({ onFinish }: Props) {
 				return;
 			}
 
-			LocalStorageService.setItem(
-				LOCAL_STORAGE_KEYS.MOOD_ENTRY,
-				JSON.stringify({ mood, exp: generateExpAtTime(23, 59, 59) })
-			);
+			LocalStorageService.setItem(LOCAL_STORAGE_KEYS.MOOD_ENTRY, JSON.stringify({ mood, exp: generateExpAtTime(23, 59, 59) }));
 			onFinish();
 		} catch {
 			Swal.fire({

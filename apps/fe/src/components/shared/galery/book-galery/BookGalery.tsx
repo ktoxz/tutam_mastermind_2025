@@ -3,7 +3,7 @@ import React from 'react';
 import { BASIC_ROUTES } from '@/consts/routes';
 import Carousel from '@/components/shared/casourel/Casourel';
 import { useRefSize } from '@/hooks/ui/useRefSize';
-import { Book } from '@packages/models';
+import { Book } from '@models';
 import BookCard from '@/components/shared/card/book-card/BookCard';
 
 interface BookGaleryProps {
@@ -17,16 +17,7 @@ const BookGalery: React.FC<BookGaleryProps> = ({ books, loading = false, title =
 	const itemWidth = size?.width && size.width > 0 ? size.width / 4 : 200;
 
 	return (
-		<Carousel
-			itemWidth={itemWidth}
-			autoScrollInterval={3000}
-			title={title}
-			showTitle={true}
-			gap='gap-2 md:gap-4'
-			pauseOnHover={true}
-			enableManualScroll={true}
-			isLoading={loading}
-		>
+		<Carousel itemWidth={itemWidth} autoScrollInterval={3000} title={title} showTitle={true} gap='gap-2 md:gap-4' pauseOnHover={true} enableManualScroll={true} isLoading={loading}>
 			{books.map((book, index) => (
 				<BookCard key={book._id} book={book} ref={index === 0 ? bookRef : undefined} />
 			))}

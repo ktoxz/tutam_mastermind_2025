@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { BASIC_ROUTES } from '@/consts/routes';
-import { Book } from '@packages/models';
+import { Book } from '@models';
 
 interface BookCardProps {
 	book: Book;
@@ -22,11 +22,7 @@ const BookCard: React.FC<BookCardProps> = ({ book, ref }) => {
 			ref={ref}
 		>
 			<div className='relative overflow-hidden aspect-[2/3] group'>
-				<img
-					src={book.image}
-					alt={book.title}
-					className='relative w-full h-full object-cover hover:scale-105 transition-transform duration-300'
-				/>
+				<img src={book.image} alt={book.title} className='relative w-full h-full object-cover hover:scale-105 transition-transform duration-300' />
 				<div className='absolute inset-0 bg-black/50 text-white p-1 md:p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end'>
 					<p className='text-xs md:text-sm font-semibold line-clamp-2'>{book.title}</p>
 					<p className='text-[10px] md:text-xs'>{book.author}</p>

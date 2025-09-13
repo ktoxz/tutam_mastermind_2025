@@ -1,0 +1,198 @@
+/* filepath: d:/MyWorkSpace/Projects/Web/tu-tam/apps/fe/src/app/styles/md.css
+    Styles dành riêng cho nội dung markdown trong class `.markdown`
+    - Dùng đơn vị em để phụ thuộc kích cỡ chữ của thẻ cha
+    - Sử dụng biến màu từ vars.css / globals.css
+*/
+
+.markdown {
+	color: var(--color-text-body, #212121);
+	background: transparent;
+	font-size: 1em; /* base = kế thừa từ cha */
+	line-height: 1.6; /* đề xuất đọc tốt */
+	font-family: var(--font-sans, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial);
+	max-width: 100%;
+	word-wrap: break-word;
+}
+
+/* Headings (scale bằng em so với font của .markdown) */
+.markdown h1 {
+	font-size: 1.8em;
+	margin: 0 0 0.6em;
+	font-weight: 700;
+	color: var(--color-text-body);
+}
+.markdown h2 {
+	font-size: 1.4em;
+	margin: 0.8em 0 0.5em;
+	font-weight: 700;
+}
+.markdown h3 {
+	font-size: 1.2em;
+	margin: 0.7em 0 0.45em;
+	font-weight: 600;
+}
+.markdown h4 {
+	font-size: 1.05em;
+	margin: 0.6em 0 0.4em;
+	font-weight: 600;
+}
+.markdown h5,
+.markdown h6 {
+	font-size: 1em;
+	margin: 0.5em 0 0.35em;
+	font-weight: 600;
+}
+
+/* Paragraphs and text */
+.markdown p {
+	margin: 0 0 1em;
+	font-size: 1em;
+}
+.markdown small {
+	font-size: 0.9em;
+	color: var(--color-text-tertiary);
+}
+
+/* Links */
+.markdown a {
+	color: var(--color-primary);
+	text-decoration: underline;
+	text-underline-offset: 0.12em;
+	transition: color 0.15s ease;
+}
+.markdown a:hover {
+	color: var(--color-primary-hover);
+}
+.markdown a:active {
+	color: var(--color-primary-active);
+}
+
+/* Images */
+.markdown img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0.75em 0;
+	border-radius: 0.25em;
+	box-shadow: var(--shadow-button, 0 0.4em 0.8em rgba(0, 0, 0, 0.08));
+	object-fit: cover;
+}
+
+/* Figure / caption */
+.markdown figure {
+	margin: 0.6em 0;
+	text-align: center;
+}
+.markdown figcaption {
+	font-size: 0.9em;
+	color: var(--color-text-tertiary);
+	margin-top: 0.35em;
+}
+
+/* Lists */
+.markdown ul,
+.markdown ol {
+	margin: 0 0 1em 1.2em;
+	padding: 0;
+	font-size: 1em;
+}
+
+.markdown ul {
+	list-style-type: disc;
+}
+
+.markdown ol {
+	list-style-type: decimal;
+}
+
+.markdown li {
+	margin: 0.35em 0;
+}
+
+/* Blockquote */
+.markdown blockquote {
+	margin: 0.6em 0;
+	padding: 0.6em 1em;
+	border-left: 0.25em solid var(--color-primary-light, rgba(4, 98, 52, 0.12));
+	background: var(--color-background);
+	color: var(--color-text-secondary, #4d4d4d);
+	border-radius: 0.25em;
+	font-style: italic;
+}
+
+/* Inline code and code blocks */
+.markdown code {
+	background: var(--color-surface, #f5f5f5);
+	padding: 0.12em 0.35em;
+	border-radius: 0.25em;
+	font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace);
+	font-size: 0.95em;
+	color: var(--color-text-body);
+}
+.markdown pre {
+	font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace);
+	font-size: 0.9em;
+	overflow: auto;
+	padding: 1em;
+	margin: 0 0 1em;
+	background: var(--color-surface, #f7f7f7);
+	border-radius: 0.4em;
+	border: 0.06em solid rgba(0, 0, 0, 0.04);
+}
+
+/* Tables */
+.markdown table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0.6em 0 1em;
+	font-size: 0.95em;
+}
+.markdown th,
+.markdown td {
+	border: 0.06em solid rgba(0, 0, 0, 0.06);
+	padding: 0.6em 0.8em;
+	text-align: left;
+}
+.markdown thead th {
+	background: rgba(0, 0, 0, 0.02);
+	font-weight: 600;
+}
+
+/* Horizontal rule */
+.markdown hr {
+	height: 0.08em;
+	background: rgba(0, 0, 0, 0.08);
+	border: none;
+	margin: 1em 0;
+}
+
+/* Accessibility / focus styles for interactive elements inside markdown */
+.markdown a:focus,
+.markdown button:focus {
+	outline: 0.12em solid color-mix(in srgb, var(--color-primary) 40%, transparent);
+	outline-offset: 0.12em;
+	border-radius: 0.18em;
+}
+
+/* Utility: responsive embedded media */
+.markdown .embed-responsive {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
+	overflow: hidden;
+	margin: 0.8em 0;
+}
+.markdown .embed-responsive iframe,
+.markdown .embed-responsive video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+/* Fine tuning: keep all spacing in em so it scales with parent's font */
+.markdown * {
+	box-sizing: border-box;
+}

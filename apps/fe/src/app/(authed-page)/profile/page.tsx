@@ -3,7 +3,7 @@ import AppSection from '@/components/shared/app-section/AppSection';
 import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '@/contexts/user/useAuthContext';
 import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/local-storage.service';
-import { Mood } from '@packages/models';
+import { Mood } from '@models';
 import Swal from 'sweetalert2';
 import InfoCard from '@/components/pages/profile/card/info-card/InfoCard';
 import MoodCard from '@/components/pages/profile/card/mood-card/MoodCard';

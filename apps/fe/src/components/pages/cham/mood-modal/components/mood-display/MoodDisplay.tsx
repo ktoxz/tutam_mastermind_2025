@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import EnvelopSrc from '@/assets/envelop.png';
-import { Mood } from '@packages/models';
+import { Mood } from '@models';
 import { MoodService } from '@/services/api/mood/mood.service';
 import { parseLucideIcon } from '@/utils';
 

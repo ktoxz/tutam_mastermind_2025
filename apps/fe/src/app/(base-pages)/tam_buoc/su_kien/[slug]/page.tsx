@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { EventService } from '@/services/api/event/event.service';
-import { Event } from '@packages/models';
+import { Event } from '@models';
 import AppSection from '@/components/shared/app-section/AppSection';
 import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
 import { useParams } from 'next/navigation';
@@ -48,7 +48,7 @@ function Page() {
 					<p className='text-md md:text-lg mb-4'>
 						- {event.location} - {new Date(event.time).toLocaleDateString()}
 					</p>
-					<div className='prose prose-sm md:prose-lg max-w-none'>
+					<div className='markdown'>
 						<ReactMarkdown>{event.content}</ReactMarkdown>
 					</div>
 					{event.gallery && event.gallery.length > 0 && (
@@ -56,12 +56,7 @@ function Page() {
 							<h2 className='text-xl font-semibold mb-4'>Gallery</h2>
 							<div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
 								{event.gallery.map((img, index) => (
-									<img
-										key={index}
-										src={img}
-										alt={`Gallery ${index + 1}`}
-										className='w-full h-32 object-cover rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300'
-									/>
+									<img key={index} src={img} alt={`Gallery ${index + 1}`} className='w-full h-32 object-cover rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300' />
 								))}
 							</div>
 						</div>

@@ -1,5 +1,5 @@
 'use client';
-import { MusicPlaylist } from '@packages/models';
+import { MusicPlaylist } from '@models';
 import React from 'react';
 
 interface YTBPlaylistEmbeddedProps {
@@ -12,15 +12,7 @@ interface YTBPlaylistEmbeddedProps {
 	rel?: boolean;
 }
 
-const YTBPlaylistEmbedded: React.FC<YTBPlaylistEmbeddedProps> = ({
-	playlist,
-	width,
-	autoplay = false,
-	controls = true,
-	loop = false,
-	modestBranding = false,
-	rel = true,
-}) => {
+const YTBPlaylistEmbedded: React.FC<YTBPlaylistEmbeddedProps> = ({ playlist, width, autoplay = false, controls = true, loop = false, modestBranding = false, rel = true }) => {
 	const isPlaylist = !!playlist?.ytb_playlist_id;
 	const param: URLSearchParams = new URLSearchParams();
 	if (isPlaylist) param.append('list', playlist.ytb_playlist_id);
@@ -35,11 +27,7 @@ const YTBPlaylistEmbedded: React.FC<YTBPlaylistEmbeddedProps> = ({
 
 	return (
 		<div style={{ position: 'relative', width, paddingBottom: '56.25%' }}>
-			<iframe
-				style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderRadius: '8px' }}
-				src={url}
-				allowFullScreen
-			/>
+			<iframe style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderRadius: '8px' }} src={url} allowFullScreen />
 		</div>
 	);
 };

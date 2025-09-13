@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MusicPlaylist } from '@packages/models';
+import { MusicPlaylist } from '@models';
 import { BASIC_ROUTES } from '@/consts/routes';
 
 interface YTBMusicPlaylistCardProps {
@@ -11,15 +11,9 @@ interface YTBMusicPlaylistCardProps {
 }
 
 const YTBMusicPlaylistCard: React.FC<YTBMusicPlaylistCardProps> = ({ playlist, ref }) => {
-	const url =
-		BASIC_ROUTES.dieu_ky.children?.music.full(playlist.slug) ||
-		`https://www.youtube.com/watch?v=${playlist.ytb_video_id}&list=${playlist.ytb_playlist_id}`;
+	const url = BASIC_ROUTES.dieu_ky.children?.music.full(playlist.slug) || `https://www.youtube.com/watch?v=${playlist.ytb_video_id}&list=${playlist.ytb_playlist_id}`;
 	return (
-		<Link
-			href={url}
-			className='bg-white rounded-md overflow-hidden shadow-md transition-all duration-300 min-w-[180px] md:min-w-[260px] max-w-[260px] flex flex-col cursor-pointer border border-transparent hover:shadow-lg'
-			ref={ref}
-		>
+		<Link href={url} className='bg-white rounded-md overflow-hidden shadow-md transition-all duration-300 min-w-[180px] md:min-w-[260px] max-w-[260px] flex flex-col cursor-pointer border border-transparent hover:shadow-lg' ref={ref}>
 			<div className='relative aspect-[16/9] w-full group'>
 				<Image
 					src={`https://img.youtube.com/vi/${playlist.ytb_video_id}/0.jpg`}

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { BlogService } from '@/services/api/blog/blog.service';
-import { Blog } from '@packages/models';
+import { Blog } from '@models';
 import AppSection from '@/components/shared/app-section/AppSection';
 import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
 import { useParams } from 'next/navigation';
@@ -46,7 +46,7 @@ function Page() {
 				<div className='w-full md:flex-7 bg-white rounded-lg p-6'>
 					<h1 className='text-2xl md:text-3xl font-bold mb-2'>{blog.title}</h1>
 					<p className='text-md md:text-lg mb-4'>- By {blog.author} -</p>
-					<div className=''>
+					<div className='markdown'>
 						<ReactMarkdown>{blog.content}</ReactMarkdown>
 					</div>
 				</div>

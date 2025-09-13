@@ -11,9 +11,7 @@
 		"dev:be": "pnpm --filter be dev",
 		"prod:fe": "pnpm --filter fe build && pnpm --filter fe start",
 		"prod:be": "pnpm --filter be start",
-		"build:models": "pnpm --filter @packages/models build",
-		"clean:models": "pnpm --filter @packages/models clean",
-		"bootstrap": "pnpm install -r && pnpm build:models"
+		"bootstrap": "pnpm install -r"
 	},
 	"author": "",
 	"license": "ISC",

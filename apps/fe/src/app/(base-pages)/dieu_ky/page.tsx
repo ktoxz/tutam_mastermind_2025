@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState, useCallback, CSSProperties } from 'react';
-import { Mood, Book, Blog, MusicPlaylist, MoodMeta } from '@packages/models';
+import { Mood, Book, Blog, MusicPlaylist, MoodMeta } from '@models';
 import { MoodService } from '@/services/api/mood/mood.service';
 import { BookService } from '@/services/api/book/book.service';
 import { BlogService } from '@/services/api/blog/blog.service';

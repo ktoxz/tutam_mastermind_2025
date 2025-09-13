@@ -3,7 +3,7 @@ import MoodModal from '@/components/pages/cham/mood-modal/MoodModal';
 import MoodResult from '@/components/pages/cham/mood-result/MoodResult';
 import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
 import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/local-storage.service';
-import { Mood } from '@packages/models';
+import { Mood } from '@models';
 import { Timestamp } from 'next/dist/server/lib/cache-handlers/types';
 import { useLayoutEffect, useState } from 'react';
 
@@ -40,17 +40,7 @@ function page({}: Props) {
 		}
 	}, []);
 
-	return (
-		<>
-			{isLoading ? (
-				<InlineLoading title='Đang tải...' />
-			) : mood ? (
-				<MoodResult mood={mood} />
-			) : (
-				<MoodModal onFinish={handleFinish} />
-			)}
-		</>
-	);
+	return <>{isLoading ? <InlineLoading title='Đang tải...' /> : mood ? <MoodResult mood={mood} /> : <MoodModal onFinish={handleFinish} />}</>;
 }
 
 export default page;

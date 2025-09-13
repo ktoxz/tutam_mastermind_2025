@@ -1,8 +1,8 @@
+import { User } from '@/models';
 import { createContext } from 'react';
-import type { AuthContextData } from './AuthContextProvider';
 
 export interface AuthContextType {
-	user: AuthContextData | null;
+	user: User | null;
 	loading: boolean;
 	getMe: () => Promise<void>;
 	logout: () => Promise<void>;

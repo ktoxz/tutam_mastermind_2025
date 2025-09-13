@@ -4,7 +4,7 @@ import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/loca
 import AppSection from '@/components/shared/app-section/AppSection';
 import Avatar from '@/components/shared/avatar/Avatar';
 import MoodDisplay from './components/mood-display/MoodDisplay';
-import { Mood } from '@packages/models';
+import { Mood } from '@models';
 import Quiz from './components/quiz/Quiz';
 import { Timestamp } from 'next/dist/server/lib/cache-handlers/types';
 

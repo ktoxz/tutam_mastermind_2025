@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { BASIC_ROUTES } from '@/consts/routes';
-import { Event } from '@packages/models';
+import { Event } from '@models';
 
 interface EventCardProps {
 	event: Event;
@@ -20,11 +20,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, ref }) => {
 			ref={ref}
 		>
 			<div className='relative aspect-square w-full group overflow-hidden bg-gray-400 flex'>
-				<img
-					src={event.mainImage}
-					alt={event.title}
-					className='relative object-cover w-full h-full transition-transform duration-300'
-				/>
+				<img src={event.mainImage} alt={event.title} className='relative object-cover w-full h-full transition-transform duration-300' />
 				<div className='absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
 			</div>
 			<div className='flex flex-col justify-between p-3 flex-1'>

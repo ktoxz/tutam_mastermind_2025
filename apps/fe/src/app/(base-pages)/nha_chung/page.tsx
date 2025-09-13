@@ -8,7 +8,7 @@ import YTBMusicPlaylistGalery from '@/components/shared/galery/ytb-music-playlis
 import { BlogService } from '@/services/api/blog/blog.service';
 import { BookService } from '@/services/api/book/book.service';
 import { MusicPlaylistService } from '@/services/api/music-playlist/music-playlist.service';
-import { Blog, Book, MusicPlaylist } from '@packages/models';
+import { Blog, Book, MusicPlaylist } from '@models';
 
 type Props = {};
 

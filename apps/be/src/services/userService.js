@@ -5,7 +5,9 @@ import { comparePassword, hashPassword } from '../utils/helpers.js'
 import { uploadService } from '../services/uploadService.js'
 
 const getMe = async (userId) => {
-  const user = await User.findById(userId).select('-password')
+  const user = await User.findById(userId).select(
+    '-password -otp -otpExpires -resetPasswordToken -resetPasswordExpires'
+  )
 
   if (!user) {
     throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy người dùng')

@@ -1,6 +1,6 @@
 'use client';
 import React, { useMemo } from 'react';
-import { Mood } from '@packages/models';
+import { Mood } from '@models';
 import { PlusCircle, Smile, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { BASIC_ROUTES } from '@/consts/routes';

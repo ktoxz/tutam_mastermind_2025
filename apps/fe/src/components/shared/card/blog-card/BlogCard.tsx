@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { BASIC_ROUTES } from '@/consts/routes';
-import { Blog } from '@packages/models';
+import { Blog } from '@models';
 
 interface BlogCardProps {
 	blog: Blog;
@@ -19,11 +19,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, ref }) => {
 			ref={ref}
 		>
 			<div className='relative aspect-square w-full group overflow-hidden bg-gray-400 flex'>
-				<img
-					src={blog.image}
-					alt={blog.title}
-					className='relative object-cover w-full h-full transition-transform duration-300'
-				/>
+				<img src={blog.image} alt={blog.title} className='relative object-cover w-full h-full transition-transform duration-300' />
 				<div className='absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
 			</div>
 			<div className='flex flex-col justify-between p-2 flex-1'>
