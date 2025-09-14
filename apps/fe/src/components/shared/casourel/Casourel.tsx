@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState, ReactNode, useCallback } from 'react';
 import AppSection from '@/components/shared/app-section/AppSection';
 import InlineLoading from '../inline-loading/InlineLoading';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface CarouselProps {
 	children: ReactNode[];
@@ -66,12 +67,31 @@ function Carousel({
 
 	const scrollToIndex = useCallback(
 		(index: number) => {
-			galleryRef.current?.scrollTo({
-				left: index * itemWidth,
+			if (!galleryRef.current || itemWidth <= 0) return;
+
+			const validIndex = Math.max(0, Math.min(index, children.length - 1));
+
+			galleryRef.current.scrollTo({
+				left: validIndex * itemWidth,
 				behavior: 'smooth',
 			});
 		},
 		[itemWidth]
+	);
+
+	const handleButtonClick = useCallback(
+		(direction: 'left' | 'right') => {
+			let newIndex;
+			const scrollAmount = Math.max(1, Math.floor((children.length - 1) / 3));
+			if (direction === 'left') {
+				newIndex = Math.max(0, currentIndex - scrollAmount);
+			} else {
+				newIndex = Math.min(children.length - 1, currentIndex + scrollAmount);
+			}
+			setCurrentIndex(newIndex);
+			scrollToIndex(newIndex);
+		},
+		[children.length, currentIndex, scrollToIndex]
 	);
 
 	const startInterval = useCallback(() => {
@@ -93,14 +113,7 @@ function Carousel({
 				return newIndex;
 			});
 		}, autoScrollInterval);
-	}, [
-		autoScrollInterval,
-		pauseOnHover,
-		numOfItemOnScrolling,
-		children.length,
-		clearAutoScrollInterval,
-		scrollToIndex,
-	]);
+	}, [autoScrollInterval, pauseOnHover, numOfItemOnScrolling, children.length, clearAutoScrollInterval, scrollToIndex]);
 
 	const handleScroll = useCallback(() => {
 		if (!enableManualScroll) return;
@@ -176,13 +189,37 @@ function Carousel({
 						<InlineLoading className='p-8' />
 					</div>
 				) : (
-					<div
-						className={`flex ${gap} overflow-x-auto pb-4 ${containerClassName}`}
-						ref={galleryRef}
-						onMouseEnter={handleMouseEnter}
-						onMouseLeave={handleMouseLeave}
-					>
-						{children}
+					<div className='relative'>
+						<div className={`relative flex ${gap} overflow-x-auto pb-4 ${containerClassName}`} ref={galleryRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+							{children}
+						</div>
+						<div className='absolute inset-0 hidden md:flex justify-between items-center pointer-events-none z-50 px-4'>
+							<button
+								className='cursor-pointer pointer-events-auto aspect-square p-2 rounded-full border border-gray-200 bg-gray-100/30 backdrop-blur-xs transition-colors hover:bg-gray-300/40'
+								type='button'
+								onClick={() => handleButtonClick('left')}
+							>
+								<ArrowLeft
+									size={24}
+									style={{
+										color: 'white',
+									}}
+								/>
+							</button>
+
+							<button
+								className='cursor-pointer pointer-events-auto aspect-square p-2 rounded-full border border-gray-200 bg-gray-100/30 backdrop-blur-xs transition-colors hover:bg-gray-300/40'
+								type='button'
+								onClick={() => handleButtonClick('right')}
+							>
+								<ArrowRight
+									size={24}
+									style={{
+										color: 'white',
+									}}
+								/>
+							</button>
+						</div>
 					</div>
 				)}
 			</div>
