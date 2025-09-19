@@ -88,6 +88,7 @@ function Carousel({
 			} else {
 				newIndex = Math.min(children.length - 1, currentIndex + scrollAmount);
 			}
+
 			setCurrentIndex(newIndex);
 			scrollToIndex(newIndex);
 		},

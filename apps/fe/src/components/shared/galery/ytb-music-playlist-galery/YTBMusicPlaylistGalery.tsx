@@ -13,7 +13,7 @@ interface YTBMusicPlaylistGaleryProps {
 
 const YTBMusicPlaylistGalery: React.FC<YTBMusicPlaylistGaleryProps> = ({ playlists, loading = false, title = 'YouTube Music Playlists' }) => {
 	const [playlistRef, size] = useRefSize();
-	const itemWidth = size?.width && size.width > 0 ? size.width / 3.5 : 260;
+	const itemWidth = size?.width && size.width > 0 ? size.width : 260;
 
 	return (
 		<Carousel itemWidth={itemWidth} autoScrollInterval={3000} title={title} showTitle={true} gap='gap-2 md:gap-4' pauseOnHover={true} enableManualScroll={true} isLoading={loading}>

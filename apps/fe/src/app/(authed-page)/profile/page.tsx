@@ -16,7 +16,6 @@ export default function ProfilePage({}: Props) {
 
 	useEffect(() => {
 		const storedMoodEntry = LocalStorageService.getItem(LOCAL_STORAGE_KEYS.MOOD_ENTRY);
-		console.log('Stored mood entry:', storedMoodEntry);
 		if (storedMoodEntry) {
 			try {
 				const { mood: storedMood, exp } = JSON.parse(storedMoodEntry);

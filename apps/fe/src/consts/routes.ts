@@ -59,6 +59,10 @@ export const BASIC_ROUTES: Record<string, Route> = {
 			},
 		},
 	},
+	quy_tu: {
+		label: 'quy tụ',
+		href: '/quy_tu',
+	},
 	profile: {
 		label: 'profile',
 		href: '/profile',
@@ -100,9 +104,4 @@ export const AUTH_ROUTES = {
 	},
 };
 
-export const NAVBAR_ROUTES: Route[] = [
-	BASIC_ROUTES.home,
-	BASIC_ROUTES.cham,
-	BASIC_ROUTES.dieu_ky,
-	BASIC_ROUTES.tam_buoc,
-];
+export const NAVBAR_ROUTES: Route[] = [BASIC_ROUTES.home, BASIC_ROUTES.cham, BASIC_ROUTES.dieu_ky, BASIC_ROUTES.tam_buoc, BASIC_ROUTES.quy_tu];
