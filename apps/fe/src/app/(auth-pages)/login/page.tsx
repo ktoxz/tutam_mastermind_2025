@@ -10,9 +10,11 @@ import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
 import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/local-storage.service';
 import { AUTH_ROUTES, BASIC_ROUTES } from '@/consts/routes';
+import { useAuthContext } from '@/contexts/user/useAuthContext';
 
 function LoginPage() {
 	const router = useRouter();
+	const { getMe } = useAuthContext();
 
 	const fields = [
 		{
@@ -53,6 +55,7 @@ function LoginPage() {
 
 			LocalStorageService.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, data?.accessToken || '');
 
+			await getMe();
 			Swal.fire({
 				icon: 'success',
 				title: 'Đăng nhập thành công',
