@@ -21,12 +21,14 @@ class NewMoodService {
 		return EMOTION_DATA.find((emotion) => emotion._id === _id);
 	}
 
-	public async saveSelectedEmotions(tags: EmotionTag[], diary: string): Promise<TErrorFirst<Error, boolean>> {
+	public async postEmotions(tags: EmotionTag[], diary: string): Promise<TErrorFirst<Error, boolean>> {
 		try {
-			// TODO: Implement API call to save selected emotions
-			console.log('Saving emotions:', tags);
-			console.log('Diary entry:', diary);
-			// Backend will receive full emotion tag objects with all details
+			console.log(
+				JSON.stringify({
+					tags,
+					diary,
+				}),
+			);
 			return [null, true];
 		} catch (error: any) {
 			return [error, false];

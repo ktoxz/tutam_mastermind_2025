@@ -43,7 +43,7 @@ function NewChamPage() {
 
 		setSaveStatus('loading');
 
-		const [error, success] = await moodService.saveSelectedEmotions(selectedTags, diary);
+		const [error, success] = await moodService.postEmotions(selectedTags, diary);
 
 		setSaveStatus('normal');
 
