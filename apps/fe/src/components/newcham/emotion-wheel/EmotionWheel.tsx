@@ -2,9 +2,9 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { Smile, Users, Frown, Zap, CloudRain, XOctagon, Flame, Eye } from 'lucide-react';
 import { NewMoodService } from '@/services/api/newmood/mood.service';
-import { EmotionType, EmotionTag } from '@/services/api/newmood/data';
 import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
 import ErrorSection from '@/components/shared/error-section/ErrorSection';
+import { EmotionTag, EmotionType } from '@/models';
 
 interface EmotionWheelProps {
 	selectedEmotion: string | null;

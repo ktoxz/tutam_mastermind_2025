@@ -34,7 +34,7 @@ export default function Quiz({ onFinish }: Props) {
 		setIsLoading(true);
 
 		try {
-			const [error, mood] = await MoodService.getInstance().postMoodEntry(responses);
+			const [error, mood] = ['', null] as [string | null, Mood | null];
 
 			if (error || !mood) {
 				Swal.fire({

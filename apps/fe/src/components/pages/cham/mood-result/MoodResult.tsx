@@ -148,7 +148,7 @@ function MoodDetails({ mood }: { mood: Mood }) {
 					Những việc bạn có thể làm
 				</h3>
 				<div className='grid gap-3 md:grid-cols-3'>
-					{mood.actions.map((action, index) => (
+					{/* {mood.actions.map((action, index) => (
 						<div key={index} className='p-4 rounded-lg border border-black/10 transition-all hover:shadow-md cursor-pointer'>
 							<div className='flex items-center gap-2 mb-2'>
 								<div className='w-6 h-6 rounded-full flex items-center justify-center text-white text-sm font-medium' style={{ backgroundColor: moodMeta.textColor }}>
@@ -157,7 +157,7 @@ function MoodDetails({ mood }: { mood: Mood }) {
 							</div>
 							<p className='text-gray-700 text-sm leading-relaxed'>{action}</p>
 						</div>
-					))}
+					))} */}
 				</div>
 			</div>
 		</MoodResultCard>
