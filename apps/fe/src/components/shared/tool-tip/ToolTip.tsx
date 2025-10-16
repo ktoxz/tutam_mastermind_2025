@@ -72,12 +72,7 @@ function ToolTip({ title, description, className, children, delay = 500 }: Props
 	};
 
 	return (
-		<div
-			ref={wrapperRef}
-			className={`relative group ${className ?? ''}`}
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
-		>
+		<div ref={wrapperRef} className={`relative group ${className ?? ''}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 			<div
 				ref={tooltipRef}
 				className={`

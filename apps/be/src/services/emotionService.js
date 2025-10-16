@@ -24,9 +24,17 @@ const predictMood = async (userId, tags, diary) => {
   return moodResponse
 }
 
+const predictMoodNonUser = async (tags, diary) => {
+  const moodResponse = await genaiService.getMoodResponse(tags, diary)
+  return moodResponse
+}
+
 const getEmotionHistory = async (userId) => {
   const history = await Emotion.aggregate([
     { $match: { userId: new mongoose.Types.ObjectId(userId) } },
+    {
+      $sort: { createdAt: -1 }
+    },
     {
       $group: {
         _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
@@ -46,6 +54,7 @@ const deleteEmotion = async (userId, emotionId) => {
 
 export const emotionService = {
   predictMood,
+  predictMoodNonUser,
   getEmotionHistory,
   deleteEmotion
 }

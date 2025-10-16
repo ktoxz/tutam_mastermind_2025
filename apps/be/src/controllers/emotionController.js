@@ -3,9 +3,12 @@ import { emotionService } from '../services/emotionService.js'
 
 const predictMood = async (req, res, next) => {
   try {
-    const { userId } = req.user
+    const userId = req.user ? req.user.userId : null
     const { tags, diary } = req.body
-    const moodResponse = await emotionService.predictMood(userId, tags, diary)
+
+    const moodResponse = userId
+      ? await emotionService.predictMood(userId, tags, diary)
+      : await emotionService.predictMoodNonUser(tags, diary)
 
     res.status(StatusCodes.OK).json(moodResponse)
   } catch (error) {

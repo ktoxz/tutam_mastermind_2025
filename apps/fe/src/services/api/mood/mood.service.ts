@@ -1,44 +1,23 @@
 import { Answer, TErrorFirst } from '@/types';
-import { httpClient } from '@/utils/http-client.util';
 import { Mood, MoodMeta } from '@models';
 
 const MOOD_META: MoodMeta[] = [
-	{
-		_id: 'mood-1',
-		mood_label: 'Hạnh phúc',
-		bgColor: '#E6F7F1',
-		textColor: '#2E7D32',
-		icon: 'CloudSun',
-	},
-	{
-		_id: 'mood-2',
-		mood_label: 'Buồn bã',
-		bgColor: '#f0f4ff',
-		textColor: '#5B7DB1',
-		icon: 'CloudRain',
-	},
-	{
-		_id: 'mood-3',
-		mood_label: 'Lo lắng',
-		bgColor: '#E0E7FF',
-		textColor: '#4338CA',
-		icon: 'Clover',
-	},
-	{
-		_id: 'mood-4',
-		mood_label: 'Bình yên',
-		bgColor: '#F9F6F1',
-		textColor: '#6B4F3F',
-		icon: 'Leaf',
-	},
+	{ _id: 'canh_giac', mood_label: 'cảnh giác', icon: 'Eye', bgColor: '#FFE5B4', textColor: '#7C3A02' }, // pastel cam, text nâu đậm
+	{ _id: 'ngat_ngay', mood_label: 'ngất ngây', icon: 'Smile', bgColor: '#FFF9DB', textColor: '#8A6D1A' }, // pastel vàng, text nâu vàng
+	{ _id: 'nguong_mo', mood_label: 'ngưỡng mộ', icon: 'Users', bgColor: '#F9FBE7', textColor: '#3A5A40' }, // pastel xanh nhạt vàng, text xanh lá đậm
+	{ _id: 'khiep_dam', mood_label: 'khiếp đảm', icon: 'Frown', bgColor: '#D8F3DC', textColor: '#184D47' }, // pastel xanh rêu, text xanh đậm
+	{ _id: 'kinh_ngac', mood_label: 'kinh ngạc', icon: 'Zap', bgColor: '#E3F2FD', textColor: '#1E3A8A' }, // pastel xanh trời, text xanh navy
+	{ _id: 'dau_kho', mood_label: 'đau khổ', icon: 'CloudRain', bgColor: '#BDE0FE', textColor: '#184D47' }, // pastel xanh đại dương, text xanh đậm
+	{ _id: 'ghe_tom', mood_label: 'ghê tởm', icon: 'XOctagon', bgColor: '#E0BBE4', textColor: '#5B2A86' }, // pastel tím, text tím đậm
+	{ _id: 'thinh_no', mood_label: 'thịnh nộ', icon: 'Flame', bgColor: '#FFD6D6', textColor: '#B91C1C' }, // pastel đỏ, text đỏ đậm
 ];
 
 const DEFAULT_MOOD_META: MoodMeta = {
 	_id: 'mood-default',
 	mood_label: 'Tâm trạng khác',
+	icon: 'Drama',
 	bgColor: '#F3F4F6',
 	textColor: '#374151',
-	icon: 'Drama',
 };
 
 class MoodService {
@@ -63,25 +42,13 @@ class MoodService {
 		return meta || DEFAULT_MOOD_META;
 	}
 
-	public async postMoodEntry(answers: Answer[]): Promise<TErrorFirst<Error, Mood | undefined>> {
-		try {
-			const listQuestions = ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10'];
-			const features = answers.reduce<Record<string, Answer>>((acc, answer, idx) => {
-				acc[listQuestions[idx]] = answer;
-				return acc;
-			}, {});
+	public getMoodByLabel(label: string | null | undefined): MoodMeta | undefined {
+		if (!label) return undefined;
+		return MOOD_META.find((item) => item.mood_label.toLowerCase().trim() === label.toLowerCase().trim());
+	}
 
-			const response = await httpClient.post('/predict', { features });
-			const mood: Mood = response.data;
-
-			if (!mood || !mood._id) {
-				throw new Error('Dữ liệu phản hồi không hợp lệ');
-			}
-
-			return [null, mood];
-		} catch (error: any) {
-			return [error, undefined];
-		}
+	public getMoodById(id: string): MoodMeta | undefined {
+		return MOOD_META.find((item) => item._id === id);
 	}
 }
 

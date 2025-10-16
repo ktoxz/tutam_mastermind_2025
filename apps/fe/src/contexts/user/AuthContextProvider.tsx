@@ -6,6 +6,7 @@ import { UserService } from '@/services/api/user/user.service';
 import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/local-storage.service';
 import { AuthService } from '@/services/api/auth/auth.service';
 import Swal from 'sweetalert2';
+import { NewMoodService } from '@/services/api/newmood/mood.service';
 
 interface AuthContextProviderProps {
 	children: React.ReactNode;
@@ -63,7 +64,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 			getMe: fetchUser,
 			logout,
 		}),
-		[user, loading, fetchUser, logout]
+		[user, loading, fetchUser, logout],
 	);
 
 	return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

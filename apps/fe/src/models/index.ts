@@ -4,3 +4,4 @@ export * from './Event';
 export * from './Mood';
 export * from './MusicPlaylist';
 export * from './User';
+export * from './Emotion';
