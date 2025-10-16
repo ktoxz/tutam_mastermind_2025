@@ -4,7 +4,7 @@ import { StatusCodes } from 'http-status-codes'
 import { authRoute } from './authRoute.js'
 import { userRoute } from './userRoute.js'
 import { uploadRoute } from './uploadRoute.js'
-import { predictRoute } from './predictRoute.js'
+import { emotionRoute } from './emotionRoute.js'
 
 const Router = express.Router()
 
@@ -15,6 +15,6 @@ Router.get('/', (req, res) => {
 Router.use('/auth', authRoute)
 Router.use('/user', userRoute)
 Router.use('/upload', uploadRoute)
-Router.use('/predict', predictRoute)
+Router.use('/emotion', emotionRoute)
 
 export const APIs_V1 = Router
