@@ -3,15 +3,15 @@ import React, { useEffect, useState } from 'react';
 import AppSection from '@/components/shared/app-section/AppSection';
 import { Check } from 'lucide-react';
 import { NewMoodService } from '@/services/api/newmood/mood.service';
-import { EmotionType } from '@/services/api/newmood/data';
+import { EmotionType, EmotionTag } from '@/services/api/newmood/data';
 
 interface EmotionDetailProps {
 	selectedEmotion: string | null;
-	selectedTagIds: string[];
-	onTagToggle: (tagId: string) => void;
+	selectedTags: EmotionTag[];
+	onTagToggle: (tag: EmotionTag) => void;
 }
 
-const EmotionDetail: React.FC<EmotionDetailProps> = ({ selectedEmotion, selectedTagIds, onTagToggle }) => {
+const EmotionDetail: React.FC<EmotionDetailProps> = ({ selectedEmotion, selectedTags, onTagToggle }) => {
 	const [emotion, setEmotion] = useState<EmotionType | null>(null);
 	const moodService = NewMoodService.getInstance();
 
@@ -35,13 +35,13 @@ const EmotionDetail: React.FC<EmotionDetailProps> = ({ selectedEmotion, selected
 				</p>
 				<div className='flex flex-wrap justify-center gap-2'>
 					{emotion.tags.map((tag) => {
-						const isSelected = selectedTagIds.includes(tag._id);
+						const isSelected = selectedTags.some((t) => t._id === tag._id);
 
 						return (
 							<button
 								key={tag._id}
-								onClick={() => onTagToggle(tag._id)}
-								className='relative inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 hover:scale-105 active:scale-95 bg-white shadow-md hover:shadow-lg'
+								onClick={() => onTagToggle(tag)}
+								className='relative inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 hover:scale-105 active:scale-95 bg-white shadow-md hover:shadow-lg hover:cursor-pointer'
 								style={{
 									color: emotion.textColor,
 									border: isSelected ? `3px solid ${emotion.textColor}` : '3px solid transparent',

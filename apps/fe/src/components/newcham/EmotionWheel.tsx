@@ -40,7 +40,7 @@ const EmotionWheel: React.FC<EmotionWheelProps> = ({ selectedEmotion, onEmotionS
 					<button
 						key={emotion._id}
 						onClick={() => onEmotionSelect(emotion._id)}
-						className='relative group rounded-xl p-4 md:p-6 transition-all duration-300 hover:scale-103 active:scale-95 shadow-md hover:shadow-xl'
+						className='relative group rounded-xl p-4 md:p-6 transition-all duration-300 hover:scale-103 active:scale-95 shadow-md hover:shadow-xl hover:cursor-pointer'
 						style={{
 							backgroundColor: emotion.bgColor,
 							transform: isSelected ? 'scale(1.05)' : 'scale(1)',
