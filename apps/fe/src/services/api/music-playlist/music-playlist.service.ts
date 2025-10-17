@@ -46,7 +46,7 @@ class MusicPlaylistService {
 	}
 	public async getByMoodId(mood_id: string, params?: { page?: number; limit?: number }): Promise<TErrorFirst<null, MusicPlaylist[]>> {
 		try {
-			const filtered = musicPlaylists.filter((p) => p.mood_id === mood_id);
+			const filtered = musicPlaylists.filter((p) => p.mood_ids.includes(mood_id));
 			const page = params?.page ?? 1;
 			const limit = params?.limit ?? filtered.length;
 			const start = (page - 1) * limit;

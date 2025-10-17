@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { Check } from 'lucide-react';
-import { NewMoodService } from '@/services/api/newmood/mood.service';
-import { EmotionType, EmotionTag } from '@/models/Emotion';
+import { EmotionService } from '@/services/api/newmood/mood.service';
+import { EmotionCategory, EmotionTag } from '@/models/Emotion';
 import ToolTip from '@/components/shared/tool-tip/ToolTip';
 
 interface EmotionDetailProps {
@@ -12,8 +12,8 @@ interface EmotionDetailProps {
 }
 
 const EmotionDetail: React.FC<EmotionDetailProps> = React.memo(({ selectedEmotion, selectedTags, onTagToggle }) => {
-	const [emotion, setEmotion] = useState<EmotionType | null>(null);
-	const moodService = useMemo(() => NewMoodService.getInstance(), []);
+	const [emotion, setEmotion] = useState<EmotionCategory | null>(null);
+	const moodService = useMemo(() => EmotionService.getInstance(), []);
 
 	const selectedTagIds = useMemo(() => new Set(selectedTags.map((t) => t._id)), [selectedTags]);
 
@@ -23,7 +23,7 @@ const EmotionDetail: React.FC<EmotionDetailProps> = React.memo(({ selectedEmotio
 			return;
 		}
 
-		const emotionData = moodService.getEmotionTypeById(selectedEmotion);
+		const emotionData = moodService.getEmotionCategoryById(selectedEmotion);
 		setEmotion(emotionData || null);
 	}, [selectedEmotion, moodService]);
 

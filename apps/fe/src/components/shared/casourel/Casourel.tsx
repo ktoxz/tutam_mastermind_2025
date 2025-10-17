@@ -19,6 +19,8 @@ interface CarouselProps {
 	pauseOnHover?: boolean;
 	enableManualScroll?: boolean;
 	isLoading?: boolean;
+	isEmpty?: boolean;
+	emptyMessage?: string;
 }
 
 const DEFAULT_PROPS = {
@@ -50,6 +52,8 @@ function Carousel({
 	pauseOnHover = DEFAULT_PROPS.pauseOnHover,
 	enableManualScroll = DEFAULT_PROPS.enableManualScroll,
 	isLoading = DEFAULT_PROPS.isLoading,
+	isEmpty = false,
+	emptyMessage = 'Không có nội dung phù hợp.',
 }: CarouselProps) {
 	const intervalRef = useRef<NodeJS.Timeout | null>(null);
 	const galleryRef = useRef<HTMLDivElement>(null);
@@ -76,7 +80,7 @@ function Carousel({
 				behavior: 'smooth',
 			});
 		},
-		[itemWidth]
+		[itemWidth],
 	);
 
 	const handleButtonClick = useCallback(
@@ -92,7 +96,7 @@ function Carousel({
 			setCurrentIndex(newIndex);
 			scrollToIndex(newIndex);
 		},
-		[children.length, currentIndex, scrollToIndex]
+		[children.length, currentIndex, scrollToIndex],
 	);
 
 	const startInterval = useCallback(() => {
@@ -189,9 +193,22 @@ function Carousel({
 					<div className='flex justify-center items-center h-40'>
 						<InlineLoading className='p-8' />
 					</div>
+				) : isEmpty ? (
+					<div className='text-center py-12'>
+						<div className='text-6xl mb-4' role='img' aria-label='not found'>
+							😶‍🌫️
+						</div>
+						<p className='text-[--color-text-secondary] text-lg mb-2'>{emptyMessage}</p>
+						<p className='text-[--color-text-tertiary] text-sm'>Hãy quay lại sau để khám phá những trải nghiệm mới nhé!</p>
+					</div>
 				) : (
 					<div className='relative'>
-						<div className={`relative flex ${gap} overflow-x-auto pb-4 ${containerClassName}`} ref={galleryRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+						<div
+							className={`relative flex ${gap} overflow-x-auto pb-4 ${containerClassName}`}
+							ref={galleryRef}
+							onMouseEnter={handleMouseEnter}
+							onMouseLeave={handleMouseLeave}
+						>
 							{children}
 						</div>
 						<div className='absolute inset-0 hidden md:flex justify-between items-center pointer-events-none z-50 px-4'>

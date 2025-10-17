@@ -16,7 +16,18 @@ const EventGalery: React.FC<EventGaleryProps> = ({ events, loading = false, titl
 	const itemWidth = size?.width && size.width > 0 ? size.width : 260;
 
 	return (
-		<Carousel itemWidth={itemWidth} autoScrollInterval={3000} title={title} showTitle={true} gap='gap-2 md:gap-4' pauseOnHover={true} enableManualScroll={true} isLoading={loading}>
+		<Carousel
+			itemWidth={itemWidth}
+			autoScrollInterval={3000}
+			title={title}
+			showTitle={true}
+			gap='gap-2 md:gap-4'
+			pauseOnHover={true}
+			enableManualScroll={true}
+			isLoading={loading}
+			isEmpty={events.length === 0}
+			emptyMessage='Không có sự kiện phù hợp với cảm xúc này.'
+		>
 			{events.map((event, index) => (
 				<EventCard key={event._id} event={event} ref={index === 0 ? eventRef : undefined} />
 			))}

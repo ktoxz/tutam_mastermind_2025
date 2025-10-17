@@ -34,25 +34,23 @@ function MoodResult({ mood }: Props) {
 			setLoading(true);
 			setError(null);
 			try {
-				const bookService = BookService.getInstance();
-				const [bookErr, bookData] = await bookService.getList();
-				if (!bookErr && bookData) {
-					const relatedBooks = bookData.filter((book) => book.mood_id === mood._id);
-					setBooks(relatedBooks);
-				}
-
-				const blogService = BlogService.getInstance();
-				const [blogErr, blogData] = await blogService.getList();
-				if (!blogErr && blogData) {
-					const relatedBlogs = blogData.filter((blog) => blog.mood_id === mood._id);
-					setBlogs(relatedBlogs);
-				}
-
-				const playlistService = MusicPlaylistService.getInstance();
-				const [playlistErr, playlistData] = await playlistService.getByMoodId(mood._id);
-				if (!playlistErr && playlistData) {
-					setPlaylists(playlistData);
-				}
+				// const bookService = BookService.getInstance();
+				// const [bookErr, bookData] = await bookService.getList();
+				// if (!bookErr && bookData) {
+				// 	const relatedBooks = bookData.filter((book) => book.mood_id === mood._id);
+				// 	setBooks(relatedBooks);
+				// }
+				// const blogService = BlogService.getInstance();
+				// const [blogErr, blogData] = await blogService.getList();
+				// if (!blogErr && blogData) {
+				// 	const relatedBlogs = blogData.filter((blog) => blog.mood_id === mood._id);
+				// 	setBlogs(relatedBlogs);
+				// }
+				// const playlistService = MusicPlaylistService.getInstance();
+				// const [playlistErr, playlistData] = await playlistService.getByMoodId(mood._id);
+				// if (!playlistErr && playlistData) {
+				// 	setPlaylists(playlistData);
+				// }
 			} catch (err: any) {
 				setError(err.message || 'An error occurred while loading data.');
 			} finally {

@@ -16,7 +16,18 @@ const YTBMusicPlaylistGalery: React.FC<YTBMusicPlaylistGaleryProps> = ({ playlis
 	const itemWidth = size?.width && size.width > 0 ? size.width : 260;
 
 	return (
-		<Carousel itemWidth={itemWidth} autoScrollInterval={3000} title={title} showTitle={true} gap='gap-2 md:gap-4' pauseOnHover={true} enableManualScroll={true} isLoading={loading}>
+		<Carousel
+			itemWidth={itemWidth}
+			autoScrollInterval={3000}
+			title={title}
+			showTitle={true}
+			gap='gap-2 md:gap-4'
+			pauseOnHover={true}
+			enableManualScroll={true}
+			isLoading={loading}
+			isEmpty={playlists.length === 0}
+			emptyMessage='Không có playlist nhạc phù hợp với cảm xúc này.'
+		>
 			{playlists.map((playlist, index) => (
 				<YTBMusicPlaylistCard key={`${btoa(playlist._id)}-${index}`} playlist={playlist} ref={index === 0 ? playlistRef : undefined} />
 			))}

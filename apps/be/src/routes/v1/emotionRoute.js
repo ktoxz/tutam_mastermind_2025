@@ -7,6 +7,7 @@ const Router = express.Router()
 
 Router.post('/', extractUserIfExistsMiddleware, emotionController.predictMood)
 Router.get('/history', verifyUserMiddleware, emotionController.getEmotionHistory)
-Router.delete('/:emotionId', verifyUserMiddleware, emotionController.deleteEmotion)
+Router.get('/:id', verifyUserMiddleware, emotionController.getEmotionById)
+Router.delete('/:id', verifyUserMiddleware, emotionController.deleteEmotion)
 
 export const emotionRoute = Router

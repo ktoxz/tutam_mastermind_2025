@@ -1,39 +1,34 @@
-export interface EmotionTag {
+export type EmotionTag = {
 	_id: string;
 	label: string;
-	emotionType: string;
-}
+	emotionCategory: string;
+};
 
-export interface EmotionGradient {
-	from: string;
-	to: string;
-}
-
-export interface EmotionType {
+export type EmotionCategory = {
 	_id: string;
 	label: string;
 	icon: string;
 	bgColor: string;
 	textColor: string;
-	gradient: EmotionGradient;
+	gradient: { from: string; to: string };
 	tags: EmotionTag[];
-}
+};
 
-export interface PostEmotionsPayload {
+export type PostEmotionRequest = {
 	tags: string[];
 	diary: string;
-}
+};
 
-export interface PostEmotionsResponse {
+export type PostEmotionResponse = {
 	mood: string;
 	header: string;
 	validation: string;
 	encouragement: string;
 	actions: string[];
 	quote: string;
-}
+};
 
-export interface EmotionHistoryItem {
+export type EmotionHistoryItem = {
 	_id: string;
 	userId: string;
 	tags: string[];
@@ -45,20 +40,18 @@ export interface EmotionHistoryItem {
 	actions: string[];
 	quote: string;
 	createdAt: string;
-	updatedAt: string;
-	__v: number;
-}
-
-export interface EmotionHistory {
-	_id: string; // e.g., date string "2025-10-16"
-	list: EmotionHistoryItem[];
-}
-
-export const isValidEmotionTag = (tag: any): tag is EmotionTag => {
-	return tag && typeof tag._id === 'string' && typeof tag.label === 'string' && typeof tag.emotionType === 'string';
 };
 
-export const isValidPostEmotionsResponse = (data: any): data is PostEmotionsResponse => {
+export type EmotionHistory = {
+	_id: string; // e.g., date string "2025-10-16"
+	list: EmotionHistoryItem[];
+};
+
+export const isValidEmotionTag = (tag: any): tag is EmotionTag => {
+	return tag && typeof tag._id === 'string' && typeof tag.label === 'string' && typeof tag.EmotionCategory === 'string';
+};
+
+export const isValidPostEmotionResponse = (data: any): data is PostEmotionResponse => {
 	return (
 		data &&
 		typeof data.mood === 'string' &&

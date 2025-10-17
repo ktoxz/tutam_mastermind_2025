@@ -6,7 +6,7 @@ type Book = {
 	content: string;
 	image: string;
 	slug: string;
-	mood_id: string;
+	mood_ids: string[];
 	createdAt?: Date;
 	updatedAt?: Date;
 };
@@ -20,7 +20,7 @@ const mapBook = (data: any): Book => {
 		content: data.content,
 		image: data.image,
 		slug: data.slug,
-		mood_id: data.mood_id,
+		mood_ids: data.mood_ids,
 		createdAt: data.createdAt,
 		updatedAt: data.updatedAt,
 	};

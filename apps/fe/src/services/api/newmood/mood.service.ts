@@ -1,21 +1,21 @@
 import { TErrorFirst } from '@/types';
 import { httpClient } from '@/utils';
 import { EMOTION_DATA } from './data';
-import { EmotionType, PostEmotionsResponse, PostEmotionsPayload, isValidPostEmotionsResponse } from '@/models/Emotion';
+import { EmotionCategory, EmotionHistory, EmotionHistoryItem, isValidPostEmotionResponse, PostEmotionRequest, PostEmotionResponse } from '@/models';
 
-class NewMoodService {
-	private static instance: NewMoodService;
-	private emotionCache: Map<string, EmotionType> = new Map();
+class EmotionService {
+	private static instance: EmotionService;
+	private emotionCache: Map<string, EmotionCategory> = new Map();
 
 	private constructor() {
 		this.initializeCache();
 	}
 
-	public static getInstance(): NewMoodService {
-		if (!NewMoodService.instance) {
-			NewMoodService.instance = new NewMoodService();
+	public static getInstance(): EmotionService {
+		if (!EmotionService.instance) {
+			EmotionService.instance = new EmotionService();
 		}
-		return NewMoodService.instance;
+		return EmotionService.instance;
 	}
 
 	private initializeCache(): void {
@@ -24,11 +24,11 @@ class NewMoodService {
 		});
 	}
 
-	public getEmotionTypes(): Promise<TErrorFirst<Error, EmotionType[]>> {
+	public getEmotionCategorys(): Promise<TErrorFirst<Error, EmotionCategory[]>> {
 		return Promise.resolve([null, EMOTION_DATA]);
 	}
 
-	public getEmotionTypeById(_id: string): EmotionType | undefined {
+	public getEmotionCategoryById(_id: string): EmotionCategory | undefined {
 		return this.emotionCache.get(_id);
 	}
 
@@ -48,21 +48,21 @@ class NewMoodService {
 		return { valid: true };
 	}
 
-	public async postEmotions(tags: string[], diary: string): Promise<TErrorFirst<Error, PostEmotionsResponse>> {
+	public async postEmotions(tags: string[], diary: string): Promise<TErrorFirst<Error, PostEmotionResponse>> {
 		try {
 			const validation = this.validatePayload(tags, diary);
 			if (!validation.valid) {
 				throw new Error(validation.error);
 			}
 
-			const payload: PostEmotionsPayload = {
+			const payload: PostEmotionRequest = {
 				tags: tags.map((tag) => tag.trim()),
 				diary: diary.trim(),
 			};
 
 			const res = await httpClient.post('/emotion', payload);
 
-			if (!isValidPostEmotionsResponse(res.data)) {
+			if (!isValidPostEmotionResponse(res.data)) {
 				throw new Error('Invalid response format from server');
 			}
 
@@ -73,7 +73,17 @@ class NewMoodService {
 		}
 	}
 
-	public async getUserEmotionHistory(): Promise<TErrorFirst<Error, any[]>> {
+	public async getUserEmotionById(id: string): Promise<TErrorFirst<Error, EmotionHistoryItem>> {
+		try {
+			const res = await httpClient.get(`/emotion/${id}`);
+			return [null, res.data];
+		} catch (error: any) {
+			const errorMessage = error?.response?.data?.message || error?.message || 'Failed to fetch emotion by id';
+			return [new Error(errorMessage), null as any];
+		}
+	}
+
+	public async getUserEmotionHistory(): Promise<TErrorFirst<Error, EmotionHistory[]>> {
 		try {
 			const res = await httpClient.get('/emotion/history');
 			return [null, res.data];
@@ -94,4 +104,4 @@ class NewMoodService {
 	}
 }
 
-export { NewMoodService };
+export { EmotionService };

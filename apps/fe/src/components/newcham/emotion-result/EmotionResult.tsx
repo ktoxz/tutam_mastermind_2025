@@ -1,11 +1,20 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { AlertTriangle, CheckCircle, Heart, Quote } from 'lucide-react';
+import { AlertTriangle } from 'lucide-react';
 import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
-import { Mood } from '@models';
-import { MoodService } from '@/services/api/mood/mood.service';
-import EmotionResultCard from './components/EmotionResultCard';
-import { parseLucideIcon } from '@/utils';
+import { Blog, Book, Mood, MusicPlaylist } from '@models';
+import { BookService } from '@/services/api/book/book.service';
+import { BlogService } from '@/services/api/blog/blog.service';
+import { MusicPlaylistService } from '@/services/api/music-playlist/music-playlist.service';
+import BookGalery from '@/components/shared/galery/book-galery/BookGalery';
+import BlogGalery from '@/components/shared/galery/blog-galery/BlogGalery';
+import YTBMusicPlaylistGalery from '@/components/shared/galery/ytb-music-playlist-galery/YTBMusicPlaylistGalery';
+
+// Import các component đã tách
+import EmotionResultHeader from './components/emotion-result-header/EmotionResultHeader';
+import EmotionResultEncouragement from './components/emotion-result-encouragement/EmotionResultEncouragement';
+import EmotionResultActions from './components/emotion-result-actions/EmotionResultActions';
+import EmotionResultRecommends from './components/emotion-result-recommends/EmotionResultRecommends';
 
 type Props = {
 	mood: Mood;
@@ -14,6 +23,13 @@ type Props = {
 function EmotionResult({ mood }: Props) {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
+
+	const [books, setBooks] = useState<Book[]>([]);
+	const [blogs, setBlogs] = useState<Blog[]>([]);
+	const [playlists, setPlaylists] = useState<MusicPlaylist[]>([]);
+	const [booksLoading, setBooksLoading] = useState(true);
+	const [blogsLoading, setBlogsLoading] = useState(true);
+	const [playlistsLoading, setPlaylistsLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -25,8 +41,34 @@ function EmotionResult({ mood }: Props) {
 				setLoading(false);
 			}
 		};
-
 		fetchData();
+	}, [mood]);
+
+	// Lấy dữ liệu gallery theo mood
+	useEffect(() => {
+		if (!mood?._id) return;
+		setBooksLoading(true);
+		setBlogsLoading(true);
+		setPlaylistsLoading(true);
+
+		BookService.getInstance()
+			.getByMoodId(mood._id, { limit: 10 })
+			.then(([err, data]) => {
+				setBooks(data || []);
+				setBooksLoading(false);
+			});
+		BlogService.getInstance()
+			.getByMoodId(mood._id, { limit: 10 })
+			.then(([err, data]) => {
+				setBlogs(data || []);
+				setBlogsLoading(false);
+			});
+		MusicPlaylistService.getInstance()
+			.getByMoodId(mood._id, { limit: 10 })
+			.then(([err, data]) => {
+				setPlaylists(data || []);
+				setPlaylistsLoading(false);
+			});
 	}, [mood]);
 
 	if (loading) {
@@ -44,113 +86,17 @@ function EmotionResult({ mood }: Props) {
 
 	return (
 		<>
-			<EmotionHeader mood={mood} />
-			<EmotionEncouragement mood={mood} />
-			<EmotionActions mood={mood} />
+			<EmotionResultHeader mood={mood} />
+			<EmotionResultEncouragement mood={mood} />
+			<EmotionResultActions mood={mood} />
+			<EmotionResultRecommends>
+				<div className='mt-8 space-y-8'>
+					<BookGalery books={books} loading={booksLoading} title='Sách phù hợp cảm xúc của bạn' />
+					<BlogGalery blogs={blogs} loading={blogsLoading} title='Blog phù hợp cảm xúc của bạn' />
+					<YTBMusicPlaylistGalery playlists={playlists} loading={playlistsLoading} title='Playlist nhạc phù hợp cảm xúc của bạn' />
+				</div>
+			</EmotionResultRecommends>
 		</>
-	);
-}
-
-function EmotionHeader({ mood }: { mood: Mood }) {
-	const moodService = MoodService.getInstance();
-	const moodMeta = moodService.getMoodMeta(mood);
-	const IconComponent = parseLucideIcon(moodMeta.icon);
-
-	return (
-		<EmotionResultCard disableAppearAnimation ariaLabel='Kết quả phân tích cảm xúc'>
-			<div>
-				<div className='flex items-center gap-4 mb-6'>
-					<div className='p-2 md:p-3 rounded-xl shadow-sm' style={{ backgroundColor: `${moodMeta.textColor}20` }}>
-						{IconComponent && <IconComponent size={32} style={{ color: moodMeta.textColor }} />}
-					</div>
-					<div>
-						<h1 className='text-xl md:text-3xl font-bold tracking-tight uppercase' style={{ color: moodMeta.textColor }}>
-							{moodMeta.mood_label}
-						</h1>
-						<p className='text-sm opacity-75' style={{ color: moodMeta.textColor }}>
-							{mood.header || 'Cảm xúc của bạn'}
-						</p>
-					</div>
-				</div>
-
-				{mood.validation && (
-					<div className='mb-6'>
-						<div className='p-4 bg-white/30 rounded-lg'>
-							<p className='text-gray-800 leading-relaxed text-sm md:text-base text-justify'>{mood.validation}</p>
-						</div>
-					</div>
-				)}
-
-				{mood.quote && (
-					<div className='flex items-start gap-3 p-4 md:p-6 bg-gray-50/70 rounded-lg'>
-						<Quote size={24} className='mt-1 flex-shrink-0 opacity-40' style={{ color: moodMeta.textColor }} />
-						<p className='text-sm md:text-base italic leading-relaxed font-medium text-gray-700'>{mood.quote}</p>
-					</div>
-				)}
-			</div>
-		</EmotionResultCard>
-	);
-}
-
-function EmotionEncouragement({ mood }: { mood: Mood }) {
-	if (!mood.encouragement) return null;
-
-	const moodService = MoodService.getInstance();
-	const moodMeta = moodService.getMoodMeta(mood);
-
-	return (
-		<EmotionResultCard disableAppearAnimation ariaLabel='Động viên'>
-			<div>
-				<h3 className='text-lg font-semibold mb-4 flex items-center gap-2'>
-					<Heart size={24} style={{ color: moodMeta.textColor }} />
-					<span style={{ color: moodMeta.textColor }}>Lời động viên</span>
-				</h3>
-				<div className='p-4 bg-gradient-to-br rounded-lg' style={{ background: `linear-gradient(135deg, ${moodMeta.bgColor}40, ${moodMeta.bgColor}20)` }}>
-					<p className='text-gray-800 leading-relaxed text-sm md:text-base text-justify'>{mood.encouragement}</p>
-				</div>
-			</div>
-		</EmotionResultCard>
-	);
-}
-
-function EmotionActions({ mood }: { mood: Mood }) {
-	if (!mood.actions || mood.actions.length === 0) return null;
-
-	const moodService = MoodService.getInstance();
-	const moodMeta = moodService.getMoodMeta(mood);
-
-	return (
-		<EmotionResultCard disableAppearAnimation ariaLabel='Gợi ý hành động'>
-			<div>
-				<h3 className='text-lg font-semibold mb-4 flex items-center gap-2'>
-					<CheckCircle size={24} style={{ color: moodMeta.textColor }} />
-					<span style={{ color: moodMeta.textColor }}>Những việc bạn có thể làm</span>
-				</h3>
-				<div className='grid gap-3 md:grid-cols-3'>
-					{mood.actions.map((action, index) => (
-						<div
-							key={index}
-							className='p-4 rounded-lg border transition-all hover:shadow-md cursor-pointer'
-							style={{
-								borderColor: `${moodMeta.textColor}20`,
-								backgroundColor: `${moodMeta.bgColor}50`,
-							}}
-						>
-							<div className='flex items-center gap-2 mb-2'>
-								<div
-									className='w-6 h-6 rounded-full flex items-center justify-center text-white text-sm font-medium'
-									style={{ backgroundColor: moodMeta.textColor }}
-									aria-label={`Bước ${index + 1}`}
-								>
-									{index + 1}
-								</div>
-							</div>
-							<p className='text-gray-700 text-sm leading-relaxed'>{action}</p>
-						</div>
-					))}
-				</div>
-			</div>
-		</EmotionResultCard>
 	);
 }
 

@@ -8,7 +8,7 @@ const books: Book[] = [
 		summary: 'Cuốn sách khám phá khái niệm trí tuệ cảm xúc, cung cấp các kỹ năng để quản lý cảm xúc, xây dựng lòng tự trọng và đạt được sự cân bằng trong cuộc sống.',
 		image: 'https://tse3.mm.bing.net/th/id/OIP.uwKLgdSIjw88dMRsjTKp7AHaL5?r=0&cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3',
 		slug: 'tri-tue-xuc-cam',
-		mood_id: 'mood-2',
+		mood_ids: ['dau_kho', 'ngat_ngay'],
 		content: `
 > **Tóm tắt:** "Trí Tuệ Xúc Cảm" của Daniel Goleman là một cuốn sách kinh điển về tầm quan trọng của trí tuệ cảm xúc (EQ) trong cuộc sống cá nhân và sự nghiệp. Tác phẩm này cung cấp những kỹ năng và công cụ để quản lý cảm xúc, xây dựng lòng tự trọng và đạt được sự cân bằng trong cuộc sống.
 
@@ -48,7 +48,7 @@ Sách giúp người đọc xây dựng những mối quan hệ lành mạnh và
 		summary: 'Khám phá nguyên nhân xã hội của trầm cảm và lo âu, đề xuất giải pháp vượt ra ngoài chỉ dùng thuốc chống trầm cảm.',
 		image: 'https://2.bp.blogspot.com/-5uOW9s3CJ44/WvP3CVrftCI/AAAAAAAACQQ/whjRw9KpkSk-e8mY4VykcjLIzi8OO-pmQCLcBGAs/s1600/lostconnections.jpg',
 		slug: 'ket-noi-bi-mat-lam-nen-tam-trang',
-		mood_id: 'mood-2',
+		mood_ids: ['canh_giac', 'dau_kho'],
 		content: `
 # Lost Connections
 ## Nguyên Nhân Xã Hội Của Trầm Cảm
@@ -70,7 +70,7 @@ Sách giúp người đọc xây dựng những mối quan hệ lành mạnh và
 		summary: 'Cuốn sách khuyến khích sống chậm lại, suy ngẫm về các mối quan hệ và bản thân, mang đến sự cân bằng cảm xúc giữa nhịp sống hối hả.',
 		image: 'https://tse3.mm.bing.net/th/id/OIP.Zlyh6auN1vwBIhtpc00VpgAAAA?r=0&cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3',
 		slug: 'buoc-cham-lai-giua-the-gian-voi-va',
-		mood_id: 'mood-4',
+		mood_ids: ['nguong_mo', 'khiep_dam'],
 		content: `
 # Bước Chậm Lại Giữa Thế Gian Vội Vã
 ## Tìm Lại Sự Cân Bằng Trong Cuộc Sống
@@ -102,7 +102,7 @@ Sách giúp người đọc tìm thấy sự bình yên trong tâm hồn bằng 
 		summary: 'Cuốn sách mở cửa thế giới cảm xúc của mỗi người, giúp hiểu rõ về trái tim, tâm hồn để chữa lành những tổn thương và đau khổ.',
 		image: 'https://i.imgur.com/idoeqc1.jpg',
 		slug: 'hieu-ve-trai-tim',
-		mood_id: 'mood-2',
+		mood_ids: ['dau_kho', 'ghe_tom', 'khiep_dam'],
 		content: `
 > **Tóm tắt:** Cuốn sách "Hiểu Về Trái Tim" của Thiền sư Minh Niệm là một hành trình khám phá và chữa lành những vết thương sâu kín trong tâm hồn. Tác phẩm này không chỉ mở ra cánh cửa để thấu hiểu những cảm xúc phức tạp mà còn cung cấp những phương pháp thực hành giúp mỗi người tìm thấy sự bình yên và hạnh phúc thực sự.
 
@@ -143,7 +143,7 @@ Những bài tập thiền định đơn giản nhưng hiệu quả:
 		summary: 'Thông qua nghi thức dọn dẹp, cuốn sách truyền tải thông điệp tu hành để bồi dưỡng vẻ đẹp tâm hồn và loại bỏ đám mây mù ẩn sâu trong trái tim.',
 		image: 'https://i.imgur.com/NO51dM2.jpg',
 		slug: 'don-nha-don-cua-got-rua-trai-tim',
-		mood_id: 'mood-2',
+		mood_ids: ['nguong_mo', 'ngat_ngay', 'kinh_ngac'],
 		content: `
 # Dọn Nhà, Dọn Cửa, Gột Rửa Trái Tim
 ## Thanh Lọc Tâm Hồn
@@ -175,7 +175,7 @@ Sách khuyến khích người đọc bồi dưỡng vẻ đẹp tâm hồn thô
 		summary: 'Cuốn sách giúp giải phóng khỏi vòng xoáy suy nghĩ phức tạp, tối giản hóa tâm trí để tìm thấy sự hòa hợp và hạnh phúc thực sự.',
 		image: 'https://i.imgur.com/uSuJH8r.jpg',
 		slug: 'toi-gian-tam-tri',
-		mood_id: 'mood-4',
+		mood_ids: ['tinh_lang', 'binh_yen'],
 		content: `
 # Tối Giản Tâm Trí
 ## Giải Phóng Khỏi Suy Nghĩ Phức Tạp
@@ -207,7 +207,7 @@ Sách khuyến khích người đọc tập trung vào những điều quan tr�
 		summary: 'Cắt giảm đồ đạc không cần thiết để tập trung vào hạnh phúc, tối giản trong suy nghĩ và tư duy để sống đơn giản hơn.',
 		image: 'https://i.imgur.com/UzjmoH0.jpg',
 		slug: 'loi-song-toi-gian-cua-nguoi-nhat',
-		mood_id: 'mood-4',
+		mood_ids: ['tinh_lang', 'binh_yen'],
 		content: `
 # Lối Sống Tối Giản Của Người Nhật
 ## Hạnh Phúc Từ Sự Đơn Giản
@@ -239,7 +239,7 @@ Sách giúp người đọc nhận ra rằng hạnh phúc không nằm ở nhữ
 		summary: 'Triết lý đơn giản của Hà Lan cổ vũ sống chậm lại, thư giãn và mơ mộng để thoát khỏi tình trạng kiệt sức và làm chủ cuộc sống.',
 		image: 'https://i.imgur.com/PPmSlXB.jpg',
 		slug: 'niken-suc-manh-cua-viec-tam-dung',
-		mood_id: 'mood-4',
+		mood_ids: ['tinh_lang', 'binh_yen'],
 		content: `
 # Niksen – Sức Mạnh Của Việc Tạm Dừng
 ## Thư Giãn và Tái Tạo Năng Lượng
@@ -271,7 +271,7 @@ Sách giúp người đọc nhận ra rằng việc tạm dừng là cần thi�
 		summary: 'Khuyến khích hướng đến cuộc sống đơn giản hơn bằng cách giảm bớt đồ đạc, tối ưu hóa không gian sống để tìm thấy sự hài lòng và hạnh phúc.',
 		image: 'https://i.imgur.com/DIq3C4p.jpg',
 		slug: 'nghi-don-gian-song-don-thuan',
-		mood_id: 'mood-4',
+		mood_ids: ['tinh_lang', 'binh_yen'],
 		content: `
 # Nghĩ Đơn Giản - Sống Đơn Thuần
 ## Hạnh Phúc Từ Sự Giản Dị
@@ -303,7 +303,7 @@ Sách giúp người đọc nhận ra rằng hạnh phúc không nằm ở nhữ
 		summary: 'Triết lý ikigai mang lại hạnh phúc và trường thọ, xây dựng từ 5 trụ cột cơ bản để sống trọn khoảnh khắc hiện tại.',
 		image: 'https://i.imgur.com/ThoM4Qk.jpg',
 		slug: 'bi-mat-song-truong-tho-va-hanh-phuc-cua-nguoi-nhat',
-		mood_id: 'mood-1',
+		mood_ids: ['tinh_lang', 'binh_yen'],
 		content: `
 # Ikigai - Bí Mật Sống Trường Thọ Và Hạnh Phúc Của Người Nhật
 ## Tìm Kiếm Mục Đích Sống
@@ -340,7 +340,7 @@ Sách khuyến khích người đọc sống trọn khoảnh khắc hiện tại
 		summary: 'Khám phá nghệ thuật sống tối giản để hướng đến cuộc sống đơn giản, tốt đẹp hơn trong tâm trí và cơ thể.',
 		image: 'https://i.imgur.com/LuNe6Rf.jpg',
 		slug: 'nghe-thuat-toi-gian-co-it-di-song-nhieu-hon',
-		mood_id: 'mood-4',
+		mood_ids: ['tinh_lang', 'binh_yen'],
 		content: `
 # Nghệ Thuật Tối Giản: Có Ít Đi, Sống Nhiều Hơn
 ## Đơn Giản Hóa Cuộc Sống
@@ -369,10 +369,11 @@ Sách giúp người đọc nhận ra rằng hạnh phúc không nằm ở nhữ
 		_id: 'book-9',
 		title: 'Chữa Lành Đứa Trẻ Bên Trong Bạn',
 		author: 'Charles Whitfield',
-		summary: 'Cuốn sách dẫn dắt người đọc khám phá và chữa lành những tổn thương tâm lý từ tuổi thơ, giúp tái kết nối với bản thể chân thật và tìm lại sự bình yên trong tâm hồn.',
+		summary:
+			'Cuốn sách dẫn dắt người đọc khám phá và chữa lành những tổn thương tâm lý từ tuổi thơ, giúp tái kết nối với bản thể chân thật và tìm lại sự bình yên trong tâm hồn.',
 		image: 'https://tse1.explicit.bing.net/th/id/OIP.quWujTIombT9r0P7t-9jowHaK9?r=0&cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3',
 		slug: 'chua-lanh-dua-tre-ben-trong-ban',
-		mood_id: 'mood-2',
+		mood_ids: ['dau_kho', 'buon'],
 		content: `
 # Chữa Lành Đứa Trẻ Bên Trong Bạn
 ## Vượt Qua Những Tổn Thương Từ Quá Khứ
@@ -401,10 +402,11 @@ Sách giúp người đọc tái kết nối với bản thể chân thật và 
 		_id: 'book-10',
 		title: 'Vượt Qua Lo Âu Chữa Lành Tâm Trí',
 		author: 'J. Gillihan',
-		summary: 'Hướng dẫn dễ hiểu về liệu pháp nhận thức hành vi (CBT) để kiểm soát trầm cảm và lo âu, giúp người đọc hiểu mối liên hệ giữa suy nghĩ và cảm xúc, từ đó áp dụng kỹ thuật để thoát khỏi trạng thái tiêu cực.',
+		summary:
+			'Hướng dẫn dễ hiểu về liệu pháp nhận thức hành vi (CBT) để kiểm soát trầm cảm và lo âu, giúp người đọc hiểu mối liên hệ giữa suy nghĩ và cảm xúc, từ đó áp dụng kỹ thuật để thoát khỏi trạng thái tiêu cực.',
 		image: 'https://tse3.mm.bing.net/th/id/OIP.zAdGQk_3g6TtrzZuWSnwRwHaK2?r=0&cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3',
 		slug: 'vuot-qua-lo-au-chua-lanh-tam-tri',
-		mood_id: 'mood-2',
+		mood_ids: ['dau_kho', 'buon'],
 		content: `
 # Vượt Qua Lo Âu Chữa Lành Tâm Trí
 ## Kiểm Soát Cảm Xúc Tiêu Cực
@@ -433,10 +435,11 @@ Sách giúp người đọc điều chỉnh cảm xúc và đối phó với nh�
 		_id: 'book-11',
 		title: 'Đại Dương Đen',
 		author: 'Đặng Hoàng Giang',
-		summary: 'Cuốn sách ghi lại hành trình đồng hành cùng những người trầm cảm, mang đến cái nhìn sâu sắc về chứng rối loạn cảm xúc, giúp người đọc thấu hiểu và tìm cách vượt qua bóng tối tâm lý.',
+		summary:
+			'Cuốn sách ghi lại hành trình đồng hành cùng những người trầm cảm, mang đến cái nhìn sâu sắc về chứng rối loạn cảm xúc, giúp người đọc thấu hiểu và tìm cách vượt qua bóng tối tâm lý.',
 		image: 'https://th.bing.com/th/id/R.f43753a3381b9a1420c4ce20c3b38d19?rik=akgZCvsz6U4FvA&pid=ImgRaw&r=0',
 		slug: 'dai-duong-den',
-		mood_id: 'mood-2',
+		mood_ids: ['dau_kho', 'buon'],
 		content: `
 # Đại Dương Đen
 ## Thấu Hiểu và Vượt Qua Trầm Cảm
@@ -465,10 +468,11 @@ Sách cung cấp những thông tin về các nguồn lực và phương pháp �
 		_id: 'book-12',
 		title: 'Wabi Sabi – Thương Những Điều Không Hoàn Hảo',
 		author: 'Beth Kempton',
-		summary: 'Khám phá triết lý Wabi Sabi của Nhật Bản, khuyến khích sống chậm rãi, trân trọng những điều không hoàn hảo và tìm kiếm hạnh phúc trong sự giản đơn của cuộc sống.',
+		summary:
+			'Khám phá triết lý Wabi Sabi của Nhật Bản, khuyến khích sống chậm rãi, trân trọng những điều không hoàn hảo và tìm kiếm hạnh phúc trong sự giản đơn của cuộc sống.',
 		image: 'https://307a0e78.vws.vegacdn.vn/view/v2/image/img.book/0/0/1/39401.jpg?v=1&w=480&h=700',
 		slug: 'wabi-sabi-thuong-nhung-dieu-khong-hoan-hao',
-		mood_id: 'mood-4',
+		mood_ids: ['tinh_lang', 'binh_yen'],
 		content: `
 # Wabi Sabi – Thương Những Điều Không Hoàn Hảo
 ## Tìm Thấy Vẻ Đẹp Trong Sự Giản Dị
@@ -500,7 +504,7 @@ Sách giúp người đọc tìm thấy sự bình yên và hạnh phúc trong s
 		summary: 'Cung cấp các phương pháp thực hành để chữa lành những tổn thương tâm lý, giúp người đọc vượt qua cảm giác chán nản và tìm lại ý nghĩa cuộc sống.',
 		image: 'https://thuviensach.vn/img/news/2024/05/larger/8659-chua-lanh-noi-dau-1.jpg?v=3884',
 		slug: 'chua-lanh-noi-dau',
-		mood_id: 'mood-2',
+		mood_ids: ['dau_kho', 'buon'],
 		content: `
 # Chữa Lành Nỗi Đau
 ## Vượt Qua Khó Khăn, Tìm Lại Hạnh Phúc
@@ -532,7 +536,7 @@ Sách giúp người đọc yêu thương bản thân và chấp nhận những 
 		summary: 'Hành trình tìm ý nghĩa cuộc sống từ trải nghiệm trong trại tập trung, cung cấp góc nhìn mạnh mẽ về khả năng phục hồi tinh thần.',
 		image: 'https://images.thenile.io/r1000/9781844132393.jpg',
 		slug: 'tim-y-nghia-cuoc-song',
-		mood_id: 'mood-1',
+		mood_ids: ['tinh_lang', 'binh_yen'],
 		content: `
 # Man's Search for Meaning
 ## Tìm Kiếm Ý Nghĩa Trong Khó Khăn
@@ -554,7 +558,7 @@ Sách giúp người đọc yêu thương bản thân và chấp nhận những 
 		summary: 'Nghiên cứu sâu về cách chấn thương ảnh hưởng lên cơ thể và tâm trí, cùng các phương pháp chữa lành hiện đại.',
 		image: 'https://tse4.mm.bing.net/th/id/OIP.MoqdzAf-7muYZvFjTkYpDQHaI-?r=0&w=545&h=661&rs=1&pid=ImgDetMain&o=7&rm=3',
 		slug: 'co-the-ghi-nho-chan-thuong',
-		mood_id: 'mood-2',
+		mood_ids: ['buon', 'binh_yen'],
 		content: `
 # The Body Keeps the Score
 ## Cơ Thể Ghi Nhớ Chấn Thương
@@ -576,7 +580,7 @@ Sách giúp người đọc yêu thương bản thân và chấp nhận những 
 		summary: 'Hướng dẫn thực tiễn về CBT để đối phó với trầm cảm và suy nghĩ tiêu cực, với bài tập cụ thể dễ áp dụng.',
 		image: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1440657672i/46674.jpg',
 		slug: 'tri-lieu-tam-ly-cbt',
-		mood_id: 'mood-2',
+		mood_ids: ['buon', 'binh_yen'],
 		content: `
 # Feeling Good
 ## Liệu Pháp Tâm Trạng Mới
@@ -598,7 +602,7 @@ Sách giúp người đọc yêu thương bản thân và chấp nhận những 
 		summary: 'Sổ tay thực hành toàn diện giúp người đọc quản lý lo âu, tấn công hoảng loạn và phobias bằng kỹ thuật đã được kiểm chứng.',
 		image: 'https://th.bing.com/th/id/R.4d8df3f09f6aace4e4a0e663c42b6a86?rik=4AaUjcsVuicD9A&riu=http%3a%2f%2fprodimage.images-bn.com%2fpimages%2f9781684034833_p0_v3_s1200x630.jpg&ehk=%2bmCtywT76B7rP%2bU3ZRN%2f3ku%2bhxTMxMLDidpsk7ko5Hs%3d&risl=&pid=ImgRaw&r=0',
 		slug: 'sach-thuc-hanh-quan-ly-lo-au',
-		mood_id: 'mood-3',
+		mood_ids: ['lo_lang', 'binh_yen'],
 		content: `
 # The Anxiety and Phobia Workbook
 ## Sổ Tay Quản Lý Lo Âu
@@ -620,7 +624,7 @@ Sách giúp người đọc yêu thương bản thân và chấp nhận những 
 		summary: 'Hướng dẫn sống trong hiện tại để giảm bớt phiền não, lo âu và tìm thấy bình yên sâu bên trong.',
 		image: 'https://tse1.mm.bing.net/th/id/OIP.345NK2NIs2P5j0R7-dSQuwHaLc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
 		slug: 'suc-manh-cua-hien-tai',
-		mood_id: 'mood-4',
+		mood_ids: ['binh_yen', 'tinh_lang'],
 		content: `
 # The Power of Now
 ## Sức Mạnh Của Hiện Tại
@@ -642,7 +646,7 @@ Sách giúp người đọc yêu thương bản thân và chấp nhận những 
 		summary: 'Nghiên cứu về lòng dũng cảm, sự tổn thương và cách xây dựng mối quan hệ ý nghĩa bằng tính chân thực.',
 		image: 'https://m.media-amazon.com/images/I/81nzEXzPmWL._SY342_.jpg',
 		slug: 'duy-dang-mung-chia-khong-so',
-		mood_id: 'mood-1',
+		mood_ids: ['tinh_lang', 'binh_yen'],
 		content: `
 # Daring Greatly
 ## Dũng Cảm Để Yêu Thương
@@ -664,7 +668,7 @@ Sách giúp người đọc yêu thương bản thân và chấp nhận những 
 		summary: 'Giới thiệu thiền chánh niệm đơn giản cho cuộc sống hàng ngày giúp giảm stress và tăng khả năng tỉnh thức.',
 		image: 'https://tse1.mm.bing.net/th/id/OIP.5uQI-0PtOpnvR4eQbdKsCgHaLE?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
 		slug: 'hien-nhip-ben-trong-cuoc-song',
-		mood_id: 'mood-4',
+		mood_ids: ['tinh_lang', 'binh_yen'],
 		content: `
 # Wherever You Go, There You Are
 ## Chánh Niệm Trong Mọi Khoảnh Khắc
@@ -686,7 +690,7 @@ Sách giúp người đọc yêu thương bản thân và chấp nhận những 
 		summary: 'Giải mã các kiểu gắn bó trong tình cảm, giúp hiểu hành vi trong mối quan hệ và tìm ra cách xây dựng kết nối lành mạnh.',
 		image: 'https://th.bing.com/th/id/R.c4963e7cc42d116a3849b7c2a9b817b4?rik=JXi6eS2e7U1yGg&riu=http%3a%2f%2fecx.images-amazon.com%2fimages%2fI%2f41ASy0R0sjL._SY344_BO1%2c204%2c203%2c200_.jpg&ehk=bif3Nr%2fa4ls6S%2bJqtZDPnmMWl45W4dZkWK0hfKxOXwo%3d&risl=&pid=ImgRaw&r=0',
 		slug: 'giai-ma-kieu-gan-bo',
-		mood_id: 'mood-2',
+		mood_ids: ['dau_kho', 'buon'],
 		content: `
 # Attached
 ## Hiểu Về Kiểu Gắn Bó Tình Cảm

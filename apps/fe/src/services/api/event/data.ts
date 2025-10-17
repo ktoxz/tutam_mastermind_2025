@@ -2,179 +2,168 @@ import { Event } from '@/models';
 
 const events: Event[] = [
 	{
-		_id: '6',
-		title: 'Hành Trình Tri Thức — RECAP Ra Mắt Câu Lạc Bộ Sách',
-		summary: 'ReCAP sự kiện ra mắt Câu Lạc Bộ Sách B-SITF: những khoảnh khắc, trò chơi, chia sẻ và kết nối yêu sách.',
+		_id: '9',
+		title: '[B-SITF x Nắng Ấm Project] |HỖ TRỢ TRUYỀN THÔNG|',
+		summary: 'B-SITF hỗ trợ truyền thông cho dự án Nắng Ấm, mang đến mùa hè ý nghĩa cho trẻ em có hoàn cảnh khó khăn tại TP.HCM.',
 		content: `
-> Với mong muốn tạo ra sân chơi bổ ích sau những ngày học tập và làm việc mệt mỏi, đồng thời khơi dậy cảm hứng đọc sách, B-SITF rất vui khi tổ chức thành công Sự Kiện Ra Mắt Câu Lạc Bộ Sách — một ngày đánh dấu khởi đầu cho hành trình tri thức đầy ý nghĩa.
+# 🌞 NẮNG ẤM — KHI MÙA HÈ LÀ MỘT MÓN QUÀ
 
-### Những khoảnh khắc đáng nhớ
+Giữa lòng **Sài Gòn oi ả**, có một dự án nhỏ đang miệt mài gieo những mùa hè thật khác cho các em nhỏ có hoàn cảnh khó khăn.
 
-#### Hoạt động chính
-- **Trò chơi tương tác:** Các thành viên tham gia nhiều hoạt động thú vị và sáng tạo
-- **Chia sẻ về sách:** Mọi người cùng chia sẻ những cảm nhận và trải nghiệm đọc sách
-- **Kết nối cộng đồng:** Tạo không gian giao lưu giữa những người yêu sách
+**Nắng Ấm** là dự án thiện nguyện do học sinh khởi xướng, nhằm mang đến các hoạt động học tập - vui chơi bổ ích mùa hè cho trẻ em tại các lớp học tình thương và mái ấm trên địa bàn **TP.HCM**.
 
-#### Thành công của sự kiện
-Từ giây phút mở đầu đến kết thúc, sự kiện đã thành công tốt đẹp nhờ:
-1. Sự nỗ lực tổ chức của các thành viên B-SITF
-2. Sự ủng hộ nhiệt tình từ các bạn tham gia
-3. Không khí vui vẻ và tích cực xuyên suốt
+Đội ngũ Dự án tin rằng: *mọi đứa trẻ đều xứng đáng có một mùa hè đúng nghĩa* — nơi được học điều mới, chơi điều vui và cảm nhận sự quan tâm để phát triển bản thân một cách toàn diện về thể chất, nhân cách và tinh thần.
 
-### Tiếp tục hành trình
+🧡 Từ những buổi học về **chăm sóc sức khỏe**, **các trò chơi rèn kỹ năng**, **sơ cứu**,… Nắng Ấm không chỉ mang đến tri thức mà còn gửi gắm thật nhiều sự **tử tế, lắng nghe và yêu thương**.
 
-> **Mục tiêu của CLB:** Khuyến khích tiếp cận văn hoá đọc và truyền cảm hứng đọc sách đến cộng đồng.
-
-Đây chỉ là một trong những hoạt động đầu tiên. Mong mọi người tiếp tục ủng hộ các sự kiện sắp tới để cùng nhau xây dựng cộng đồng đọc sách phát triển.
-
-### Gửi phản hồi
-
-Để chuẩn bị cho các sự kiện tiếp theo chỉn chu hơn, mời bạn để lại cảm nhận:
-
-**[Gửi phản hồi tại đây](https://forms.gle/JnCS62ydToAR1A1j7)**
-
-### Thông tin liên hệ
-
-**Email:** [CLB Sách B-SITF](mailto:clbsachbsitf@gmail.com)  
-**Facebook:** [CLB Sách B-SITF](https://www.facebook.com/clbsachbsitf)
-
-### Hình ảnh sự kiện
-
-![Hội trường sự kiện](https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/475139243_122199349070150501_5489995282479838620_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFTQw4FkIbfktP57VcTw2LNOf57DIrFl-A5_nsMisWX4LNCiKcwpwqd4QxqEPxG6mj3DV7v7jXTx58FvX5XjGkB&_nc_ohc=P51MLt_BRBkQ7kNvwG-zs9z&_nc_oc=AdnjbNQxxJmKpDiN20edEybC6uOl-d1hQ3BNV_9XYDzfiDNPZfhgLw32QAzxgjwn688&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=uroDhvxE2oJnIc7eX49RCw&oh=00_AfYQHM9HFJUbLma78JKxvA_JDPac6-YZNk5UR6anzgwZMQ&oe=68CB83E7)
-
-![Các bạn đặt câu hỏi](https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/475018674_122199351056150501_2832915830339415108_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGDsUuselWilirAXcN2cKVhkKdZw7jtJs6Qp1nDuO0mzqQUlrW-GSmXQ5j282enbz5BKcQRTVHYPA-BODjDnvt8&_nc_ohc=5HBayimHDtsQ7kNvwFNj0fa&_nc_oc=Adnwkh5G-9Lpr94WoFb3UBHiGlqQMtJRhO5aEKDS2hMoREzU5SSSinohUWNlZv8ZZIg&_nc_zt=23&_nc_ht=scontent.fsgn5-15.fna&_nc_gid=bEMralPzeu8reQG6yQVWYw&oh=00_AfbiPdRZTsQW1JCUAValhp9KFB16oOFlqc3JvgTPFJIMkg&oe=68CB93E2)
-
-![Gói quà sự kiện](https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/474620102_122199349040150501_3982825078981651555_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeG19s5sZG01Wkg96fdjhflxuRhuWCXY2xG5GG5YJdjbEb4JRy_9q5WkeO493Ek5bWRYt8bVYttfpFyUcpJtvjqt&_nc_ohc=4t-XpEVElbYQ7kNvwFsU7X0&_nc_oc=AdmQHDOqahb_HziUSi57ecge3rs-zQIlpZdHw29h8UImlySRpUQ8-Cp848ElRF2AAgE&_nc_zt=23&_nc_ht=scontent.fsgn5-12.fna&_nc_gid=gsP0PPrXjtEPfX2bw9VCeA&oh=00_AfZcmQC6PRYC0rSRyQHoCVfMOetFCLkSeurqnjPVMQc40Q&oe=68CB8B53)
-
-![Trước khi vào sự kiện](https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/475105668_122199348608150501_7235161925049843547_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeF9P2dN0w3gFgkkMACPwxEqeapqTzwzcih5qmpPPDNyKKO0ra8kEETNiHNGmuvSdxVOmqN92GU4QyqF8e337Hoc&_nc_ohc=NK7Pu9un9bUQ7kNvwHNm9Sk&_nc_oc=AdlBhO4xqHYlPSlMHlGWZV8evmDolZFkG2ULH-isdMsm_ADz4khZP0TShQRCAeo1WuE&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=gSn1jrmWTPRTjDVxH1GI8w&oh=00_AfaHVDgJnQDA_aC6pq6lObrjl2XE9uiwjjJQMzA3cHJI9g&oe=68CB802D)
+📣 Nếu bạn đang tìm kiếm một dự án với **sứ mệnh phát triển toàn diện cho trẻ em có hoàn cảnh khó khăn**,  
+**Nắng Ấm** chính là đích đến của bạn.
 
 ---
 
-*#BSITF #clbsach #hanhtrinhtrithuc #recapsukien*
+### 💌 Liên hệ với chúng tôi tại:
+- [Facebook](https://www.facebook.com/profile.php?id=61573028309121)  
+- [Instagram](https://www.instagram.com/nangam_project/)  
+- [Email](mailto:projectnangam@gmail.com)
+
+---
+
+#nangam #vitreem
+
 `,
-		location: 'Hội trường B-SITF, TP.HCM',
-		time: new Date('2024-12-05T18:00:00'),
+		location: 'TP.HCM',
+		time: new Date('2024-07-01T09:00:00'),
 		mainImage:
-			'https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/475139243_122199349070150501_5489995282479838620_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFTQw4FkIbfktP57VcTw2LNOf57DIrFl-A5_nsMisWX4LNCiKcwpwqd4QxqEPxG6mj3DV7v7jXTx58FvX5XjGkB&_nc_ohc=P51MLt_BRBkQ7kNvwG-zs9z&_nc_oc=AdnjbNQxxJmKpDiN20edEybC6uOl-d1hQ3BNV_9XYDzfiDNPZfhgLw32QAzxgjwn688&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=orXPnewMO1tnu2jJcBCcSA&oh=00_AfZFfaxGmHXnJtHMuQ6L_hRXBhr7rxYsNmumP6NRYxAfJg&oe=68CB83E7',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/516446130_122138924084767610_2804197368772057459_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeH5Alo9zZbP2FM9i_Q2Ltd33WJdy9GLeT3dYl3L0Yt5PbDZJmlgnAJ4x52-DzHYk01NSw-hMoOsJmV9r_Qf9cyU&_nc_ohc=6-q9JaWTLtkQ7kNvwF8rPR4&_nc_oc=AdldLiBPMdztgsNduNeuOF8Pt44nyPYwplZq8lOA9U1thDF7Jo0vmEPDSjnmw1ZeUFIcMCqUzE57liRyAk_Rfsc3&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=5DuDeZeeTksYAeefYcqQZw&oh=00_Afed3rTUx5LtmuHonDlumNDInnVWtVaVUKWRlpZimpQjtg&oe=68F832CF',
 		gallery: [
-			'https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/474793829_122199348428150501_304699239279445439_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEmhCpAS-KG10MUuQGXxQkFY4OQlrp24Jtjg5CWunbgm6iuaCEM3JAi7-EY0nNk9xHlmU0HAZPiK98Cr0hu4eb9&_nc_ohc=zUsyngGyjUcQ7kNvwGwZJcV&_nc_oc=Adl6pnAaQm7cWRtmzJStDamEiw7AwSiXTTRi-ejkNKllihLgr5ogmbi_pdeze9kogPQ&_nc_zt=23&_nc_ht=scontent.fsgn5-8.fna&_nc_gid=CMU4rra5DNt-X6ywirSl6g&oh=00_AfboM68CeZujElNMOSruUegWfFi3FAVB5P1DKOObMBpaOA&oe=68CB9610',
-			'https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/474990239_122199349226150501_1555236370170886107_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHxczAqSmdUUvbtkzSgM_6MH2bXuDz5RGgfZte4PPlEaEYtDuR8_Gogp0b-nHwH6XDQXS-HM-15dwLztdPrGqiy&_nc_ohc=elSyAXTycpMQ7kNvwH4TJMN&_nc_oc=AdneCr7dA8Pgqhh3U9GxU6U6K7RTlhixdW7D3sP5Bt8zyzR6l7IF6BdGTLogRdWDupQ&_nc_zt=23&_nc_ht=scontent.fsgn5-12.fna&_nc_gid=mmjFbem-3utObhen-9Br3w&oh=00_AfavXzs7psGBUzFOfHaZmsp_NG4UAcrRWy-kw108_iYpmg&oe=68CB9C44',
-			'https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/475164783_122199348884150501_2399867558951656402_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeG43wccQaskzLGORFMt1uBpUNvR_WDoPJlQ29H9YOg8mVmXh1h4J7whVdRMdckPH4JfbNkS39yOvGnbjv4t7gdd&_nc_ohc=F7HgjYw_WbcQ7kNvwFgziO3&_nc_oc=AdmpQ3m8ew6NzbJaNQQ3bugj10yQ5VePkyN_7dlBfzZYOlv7l-qX_8dpWXgDa3y06pQ&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=OvYhcDtkLA1CwkFmuc8tYg&oh=00_AfZxrXbtHNXs4p2VN4a5XZissruadINLUcLGZyxCdOGW2w&oe=68CBAA42',
-			'https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/475050178_122199348764150501_8499117415943304076_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFsMdeiMBUa2plEJz6NFPnueJiDVaZU_Z54mINVplT9nqzJPic4uaVI9JdxpDVNGAWiC-0XgDE_JpbrOva-FEJK&_nc_ohc=glqGmaOvwNEQ7kNvwEM506D&_nc_oc=Admo-UogukWFEhpUKsrpee89E4Lja-SBgY327Qw0yN6rxtM68JSodhKjuHhr5eGel3Q&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=F5SfhGC5ZMviqZVlAGTvLQ&oh=00_AfbhMmZJ9SwlSHBk3v-EDmwvxlmMHfvBxa0ekJ1qMtwv-Q&oe=68CBA447',
-			'https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/475136836_122199348464150501_38943528995749378_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFsvuaWNYc4G0xPkjbDTBc9MNPusgCmoVww0-6yAKahXGk6lRYzCQIbAFB7FWjwmTy2YIGxlzsy7YZK5fB5CqBj&_nc_ohc=t-bTz5Vv-bkQ7kNvwFUb3hZ&_nc_oc=Adnz-gtvCqDSDUYu4DOIURBio1itv45ZNjlmC6UWJy1UfK3rjj99cqZQ9AwUoFG6UEc&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=7WJyTQuYy9MTpjTwD1INgA&oh=00_AfYjtbDajgt0W9Pl_bESKu37mY1-FMlNWg_zmc0RzrZu-Q&oe=68CB9B08',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/515716811_122138923964767610_6824358517040235382_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeETMGtH8tEunWjK6pJnuSh-xmdd2tSPI2HGZ13a1I8jYSst-lefri7io7cKMt06XawgCcPku1GOPYcxC81eiRCC&_nc_ohc=4NKAy7C2jVgQ7kNvwGZgwW7&_nc_oc=AdlRRiji0vb5cEz7c_FoX3KeTbDnj08WzUR3Ic2uIvUY2EXo-1T34x0ITujQKV3SSFHdC46oQ7d1-lZHcZuWYFcR&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=ynQwSBLqY4BIP6ttxSw6WA&oh=00_AfcMRku-7smNtcawFDYgs4fI9dVAtx09Iovv7fe-FMuiJA&oe=68F832EA',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/515863689_122138923910767610_4240662503990536448_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeE9y5bzn5Okt9ct4fRhxBCC3hqhzl6x4EHeGqHOXrHgQWD1T021kdfvc036p0ZSoSZE0T-40V3ewbim-Yypxfnb&_nc_ohc=mxS1fnCrKtkQ7kNvwH5Vhp3&_nc_oc=AdmXQDvuddf2u6LV1uo5GcowRFlf6V6xKUPJfQC5GJYkFJaXTY3AnXj8OXt5KCrwwhODVca_GJYVxeYioA3DKXRv&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=09fpbXREoMQNcRZFW9wNRQ&oh=00_Affj5ZTuDz1MDPcNFSADBF78x3f_VZk77DKK_kHoDFRksg&oe=68F8344D',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/516776441_122138924042767610_6179436302288280771_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGp0msUmP7yQWTZ_e9UvLqgXfVGz8TAPPRd9UbPxMA89BCtSrcqTbtSx8Pnht2nKuzftopPzoamWFKtObwfNC_W&_nc_ohc=J57uWyjHHhUQ7kNvwHhnDGT&_nc_oc=AdmGOrMJ0Ix9ZU5OTZgGeTjwy7ycZOu01b4xm-XthyyspjojzUggm0GF-x8NQ8H2Y1IXVZRcim8m3dgWckvQIJ7M&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=h7x-yBc_dnEIOb8mBX-P6g&oh=00_Afc160IVDZ5s9WKOvz7Sqjfc3HichmU99CeWZwLKn09qug&oe=68F838E1',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/516407284_122138923694767610_4324619640955726109_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeF-sQEpJ032_pVl3R-F3SL-hBLq0ZcB37uEEurRlwHfu7_bcINWzkba5ZCiPdL_4EgqHnf7aJVwJgQXi9cHZO0m&_nc_ohc=FV1YlHAer5wQ7kNvwH2zYPu&_nc_oc=Adl4wU8ZbJV5twkcjXUtZF99v5JxUJi3I02hJdwJsA1_hhXrvmdXPE-8bEQ79a9To6kfCzRB-FPcgAcSXNtrg3jE&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=gPXSnbgTjmMGdRl6arB9Gg&oh=00_AfcY_CSkjqsaZINqbIFA74eri1J0JdJlTvhj9NCJ3d-EMA&oe=68F8224A',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/516358008_122138923712767610_3552496101339682359_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEVcqXgijFwpYPC4ufEcckfcStaQtJoRF5xK1pC0mhEXtpgPE4zYNDXBEuE_wtimDSnRuNzCa8GZRTElHZZ8O_6&_nc_ohc=XUKqjax33aEQ7kNvwGcyCHu&_nc_oc=Adk21m71PtfetC9DZtuTKp0M77DN93D110O9957hDYszVEih3xSrbfxmhwti0SeDWlyzvbqnIFdorGdCuPiWOpAT&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=wZkNjinDSjGCSpy-Gc9Z-A&oh=00_Afc_JEBiqlXE14vlirrBMfOP7j50Djd80Fs_VVYETyGsJQ&oe=68F829B4',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/517681967_122138923736767610_1780221598014130004_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeE1HeNIIZKfkT9Uo6sGJ2wsHSGCyjLY48UdIYLKMtjjxbkYOJxhzmdHk5nLrPk8m5kTTwUbOj6pTpzRIMP3_dQR&_nc_ohc=8ftk7tU5svwQ7kNvwGn7ARB&_nc_oc=AdnwQx_FwcZBIEPNSghCBqXq-ArvVyDUvV6QqRfcy3VTJKJ-EotQekqK60T3m1tz7FtXmWnVWT4gzVVEvI_vnlk3&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=-3a6eTvHy-P09ZCqi5swKQ&oh=00_AfexNG1Y0r15CSVK8MinQymRK23Z3ZlYSX__9_FyfmgIkg&oe=68F82989',
 		],
 		members: [],
-		slug: 'hanh-trinh-tri-thuc',
-		mood_id: 'mood-1',
-	},
-
-	{
-		_id: '7',
-		title: 'B-SITF || PHÁT ĐỘNG CUỘC THI TRANG TRÍ LỚP THEO CHỦ ĐỀ SÁCH',
-		summary: 'B-SITF phát động cuộc thi trang trí lớp với chủ đề "Thư Viện Con Chữ" tại CVT, khuyến khích sáng tạo và phát triển kỹ năng tập thể.',
-		content: `
-❣️Với hoạt động trang trí lớp năm nay tại CVT, B-SITF vô cùng háo hức gửi đến các lớp nội dung cuộc thi với chủ đề "Thư Viện Con Chữ"- bí ẩn bên trong những chiếc chìa khóa lưu giữ thời đại. Với sứ mệnh khai thác giá trị vô hạn của sách và mối liên kết mật thiết thông qua thế hệ trẻ, cuộc thi không chỉ là nơi khám phá thêm giá trị tiềm tàng và đầy hứa hẹn của các CVTers, mà còn tạo nên sân chơi vô cùng sáng tạo, rèn luyện khả năng làm việc tập thể và phát triển các kỹ năng cần thiết để các lớp tham gia chinh phục.
-
-🌟Với sự trở lại ngoạn mục cùng diện mạo mới, B-SITF hứa hẹn sẽ mang đến những nội dung đầy đột phá mạnh mẽ trên hành trình tìm kiếm và thúc đẩy tiềm năng, bản lĩnh của những bạn trẻ trong cánh cổng Sách và Văn Hóa Đọc.
-
-_________________________________________
-
-📌 THÔNG TIN CHI TIẾT CHƯƠNG TRÌNH
- Timeline các vòng:
-☄ Thời gian thực hiện: từ khi có thông báo chính thức đến hết ngày 10/11/2024
-☄ Vòng chấm trực tiếp tại các lớp:  vào lúc 7:45 ngày 11/11 (thứ hai) - BTC sẽ chấm lồng ghép để kiểm tra vệ sinh và ý nghĩa nội dung thuyết trình của từng lớp.
-☄ Vòng bình chọn - Thư Viện Con Chữ: 20:00 ngày 11/11 (thứ hai)  
-Chi tiết tại: [Click here](https://bit.ly/4fyTLgZ)
-
-_________________________________________
-
-📌 THỂ LỆ BÌNH CHỌN:
-Bước 1: Like và Follow fanpage Book - Step Into The Future
-Bước 2: Thả react cho bức ảnh của lớp yêu thích và ý tưởng mà các bạn cho là hay nhất, đặc sắc nhất.
-Điểm của Vòng Bình Chọn sẽ được tính dựa theo số lượng của lượt react trên bức ảnh của các lớp trên fanpage CLB và được quy đổi như sau: 
-⭐ 1 Hạng Nhất
-⭐ 2 Hạng Nhì
-⭐ 3 Hạng Ba
-
-_________________________________________
-
-🔥 Liệu các lớp đã sẵn sàng để hô biến lớp học của mình thành những bức tranh đầy màu sắc chưa nhỉ???🔥 
-
-_________________________________________
-
-THÔNG TIN LIÊN HỆ:
-- Email: [CLB Sách B-SITF](mailto:clbsachbsitf@gmail.com)
-- Facebook: [CLB Sách B-SITF](https://www.facebook.com/clbsachbsitf)
-
-___________________________
-#clbsach
-
-#bsitf
-
-#trangtriloptheochudesach
-`,
-		location: 'CVT, TP.HCM',
-		time: new Date('2024-11-11T20:00:00'),
-		mainImage:
-			'https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/480663279_122204491538150501_2369825567553455883_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHmB-QEKs9aVk4wmD8vfbmStOKn4ZxRth-04qfhnFG2H2W3s_cEv5x3-risGNa3HF0PTp9s8IegqYnT-DCWISae&_nc_ohc=efsFjpmcGUMQ7kNvwHKcvrt&_nc_oc=AdmFCuqwIvPk8bNFFUxBju3jd5byggb6TryW0QbtGKElxu0M-ptClAExHpLXe2yrFXM&_nc_zt=23&_nc_ht=scontent.fsgn5-14.fna&_nc_gid=FrNMiAA03WBWp_wxVvCBzQ&oh=00_AfbCq8Y78FIA0IPv9pM3YEIbbx-X7cMq6yBLNxaFaRvgEQ&oe=68CB9B8A',
-		gallery: [],
-		members: [],
-		slug: 'phat-dong-cuoc-thi-trang-tri-lop',
+		slug: 'b-sitf-x-nang-am-project',
 		mood_id: 'mood-1',
 	},
 	{
-		_id: '8',
-		title: 'DIỆU KÝ',
-		summary: 'Cập nhật tình hình sự kiện với chủ đề Cổ tích – Dân gian Việt Nam, tổ chức tại Thư viện Phường Vị Thanh.',
+		_id: '10',
+		title: '[QUỸ THIỆN NGUYỆN BƯỚC CHÂN TƯƠNG LAI - HẬU SỰ KIỆN: CẬP NHẬT CÁC QUỸ HỖ TRỢ]',
+		summary: 'B-SITF vừa kết thúc một mùa hè vô cùng ý nghĩa. Quỹ thiện nguyện “Bước Chân Tương Lai” đã chắp cánh được những thành công',
 		content: `
-CẬP NHẬT TÌNH HÌNH SỰ KIỆN
+# 🌟 Mọi người ơi, B-SITF vừa kết thúc một mùa hè vô cùng ý nghĩa rồi đấy!
 
-⭐️ Chủ đề: Cổ tích – Dân gian Việt Nam
+💐 **“Diệu Ký”** đã lắng lại, những dấu chân của sự **nhiệt huyết** và **tình thương** đã in dấu trên hành trình đến *Trường Dạy Trẻ Khuyết Tật* vào ngày **5/9** vừa qua.  
+Mang trong mình ngọn lửa tuổi trẻ, **B-SITF** đã đem đến “**Dòng chảy giá trị**” – từ dòng chảy này, chúng mình đã **ĐƯỢC HỌC, ĐƯỢC TRẢI NGHIỆM** vô vàn điều ý nghĩa. 💐
 
-⭐️ Thời gian: 7:00 - 19:00 ngày 31/07/2025
+---
 
-⭐️ Địa điểm: Thư viện Phường Vị Thanh
+Quỹ thiện nguyện **Bước Chân Tương Lai** đã chắp cánh cho những thành công,  
+và trên con đường ấy, không thể thiếu sự hỗ trợ vô cùng to lớn của những **“Ánh lửa dẫn đường.”**  
+B-SITF xin gửi những **LỜI TRI ÂN SÂU SẮC NHẤT** đến các **đơn vị**, **cá nhân** đã thắp cháy ngọn lửa của sự nhiệt huyết trong suốt sự kiện vừa qua.  
+Chính nhờ những tia lửa đó mà B-SITF đã viết nên một **trang mới** cho hành trình du hành lần này. 🔥
 
-⭐️ Đối tượng tham gia: Chào đón mọi đối tượng và lứa tuổi mà B-SITF có cơ hội mời gọi và đồng hành.
+---
 
-THÔNG TIN VỀ QUỸ THIỆN NGUYỆN
+💕 Một lần nữa, chúng mình xin trân trọng bày tỏ **lòng biết ơn** và **lời cảm ơn sâu sắc** đến tất cả mọi người vì những tấm lòng và sự góp sức quý báu.  
+Trên những chuyến đò ấy, chúng mình hy vọng sẽ có thể **thắp lên những ngọn lửa**, tạo nên **những giá trị cho cộng đồng.**
 
-📌 Thời gian mở quỹ: 17/07/2025 - 31/08/2025
+---
 
-📌 Số tài khoản nhận quỹ: 00207200816789 - HA DANG THANH NHAN - MB BANK
+### 📬 THÔNG TIN LIÊN HỆ
+- ✉️ Email: [clbsachbsitf@gmail.com](mailto:clbsachbsitf@gmail.com)  
+- 🌐 [Facebook](https://www.facebook.com/clbsachbsitf)
 
-📌 Nội dung: BUOC CHAN TUONG LAI - [Họ và Tên]
+---
 
-📌 Đối tượng nhận được sự hỗ trợ: các bạn/ các em học sinh có hoàn cảnh khó khăn và đặc biệt.
-____________________________
-B-SITF NGAY LÚC NÀY ❤️‍🔥🔥
-__________________________
-THÔNG TIN LIÊN HỆ:
-- Email: [CLB Sách B-SITF](mailto:clbsachbsitf@gmail.com)
-- Facebook: [CLB Sách B-SITF](https://www.facebook.com/clbsachbsitf)
-__________________________
-#clbsach
+#clbsach #bsitf #mua2 #dieuky
 
-#bsitf
-
-#sukienhe
-
-#dieuky
-`,
-		location: 'Thư viện Phường Vị Thanh',
-		time: new Date('2025-07-31T07:00:00'),
+	`,
+		location: 'Trường Dạy Trẻ Khuyết Tật',
+		time: new Date('2024-09-05T09:00:00'),
 		mainImage:
-			'https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/526548175_122233049060150501_992929228175578841_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeFJ1VUEb2ifTtfhtZsA3S8ZR4jV43rk5DZHiNXjeuTkNoIrgndaKE7mfYwmeM1dLqHb1FlAGprg2ZPMR7YD1eRb&_nc_ohc=0J_B3dvTYRwQ7kNvwGr8Ru1&_nc_oc=Adlv6JnU1QQiHamR39eqtagLlXTg9CubTSQdFn7W661xIhtHC2c0cz06sRd8oVnlXy0&_nc_zt=23&_nc_ht=scontent.fsgn5-14.fna&_nc_gid=35elPDtRLcefiWZ92fcsYg&oh=00_AfaFeRqjPVxRiJ57dZmG8AeAxGtWpSG1DFTXeRv-WyPJLA&oe=68CBA76C',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/545586108_122239733564150501_4792645852239123192_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHePzNpduFxMGt5lPz77D_Tg-pJk3gNa22D6kmTeA1rbTSVr1e44dyQdmWmrUhx1Vsl8obuqMf4IlW16zTrnsgO&_nc_ohc=uKSKfTAwOcQQ7kNvwG5DTOW&_nc_oc=AdmIqyDZ4d6p3HZZlt1b1Hqcj_2gOa0s3glwdk_jZJBVDEEqudmvX_nEbyi-k6c5otYdPcE92zqjhhS6w6jLp3i_&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=xcSPzx1pbJEZ3maWcIMSdA&oh=00_Afd8ThRt_nAlMnZLxbbUvrxYkdKO4Jv8tzfiiyA9Md7B9w&oe=68F8247D',
 		gallery: [
-			'https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/515501144_122233048610150501_8690841345460228355_n.jpg?stp=dst-jpg_p960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeFgi0L_Y3fUmeyoEHmbWmaXaP6IPtaPkFRo_og-1o-QVJEUsqYuS9oguMHaTMbkvnIHuX0y0BcLgOMRg92LIMUb&_nc_ohc=OceYqYBDWRkQ7kNvwERiGxp&_nc_oc=AdkJ-33NZIR783Jhfu0mLGjUrcsgyaAdLOLWcbHgnpElrrWQZ3yscTP8nRx4y_gMGrg&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=zrh0xtIhyrkcZxnmVoXMVQ&oh=00_AfbRuJi0KaHjQuVm1EUCKvV5rUdwpV9hw-sFa5kYqvea5A&oe=68CBAAF5',
-			'https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/524989674_122233049216150501_8672673964707880701_n.jpg?stp=dst-jpg_p960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeHRRHxpAFyp1NvKkvhp4a4ReindSZXhvr56Kd1JleG-vjl7ZWxy9Sx96M5WH5R8p9WOkhC4P0Iz4ssbMQz21Nox&_nc_ohc=B2woC7Nt6gQQ7kNvwHrJuDj&_nc_oc=Adl22d2ehPj5zchmDdX9G0x1IqguFEzDqbAwCUcCAv-A7sjRG-IOZMwYse4552YiwnA&_nc_zt=23&_nc_ht=scontent.fsgn5-14.fna&_nc_gid=zrh0xtIhyrkcZxnmVoXMVQ&oh=00_AfYW-b7MEKxOeDv2WKaBbWb6BcU9VvBAOK1pyD9JDWnP5g&oe=68CB9B2D',
-			'https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/526211518_122233049396150501_8257682731450376276_n.jpg?stp=dst-jpg_p960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeGLEie0ss7VERSKtleI_Si2Sl1o4BziclJKXWjgHOJyUirMxTn18oRP74AsO8MNbz5njmFlN8p-bhO1SmBomoFH&_nc_ohc=3kHi2dmk4EYQ7kNvwEdOsed&_nc_oc=AdlX88p42BZwm1Lptw1VyDyvvBSvbE9wNw3qaOGBIVfo16NTtMpG3wljf-c4xuxusE8&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=zrh0xtIhyrkcZxnmVoXMVQ&oh=00_AfaZ1N2Wz-q60OcqGqB8ri7k8J0r2nCyHKMQBwj8Z3qSkA&oe=68CB922D',
-			'https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/515500350_122233049486150501_1187320510851863617_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEo6dXuBzzvLKDYdNAIBYi9A8F-UIUYepwDwX5QhRh6nG9Bdw6-yt_Y8vQQrUL2hCc4z39EQJ39NQw1-NezCebb&_nc_ohc=7BAq-MuuWcoQ7kNvwF1B92v&_nc_oc=AdmxyeQuL9RfXo0hM02KFA--dgh531A7qfOu92_hrGis6b_DEXRxVPpt3qX5QtZpvzA&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=PFMBbs18CBgLuu9PqJ5iCQ&oh=00_AfYuzGfFzUyR_5RMU5eQ1KDkDmJH-32z6hpgJv4fw6T2JQ&oe=68CBA372',
-			'https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/525017161_122233049552150501_5346400886051831585_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeFTEFMHhKmBbYrfxAjdm2tCbm9EfSYfzYJub0R9Jh_NglFyGq9JOqovTzElJznRA2vypxDw_gdapg-OQrhbRW70&_nc_ohc=2_cTg3YYILYQ7kNvwEiY2Wx&_nc_oc=AdlWR0IaS4z9xdufy1So3490PW_L1vZbqzUdGRnAw-3iJSCkyM-bpbZkv6blv2C3YPo&_nc_zt=23&_nc_ht=scontent.fsgn5-8.fna&_nc_gid=yooxShghHoKss9scak5GFQ&oh=00_AfYm2PE9F3ILVpeL929eoVkQcb8MvlXKTy7z8vzK2iEzdA&oe=68CB8D43',
-			'https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/525618263_122233049570150501_390131307656643428_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEdR9uffZ0LO2x3q6KZNr59vY8kuMAhoNK9jyS4wCGg0tsIKV5wNA2Q-l_dSnsKjlvLqEChtCMDwddtbEmGySNe&_nc_ohc=5Ffrpxn8v00Q7kNvwHr4DU1&_nc_oc=AdlYHAG0XdKYjWUw1iWKH9uBunEr1LlyMsVQ6ji7GjW0-xk22bEzwthtdS6UVqt5_Yw&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=PtcNypfjFHVthW9KjDHDpw&oh=00_AfYuKn9OIdOxV0r6ylAtGGlrNaIc_vwhcAAiITlUFr21lw&oe=68CBA57E',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/546493890_122239734128150501_7092880229004506640_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFollyn9QadYv3gZNdBLqSF_iQuoJvVOur-JC6gm9U66jpFaOLPLvnSJErTIrZZT6_YJ0OKjXgKynYqLcTwi4bv&_nc_ohc=mnmq9qdSNvQQ7kNvwG0FI0l&_nc_oc=Adlwf61Fo_dsVHaW3GoNbVDYerg3W4dRjaWKEi0sU2W_5UcmayW2SgkYt0eF0cwfDjMZIwqTI8NLIqgs3rKXIq6z&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=7FipcM_gWj7SIhqf93GWRA&oh=00_AfcIAqjQQXBFnX-S6vFbD2GNyZTXHt_evVpHUBoNPprCYQ&oe=68F843B9',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/547235821_122239733738150501_6584321070444535683_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHN_sAordA7hjuYaUYGJCJ7gqHWgPBlvr-CodaA8GW-v4W3aViWf0RHA7Z5KX8RpPbIs46UMtQQaZILedkE8uS3&_nc_ohc=aBf48CP1zRgQ7kNvwHpTr1c&_nc_oc=AdkOCX3HL4Ff4bc69LTZ8WXWLIqaHbNgK7gJ9wd1Ubp_8rH3lQx0lOnYXLDM2ND5ZG5Vwrt5uS3bPeDeR6_0662y&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=D3AwbfLbTR89n5SGMfllfA&oh=00_AfeY98ze92azH6UxDv617CUZsQN-Ih7j-m2eTTm-B35ZoA&oe=68F83DCC',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/545199349_122239734278150501_5933435145348182151_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHyVFvGMkdZ-xV0HYTQRu3XkGi08ynjOWGQaLTzKeM5YbRyx9N5t2aFrfD-d0CZUEwH6SyMOj3CNYtBHVit9KFT&_nc_ohc=tK6mbYpHuq8Q7kNvwEqRqRX&_nc_oc=AdlEMEPQ9dE_fQC9ukvDwXSUVCM6UH1rR7Ni2HvnAYZDAF9GqkTTJgXf9jFl1JbdQfnmil76FbRM9x-jnY5U0GK0&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=BGigqbAeW6wQq3I6S6fZGQ&oh=00_AfcmTTM3jc99UXQDGS46QQ_kOFgySvK07FzsKmr8_v4e8Q&oe=68F82CB7',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/545366837_122239733642150501_8056670624114544511_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGl57o-BcO9LQ2TcodlwXEKehe-uoYcjqt6F766hhyOqzeU_TopX3J6-7k0yeg4zQDCKo54jgM1viAUAtVLmkTv&_nc_ohc=aKYC7sR_LLgQ7kNvwEq4FZK&_nc_oc=AdlvrM6-BAmgqwJVsKHzbO-Sd7XNgMuLWT301tsc1n57LN54QnA6qY6POJZkBby8TzQ6qe3xcTtJh3uJ6rMM9IzN&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=25yfpelSMlUZ730i00dfCw&oh=00_AfefkSm9XAKvUFTnDFFhyPwh_lE0IDY2iJe4jhua5HGcgw&oe=68F82084',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/546231974_122239733720150501_4342301772622011111_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHaV9VqsLjn-CBwIk_kLL4O9ecC1nFRwcv15wLWcVHByxAvq0CU5EkCJWhn7N4hqpQjY3Bm5I5wVII-oBCflk-H&_nc_ohc=73V_ixfsozsQ7kNvwEWSKGV&_nc_oc=AdlSiqgiLbO-cGMUMZrKBG_gl1FhOzB-L8ueYq1SaHFmwBa_SQNG93TSTqcrzMedaRWvoGhheqfq5X6UpETPHLDG&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=IPJy8L735XBart40H-y7AQ&oh=00_AfcBfj43g7uNEpuA2Ytr98ueInO7tG11Ixwv5rB9Xn5YZg&oe=68F832FE',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/546142055_122239733558150501_1986219506368343666_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHLvoI9I2VHaDXYHVLiceMgguy1LpGs8oiC7LUukazyiJjjNs9soZnnspLAJquUx-HmCVadSLRnmvz3hq9BQJOP&_nc_ohc=rpHTvcm2dEcQ7kNvwG3ja2j&_nc_oc=AdkItLjXz9_W9D09D0Wgo_PCfzj_INWkO9UNt2NLCADRwJXRU-LTJZ7ypk6WAEvm77XpPU2ib8JEhezVA8iWMYPi&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=nlQauYHfOsruOL0g6ZLXwQ&oh=00_AffCLNIVNKyd-BVc0JcHarZrwNe_Lvh40eqBjQuYniGMTQ&oe=68F83843',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/545883587_122239733822150501_1463028888703626056_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeE5pkvhNm3XRbnMh4687LpGJ_1XOQ1L4YEn_Vc5DUvhgTg7lfz8BmZZ1udQGSgw5Ozk6RJb85sQwPc0gzU0Z9pW&_nc_ohc=_BEHuyNMfQUQ7kNvwEIKOpp&_nc_oc=AdlM7X2_G4kbpW4JXDivgnGkWvGRxjGf36rUrqhi5YUuKzRRErYCob_VFbxMxM5WCoOtxTmxOWhy-odGfWenmL8K&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=DxmrXmU9Z4GGId_otrVfkg&oh=00_AfePYz0cckHy_RUfFpgdv8YnV5X3FMqkXTRLihmEZVsJZw&oe=68F846E1',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/545839830_122239733972150501_4993473298967230066_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEI_RXNhet5NRuzCOU5jlh-v7nTvxSJD4m_udO_FIkPiS7S4DMrdsND1Vm3qwkyFfHVl45jeevJAfFIjJGWL2Fx&_nc_ohc=aJx8lsYghdIQ7kNvwHuaniV&_nc_oc=AdlIvIFTvxDUWL3VlB80WrzrMIPVHC037pVU4X9sFWNj414zYEb9ROS60L_e1vxrhmwRzKH6IPNMjFcqnf86b5cQ&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=7nFbyp1b2XDN9-NfXUW5aQ&oh=00_AffGEYKwByvNAiR6S67J4_SoRuf8J9EWbvHLi5rAdPnfLw&oe=68F850E3',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/545813382_122239733648150501_1735713741375676816_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGfvpSXRKCINouUABKjU938rpDkEPayuEGukOQQ9rK4QfMfTQFOR9lNf75Q95FlK8uJe0dcQkSDeQdpIn6_AcCK&_nc_ohc=uYsNL5QTXCkQ7kNvwFDNiHX&_nc_oc=AdlibK0Nn4emFSeP7f_zc-aVFL35GPQ1sXodk98wdwadpJFmYoGsCcsoX8s1crjd_bqKngZjpm7m6xQGwjW4CzzI&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=jt3xS4L_dXSWXbcaH2ESdg&oh=00_Afe1brSgeNfptNXJfyHzvaZ9wB_za8rAUcSkTLy4c2mzBQ&oe=68F8505D',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/547173358_122239734092150501_4533409500015413141_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGK5njeMr5tFDFb6SM4P4fIPsRJrBnPtvg-xEmsGc-2-LkUPpoK3NhcFxz-g7HrGU_pCE5-kpY02ocnmIkVkmQv&_nc_ohc=MtRq44goOT8Q7kNvwG4ZZtv&_nc_oc=AdleDCj7lIhnG4LnLJkkabOmiPqmtsVsZvtIMZBeEcCQkgW1OADVA-pz1ET7TTUaw14rk9zGnOrEZ4q1KxGlUkZJ&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=HH_n_klpK2ZnqB5xAEhRLQ&oh=00_AfeZvCTJKfKEkUXHtSdut-xkUTF_3eZTK6L65Oz1KBiQwA&oe=68F83D61',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/545865326_122239733798150501_308888473117010674_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeF4o7zw92g8eym_jTEbfPoxxdX3i8ov2jzF1feLyi_aPGUtap1kZMLtd9nSrp9bBJUBUq9MUxp0PSryhPoKL1Qz&_nc_ohc=ylLnukrZfCsQ7kNvwEdYXpH&_nc_oc=AdlBKa-NNlZ3P7mTpSwJ_hLBkQ_w9iDYn8zHa685-MJcbHTqtYXdfOdi01yyPaLWyjzW8gK-ci708H5TgpNxwrki&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=wn0WBGH7zhp8Rbj0_dLzpg&oh=00_Affd3blJnSlFH2GzFR5e1_Wpbw2wPJHj7HLeVd186xA9ug&oe=68F82348',
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/546170126_122239733996150501_3199390178945395102_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGzwmAyI6QMkfjhDGFka-cO30dALBI1FO7fR0AsEjUU7joWB1ScJ7DdlPMWOFoYwj8yzApLTAEMtfuXvtLB_000&_nc_ohc=44_7-ZfoAz8Q7kNvwGBEsRW&_nc_oc=AdnSRcGcdh4UGPTYfh-5VIub8Uv43xoiTXkrj5duD-TdIQz_XKRTDWmVlZUmc4TN1XLZx1ZG_zWh0cYOC8YEiCX9&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=vtKC7My69Q-d-RE10WUi3g&oh=00_AfeDm3G72R0nKowwYJN4el_1sH2pxome23TENRhAznptDQ&oe=68F850E2',
 		],
 		members: [],
-		slug: 'dieu-ky',
+		slug: 'quy-thien-nguyen-buoc-chan-tuong-lai-hau-su-kien',
+		mood_id: 'mood-1',
+	},
+	{
+		_id: '11',
+		title: '[LỜI THÌ THẦM TRONG TRANG GIẤY - NƠI BÌNH YÊN CHỜ SAU ĐỈNH NÚI]',
+		summary: '⛰️Trên hành trình trưởng thành, ai cũng mang trong tim những “dãy núi” riêng. Đó có thể là nỗi sợ, sự cô đơn, hay những mong cầu chưa trọn vẹn',
+		content: `# ⛰️ Trên hành trình trưởng thành, ai cũng mang trong tim những “dãy núi” riêng
+
+Đó có thể là **nỗi sợ**, **sự cô đơn**, hay những **mong cầu chưa trọn vẹn**.  
+Và giống như leo núi, quá trình ấy chưa từng đơn giản.  
+Có lúc kiệt sức, lúc lạc đường, nhưng từng bước đi đều đưa ta gần hơn với **SỰ BÌNH YÊN**.
+
+---
+
+📖 Trong tác phẩm *“Siddhartha”* của **Hermann Hesse**, Siddhartha cũng phải vượt qua những **ngọn núi tâm hồn**.  
+Anh đã bỏ lại sự sung túc để đi tìm chân lý, rồi lại sa ngã trong những thú vui trần tục.  
+Những “ngọn núi” ấy không ở bên ngoài, mà ở sâu trong **chính tâm hồn** — nơi chẳng ai có thể leo thay cho chàng.
+
+---
+
+🌿 Sau tất cả, chàng nhận ra: **bình yên không nằm ở đâu xa xôi**, cũng không do ai ban tặng.  
+Nó hiện hữu khi ta **dám đối diện và vượt qua chính mình**.  
+Giác ngộ không phải là một **đích đến có sẵn**, mà là hành trình bước qua từng dốc cao, từng khe đá nội tâm.  
+Và khi đứng trên “đỉnh núi”, ta mới thấy: **thảo nguyên bình yên vẫn luôn ở đó, ngay trong ta.**
+
+---
+
+🌸 Mỗi người sẽ có những **nhịp riêng khi leo núi**.  
+Có người chậm rãi, bình thản, nhưng cũng có người vội vã, gấp rút.  
+Điều quan trọng nằm ở việc họ đã **dám bước những bước đi đầu tiên**.  
+Để rồi đi từ chân núi, ta thấy được một **cao nguyên rực sắc**,  
+mà chỉ có **BƯỚC** mới có thể **CHẠM**.
+
+---
+
+🍃 Hãy lắng nghe “**tiếng thì thầm**” bên trong mình —  
+những cảm xúc, những suy nghĩ tưởng chừng nhỏ bé nhưng lại dẫn đường.  
+Rồi một ngày, khi đã đi qua những dốc lòng, ta sẽ hiểu:  
+> “Bình yên không chỉ ở cuối con đường, mà ở ngay từng bước chân ta dũng cảm bước qua.”
+
+---
+
+### 💌 THÔNG TIN LIÊN HỆ
+- ✉️ Email: [clbsachbsitf@gmail.com](mailto:clbsachbsitf@gmail.com)  
+- 🌐 [Facebook](https://www.facebook.com/clbsachbsitf)
+
+---
+
+#clbsach  
+#bsitf  
+#loithithamtrongtranggiay
+
+	`,
+		location: 'Online',
+		time: new Date('2024-09-20T20:00:00'),
+		mainImage:
+			'https://scontent.fsgn16-1.fna.fbcdn.net/v/t39.30808-6/558226808_122243563058150501_989031903319784393_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFhmgvEOSCyWQHMgcvYnyQNiuD2tG4G2MyK4Pa0bgbYzC-TQT0V5j8ZwaeaqrTkkIsE1Zk_AQQbTPXqboU2UeRC&_nc_ohc=EGge0R-a4UsQ7kNvwEPb3SO&_nc_oc=AdnRgdDyAdZeOwLkg3Vew_TGwV6ia0m15bYgp8fQ0eT_-l9__TT-Qp666olxVsgbfEeVycQEr8uC_FJmCkwTv999&_nc_zt=23&_nc_ht=scontent.fsgn16-1.fna&_nc_gid=Bn8alZrpQ0daR6LCR7gliQ&oh=00_AffS4gYfhJwRFSjcWi-AdzhH6vBW5nYXUJxCXjNSOodaag&oe=68F82C44',
+		gallery: [
+			'https://thuthuatnhanh.com/wp-content/uploads/2020/08/nhung-cau-noi-hay-ve-su-binh-yen.jpg',
+			'https://bloganchoi.com/wp-content/uploads/2023/02/nhung-cau-noi-hay-ve-binh-yen-2-1.jpg',
+			'https://salt.tikicdn.com/ts/tmp/bb/b4/8a/71095d2beba026ccab76ef25f10a95c0.jpg',
+		],
+		members: [],
+		slug: 'loi-thi-tham-trong-trang-giay',
 		mood_id: 'mood-1',
 	},
 ];

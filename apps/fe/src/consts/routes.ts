@@ -18,6 +18,13 @@ export const BASIC_ROUTES: Record<string, Route> = {
 	cham: {
 		label: 'chạm',
 		href: '/cham',
+		children: {
+			detail: {
+				label: 'chi tiết cảm xúc',
+				href: '/[id]',
+				full: (id: string) => `/cham/${id}`,
+			},
+		},
 	},
 	dieu_ky: {
 		label: 'diệu ký',

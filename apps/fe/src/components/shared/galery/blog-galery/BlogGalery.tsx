@@ -17,7 +17,18 @@ const BlogGalery: React.FC<BlogGaleryProps> = ({ blogs, loading = false, title =
 	const itemWidth = size?.width && size.width > 0 ? size.width : 260;
 
 	return (
-		<Carousel itemWidth={itemWidth} autoScrollInterval={3000} title={title} showTitle={true} gap='gap-2 md:gap-4' pauseOnHover={true} enableManualScroll={true} isLoading={loading}>
+		<Carousel
+			itemWidth={itemWidth}
+			autoScrollInterval={3000}
+			title={title}
+			showTitle={true}
+			gap='gap-2 md:gap-4'
+			pauseOnHover={true}
+			enableManualScroll={true}
+			isLoading={loading}
+			isEmpty={blogs.length === 0}
+			emptyMessage='Không có blog phù hợp với cảm xúc này.'
+		>
 			{blogs.map((blog, index) => (
 				<BlogCard key={blog._id} blog={blog} ref={index === 0 ? blogRef : undefined} />
 			))}

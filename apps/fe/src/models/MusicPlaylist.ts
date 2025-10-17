@@ -4,7 +4,7 @@ type MusicPlaylist = {
 	description: string;
 	ytb_video_id: string;
 	ytb_playlist_id: string;
-	mood_id: string;
+	mood_ids: string[];
 	slug: string;
 	createdAt: Date;
 	updatedAt: Date;
@@ -17,7 +17,7 @@ const mapMusicPlaylist = (data: any): MusicPlaylist => {
 		description: data.description,
 		ytb_video_id: data.ytb_video_id,
 		ytb_playlist_id: data.ytb_playlist_id,
-		mood_id: data.mood_id,
+		mood_ids: data.mood_ids,
 		slug: data.slug,
 		createdAt: data.createdAt,
 		updatedAt: data.updatedAt,

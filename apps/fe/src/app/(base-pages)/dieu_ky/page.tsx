@@ -78,15 +78,11 @@ const ContentGalleries: React.FC<{
 		return <InlineLoading title='Đang tải nội dung...' />;
 	}
 
-	if (!hasContent) {
-		return <EmptyState />;
-	}
-
 	return (
 		<>
-			{books.length > 0 && <BookGalery books={books} loading={loading} />}
-			{blogs.length > 0 && <BlogGalery blogs={blogs} loading={loading} />}
-			{playlists.length > 0 && <YTBMusicPlaylistGalery playlists={playlists} loading={loading} />}
+			{<BookGalery books={books} loading={loading} />}
+			{<BlogGalery blogs={blogs} loading={loading} />}
+			{<YTBMusicPlaylistGalery playlists={playlists} loading={loading} />}
 		</>
 	);
 };
@@ -107,7 +103,12 @@ function DieuKyPage() {
 	const fetchAllContent = useCallback(async () => {
 		setLoading(true);
 		try {
-			const [[, moodMetaData], [, bookData], [, blogData], [, playlistData]] = await Promise.all([moodService.getMoodMetaList(), bookService.getList(), blogService.getList(), musicPlaylistService.getList()]);
+			const [[, moodMetaData], [, bookData], [, blogData], [, playlistData]] = await Promise.all([
+				moodService.getMoodMetaList(),
+				bookService.getList(),
+				blogService.getList(),
+				musicPlaylistService.getList(),
+			]);
 
 			setMoodMetaList(moodMetaData || []);
 			setBooks(bookData || []);
@@ -124,7 +125,11 @@ function DieuKyPage() {
 		async (moodId: string) => {
 			setLoading(true);
 			try {
-				const [[, bookData], [, blogData], [, playlistData]] = await Promise.all([bookService.getByMoodId(moodId), blogService.getByMoodId(moodId), musicPlaylistService.getByMoodId(moodId)]);
+				const [[, bookData], [, blogData], [, playlistData]] = await Promise.all([
+					bookService.getByMoodId(moodId),
+					blogService.getByMoodId(moodId),
+					musicPlaylistService.getByMoodId(moodId),
+				]);
 
 				setBooks(bookData || []);
 				setBlogs(blogData || []);
@@ -135,7 +140,7 @@ function DieuKyPage() {
 				setLoading(false);
 			}
 		},
-		[bookService, blogService, musicPlaylistService]
+		[bookService, blogService, musicPlaylistService],
 	);
 
 	const handleMoodSelect = useCallback((moodId: string | null) => {
@@ -152,7 +157,11 @@ function DieuKyPage() {
 
 	return (
 		<>
-			<PageHeader title='Không Gian Diệu Kỳ' description='Nơi bạn có thể tìm thấy sự bình yên và nguồn cảm hứng qua những trang sách, câu chuyện và giai điệu chữa lành.' disableAppearAnimation />
+			<PageHeader
+				title='Không Gian Diệu Kỳ'
+				description='Nơi bạn có thể tìm thấy sự bình yên và nguồn cảm hứng qua những trang sách, câu chuyện và giai điệu chữa lành.'
+				disableAppearAnimation
+			/>
 
 			<AppSection disableAppearAnimation>
 				<div className='flex flex-wrap justify-center gap-3 md:gap-4 mb-12'>

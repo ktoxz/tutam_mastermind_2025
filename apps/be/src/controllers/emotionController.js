@@ -16,6 +16,22 @@ const predictMood = async (req, res, next) => {
   }
 }
 
+const getEmotionById = async (req, res, next) => {
+  try {
+    const { userId } = req.user
+    const { id } = req.params
+    const emotion = await emotionService.getEmotionById(userId, id)
+
+    if (!emotion) {
+      return res.status(StatusCodes.NOT_FOUND).json({ message: 'Không tìm thấy cảm xúc' })
+    }
+
+    res.status(StatusCodes.OK).json(emotion)
+  } catch (error) {
+    next(error)
+  }
+}
+
 const getEmotionHistory = async (req, res, next) => {
   try {
     const { userId } = req.user
@@ -30,8 +46,8 @@ const getEmotionHistory = async (req, res, next) => {
 const deleteEmotion = async (req, res, next) => {
   try {
     const { userId } = req.user
-    const { emotionId } = req.params
-    await emotionService.deleteEmotion(userId, emotionId)
+    const { id } = req.params
+    await emotionService.deleteEmotion(userId, id)
 
     res.status(StatusCodes.OK).json({ message: 'Xóa cảm xúc thành công' })
   } catch (error) {
@@ -42,5 +58,6 @@ const deleteEmotion = async (req, res, next) => {
 export const emotionController = {
   predictMood,
   getEmotionHistory,
+  getEmotionById,
   deleteEmotion
 }

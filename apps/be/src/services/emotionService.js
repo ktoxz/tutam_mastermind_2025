@@ -29,6 +29,14 @@ const predictMoodNonUser = async (tags, diary) => {
   return moodResponse
 }
 
+const getEmotionById = async (userId, emotionId) => {
+  const emotion = await Emotion.findOne({ _id: emotionId, userId })
+  if (!emotion) {
+    throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy cảm xúc')
+  }
+  return emotion
+}
+
 const getEmotionHistory = async (userId) => {
   const history = await Emotion.aggregate([
     { $match: { userId: new mongoose.Types.ObjectId(userId) } },
@@ -55,6 +63,7 @@ const deleteEmotion = async (userId, emotionId) => {
 export const emotionService = {
   predictMood,
   predictMoodNonUser,
+  getEmotionById,
   getEmotionHistory,
   deleteEmotion
 }

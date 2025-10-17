@@ -24,7 +24,10 @@ function TamBuocPage() {
 
 	return (
 		<>
-			<PageHeader title='Tâm Bước' description='Nơi lưu giữ những khoảnh khắc đặc biệt và tạo không gian kết nối cộng đồng. Cùng nhau chia sẻ, học hỏi và phát triển qua các sự kiện ý nghĩa.' />
+			<PageHeader
+				title='Tâm Bước'
+				description='Nơi lưu giữ những khoảnh khắc đặc biệt và tạo không gian kết nối cộng đồng. Cùng nhau chia sẻ, học hỏi và phát triển qua các sự kiện ý nghĩa.'
+			/>
 
 			{loading ? (
 				<InlineLoading title='Đang tải sự kiện...' />
@@ -43,12 +46,13 @@ function TamBuocPage() {
 				</>
 			)}
 
-			{/* Future: Virtual Tree Section */}
 			<AppSection>
 				<div className='bg-white rounded-lg shadow-md p-6 mt-12'>
 					<div className='text-center'>
 						<h2 className='text-2xl md:text-3xl font-bold text-[--color-primary-dark] mb-4'>🌳 Cây Ước Nguyện</h2>
-						<p className='text-[--color-text-secondary] mb-6'>Tính năng đặc biệt đang được phát triển. Sẽ sớm có thể viết lời chúc và treo lên cây ảo cùng cộng đồng!</p>
+						<p className='text-[--color-text-secondary] mb-6'>
+							Tính năng đặc biệt đang được phát triển. Sẽ sớm có thể viết lời chúc và treo lên cây ảo cùng cộng đồng!
+						</p>
 						<div className='text-8xl opacity-30 mb-4'>🌳</div>
 						<p className='text-sm text-[--color-text-tertiary]'>Cây sẽ lớn dần theo từng lời chúc của mọi người...</p>
 					</div>

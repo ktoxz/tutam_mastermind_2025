@@ -17,7 +17,18 @@ const BookGalery: React.FC<BookGaleryProps> = ({ books, loading = false, title =
 	const itemWidth = size?.width && size.width > 0 ? size.width : 200;
 
 	return (
-		<Carousel itemWidth={itemWidth} autoScrollInterval={3000} title={title} showTitle={true} gap='gap-2 md:gap-4' pauseOnHover={true} enableManualScroll={true} isLoading={loading}>
+		<Carousel
+			itemWidth={itemWidth}
+			autoScrollInterval={3000}
+			title={title}
+			showTitle={true}
+			gap='gap-2 md:gap-4'
+			pauseOnHover={true}
+			enableManualScroll={true}
+			isLoading={loading}
+			isEmpty={books.length === 0}
+			emptyMessage='Không có sách phù hợp với cảm xúc này.'
+		>
 			{books.map((book, index) => (
 				<BookCard key={book._id} book={book} ref={index === 0 ? bookRef : undefined} />
 			))}

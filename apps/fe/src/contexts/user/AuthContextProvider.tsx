@@ -6,7 +6,7 @@ import { UserService } from '@/services/api/user/user.service';
 import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/local-storage.service';
 import { AuthService } from '@/services/api/auth/auth.service';
 import Swal from 'sweetalert2';
-import { NewMoodService } from '@/services/api/newmood/mood.service';
+import { EmotionService } from '@/services/api/newmood/mood.service';
 
 interface AuthContextProviderProps {
 	children: React.ReactNode;
