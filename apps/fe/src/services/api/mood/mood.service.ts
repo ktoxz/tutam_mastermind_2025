@@ -1,4 +1,4 @@
-import { Answer, TErrorFirst } from '@/types';
+import { TErrorFirst } from '@/types';
 import { Mood, MoodMeta } from '@models';
 
 const MOOD_META: MoodMeta[] = [

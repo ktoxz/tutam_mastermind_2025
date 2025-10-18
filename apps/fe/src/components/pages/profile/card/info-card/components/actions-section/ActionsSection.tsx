@@ -1,19 +1,14 @@
 'use client';
 import React from 'react';
-import { Settings, KeyRound, Undo2 } from 'lucide-react';
+import { Settings, KeyRound, Undo2, LogOut } from 'lucide-react';
 import ToolTip from '@/components/shared/tool-tip/ToolTip';
 import Link from 'next/link';
 import { AUTH_ROUTES, BASIC_ROUTES } from '@/consts/routes';
+import { useAuthContext } from '@/contexts/user/useAuthContext';
 
-export default function ActionsSection({
-	onSettings,
-	onEdit,
-	onChangePassword,
-}: {
-	onSettings?: () => void;
-	onEdit?: () => void;
-	onChangePassword?: () => void;
-}) {
+export default function ActionsSection({ onSettings, onEdit, onChangePassword }: { onSettings?: () => void; onEdit?: () => void; onChangePassword?: () => void }) {
+	const { logout } = useAuthContext();
+
 	return (
 		<div className='flex flex-col items-end w-full gap-2'>
 			<ToolTip title='Về trang chủ' description='Quay lại trang chính'>
@@ -35,6 +30,15 @@ export default function ActionsSection({
 				>
 					<KeyRound size={16} />
 				</Link>
+			</ToolTip>
+			<ToolTip title='Đăng xuất' description='Đăng xuất khỏi tài khoản của bạn'>
+				<button
+					className='cursor-pointer aspect-square flex items-center gap-2 p-2 rounded-md bg-red-400 text-white hover:bg-red-500 transition-colors duration-200'
+					aria-label='Đăng xuất'
+					onClick={logout}
+				>
+					<LogOut size={16} />
+				</button>
 			</ToolTip>
 			<ToolTip title='Cài đặt' description='Thay đổi các tùy chọn bảo mật và quyền riêng tư'>
 				<button

@@ -3,19 +3,18 @@ import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import AppSection from '@/components/shared/app-section/AppSection';
 import PageHeader from '@/components/shared/page-header/PageHeader';
-import EmotionResult from '@/components/newcham/emotion-result/EmotionResult';
+import EmotionResult from '@/components/pages/cham/emotion-result/EmotionResult';
 import Loading from '@/app/loading';
 import ButtonCTA from '@/components/shared/cta/ButtonCTA';
 import { RotateCcw } from 'lucide-react';
 import Swal from 'sweetalert2';
-import { EmotionService } from '@/services/api/newmood/mood.service';
+import { EmotionService } from '@/services/api/emotion/emotion.service';
 import { EmotionHistoryItem } from '@/models/Emotion';
 import { Mood } from '@/models/Mood';
 import { MoodService } from '@/services/api/mood/mood.service';
-import LinkCTA from '@/components/shared/cta/LinkCTA';
 import { BASIC_ROUTES } from '@/consts/routes';
 
-const EmotionDetailPage: React.FC = () => {
+function EmotionDetailPage() {
 	const params = useParams();
 	const router = useRouter();
 	const id = Array.isArray(params?.id) ? params.id[0] : params?.id ?? '';
@@ -45,8 +44,6 @@ const EmotionDetailPage: React.FC = () => {
 			setIsLoading(false);
 			return;
 		}
-		const controller = new AbortController();
-		const { signal } = controller;
 
 		const fetchData = async () => {
 			setIsLoading(true);
@@ -80,13 +77,11 @@ const EmotionDetailPage: React.FC = () => {
 		};
 
 		fetchData();
-		return () => {
-			controller.abort();
-		};
+		return () => {};
 	}, [id, emotionService, moodService, handleFetchError]);
 
 	const handleBack = () => {
-		router.replace('/cham');
+		router.replace(BASIC_ROUTES.cham.href);
 	};
 
 	if (isLoading) return <Loading />;
@@ -105,6 +100,6 @@ const EmotionDetailPage: React.FC = () => {
 			</AppSection>
 		</>
 	);
-};
+}
 
 export default EmotionDetailPage;

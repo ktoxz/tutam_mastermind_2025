@@ -2,7 +2,7 @@ export enum LOCAL_STORAGE_KEYS {
 	EMAIL_TO_VALIDATE = 'email-to-validate',
 	EMAIL_TO_RESET_PASSWORD = 'email-to-reset-password',
 	ACCESS_TOKEN = 'access-token',
-	MOOD_ENTRY = 'mood-entry',
+	EMOTION_HISTORY = 'emotion-history',
 }
 
 class LocalStorageService {

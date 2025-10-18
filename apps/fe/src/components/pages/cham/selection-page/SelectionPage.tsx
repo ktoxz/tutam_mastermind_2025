@@ -1,8 +1,8 @@
 import React from 'react';
 import AppSection from '@/components/shared/app-section/AppSection';
 import PageHeader from '@/components/shared/page-header/PageHeader';
-import EmotionWheel from '@/components/newcham/emotion-wheel/EmotionWheel';
-import EmotionDetail from '@/components/newcham/emotion-detail/EmotionDetail';
+import EmotionWheel from '@/components/pages/cham/emotion-wheel/EmotionWheel';
+import EmotionDetail from '@/components/pages/cham/emotion-detail/EmotionDetail';
 import ButtonCTA from '@/components/shared/cta/ButtonCTA';
 import Textarea from '@/components/shared/textarea/Textarea';
 import { Sparkles, Save } from 'lucide-react';

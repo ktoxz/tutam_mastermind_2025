@@ -1,13 +1,13 @@
 'use client';
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Loading from '@/app/loading';
-import { EmotionService } from '@/services/api/newmood/mood.service';
+import { EmotionService } from '@/services/api/emotion/emotion.service';
 import { MoodService } from '@/services/api/mood/mood.service';
 import { EmotionTag, EMOTION_CONSTANTS } from '@/models/Emotion';
 import { Mood } from '@/models/Mood';
 import Swal from 'sweetalert2';
-import SelectionPage from '@/components/newcham/selection-page/SelectionPage';
-import EmotionResult from '@/components/newcham/emotion-result/EmotionResult';
+import SelectionPage from '@/components/pages/cham/selection-page/SelectionPage';
+import EmotionResult from '@/components/pages/cham/emotion-result/EmotionResult';
 import AppSection from '@/components/shared/app-section/AppSection';
 import { RotateCcw } from 'lucide-react';
 import ButtonCTA from '@/components/shared/cta/ButtonCTA';

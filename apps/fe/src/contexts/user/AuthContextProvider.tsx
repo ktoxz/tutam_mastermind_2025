@@ -6,13 +6,15 @@ import { UserService } from '@/services/api/user/user.service';
 import { LOCAL_STORAGE_KEYS, LocalStorageService } from '@/services/storage/local-storage.service';
 import { AuthService } from '@/services/api/auth/auth.service';
 import Swal from 'sweetalert2';
-import { EmotionService } from '@/services/api/newmood/mood.service';
+import { BASIC_ROUTES } from '@/consts/routes';
+import { useRouter } from 'next/navigation';
 
 interface AuthContextProviderProps {
 	children: React.ReactNode;
 }
 
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
+	const router = useRouter();
 	const [user, setUser] = useState<User | null>(null);
 	const [loading, setLoading] = useState(true);
 
@@ -28,6 +30,8 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 				title: 'Đăng xuất thành công',
 				text: 'Bạn đã đăng xuất thành công.',
 			});
+
+			router.push(BASIC_ROUTES.home.href);
 		} catch (error) {
 			console.error('Error logging out:', error);
 			await Swal.fire({

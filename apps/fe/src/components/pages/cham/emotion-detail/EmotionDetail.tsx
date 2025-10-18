@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { Check } from 'lucide-react';
-import { EmotionService } from '@/services/api/newmood/mood.service';
+import { EmotionService } from '@/services/api/emotion/emotion.service';
 import { EmotionCategory, EmotionTag } from '@/models/Emotion';
 import ToolTip from '@/components/shared/tool-tip/ToolTip';
 

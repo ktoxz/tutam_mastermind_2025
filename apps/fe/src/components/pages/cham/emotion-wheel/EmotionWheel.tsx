@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState, useMemo } from 'react';
 import { Smile, Users, Frown, Zap, CloudRain, XOctagon, Flame, Eye } from 'lucide-react';
-import { EmotionService } from '@/services/api/newmood/mood.service';
+import { EmotionService } from '@/services/api/emotion/emotion.service';
 import InlineLoading from '@/components/shared/inline-loading/InlineLoading';
 import ErrorSection from '@/components/shared/error-section/ErrorSection';
 import { EmotionTag, EmotionCategory } from '@/models';

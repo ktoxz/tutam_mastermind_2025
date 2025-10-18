@@ -34,15 +34,15 @@ class EmotionService {
 
 	private validatePayload(tags: string[], diary: string): { valid: boolean; error?: string } {
 		if (!Array.isArray(tags) || tags.length === 0) {
-			return { valid: false, error: 'Tags array is required and must not be empty' };
+			return { valid: false, error: 'Mảng các tag không được rỗng' };
 		}
 
 		if (tags.some((tag) => typeof tag !== 'string' || tag.trim() === '')) {
-			return { valid: false, error: 'All tags must be non-empty strings' };
+			return { valid: false, error: 'Tất cả các tag đều không phải rỗng' };
 		}
 
 		if (typeof diary !== 'string') {
-			return { valid: false, error: 'Diary must be a string' };
+			return { valid: false, error: 'Nhật ký phải là chuỗi' };
 		}
 
 		return { valid: true };
@@ -63,12 +63,12 @@ class EmotionService {
 			const res = await httpClient.post('/emotion', payload);
 
 			if (!isValidPostEmotionResponse(res.data)) {
-				throw new Error('Invalid response format from server');
+				throw new Error('Kiểu trả về từ server không khớp');
 			}
 
 			return [null, res.data];
 		} catch (error: any) {
-			const errorMessage = error?.response?.data?.message || error?.message || 'Failed to post emotions';
+			const errorMessage = error?.response?.data?.message || error?.message || 'Không thể gửi cảm xúc tới server';
 			return [new Error(errorMessage), null as any];
 		}
 	}
@@ -78,7 +78,7 @@ class EmotionService {
 			const res = await httpClient.get(`/emotion/${id}`);
 			return [null, res.data];
 		} catch (error: any) {
-			const errorMessage = error?.response?.data?.message || error?.message || 'Failed to fetch emotion by id';
+			const errorMessage = error?.response?.data?.message || error?.message || 'Không thể lấy cảm xúc theo id';
 			return [new Error(errorMessage), null as any];
 		}
 	}
@@ -88,7 +88,7 @@ class EmotionService {
 			const res = await httpClient.get('/emotion/history');
 			return [null, res.data];
 		} catch (error: any) {
-			const errorMessage = error?.response?.data?.message || error?.message || 'Failed to fetch emotion history';
+			const errorMessage = error?.response?.data?.message || error?.message || 'Lấy lịch sử cảm xúc thất bại';
 			return [new Error(errorMessage), []];
 		}
 	}
@@ -98,7 +98,7 @@ class EmotionService {
 			await httpClient.delete(`/emotion/${id}`);
 			return [null, true];
 		} catch (error: any) {
-			const errorMessage = error?.response?.data?.message || error?.message || 'Failed to delete emotion history item';
+			const errorMessage = error?.response?.data?.message || error?.message || 'Xoá cảm xúc khỏi lịch sử thất bại';
 			return [new Error(errorMessage), false];
 		}
 	}

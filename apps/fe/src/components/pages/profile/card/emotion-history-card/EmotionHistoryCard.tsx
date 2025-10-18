@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useTransition } from 'react';
 import { useAuthContext } from '@/contexts/user/useAuthContext';
 import { EmotionHistory } from '@models';
-import { EmotionService } from '@/services/api/newmood/mood.service';
+import { EmotionService } from '@/services/api/emotion/emotion.service';
 import { Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { BASIC_ROUTES } from '@/consts/routes';
